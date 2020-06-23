@@ -1,755 +1,371 @@
 <!DOCTYPE html>
-
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="JavaScript,ES6," />
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="export和export default：  在创建JavaScript模块时，export 语句用于从模块中导出函数、对象或原始值，以便其他程序可以通过import语句使用它们。   能够在每一个模块中定义多个export 命名导出，但是只允许有一个export default 默认导出。 export命名导出（每个模块包含任意数量）： 1234567891011121314151617&#x2F;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="JS中模块的暴露和引入方式">
-<meta property="og:url" content="http://yoursite.com/2019/06/23/JS%E4%B8%AD%E6%A8%A1%E5%9D%97%E7%9A%84%E6%9A%B4%E9%9C%B2%E5%92%8C%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F/index.html">
-<meta property="og:site_name" content="爱吃馒头不吃辣的博客">
-<meta property="og:description" content="export和export default：  在创建JavaScript模块时，export 语句用于从模块中导出函数、对象或原始值，以便其他程序可以通过import语句使用它们。   能够在每一个模块中定义多个export 命名导出，但是只允许有一个export default 默认导出。 export命名导出（每个模块包含任意数量）： 1234567891011121314151617&#x2F;">
-<meta property="og:image" content="https://s1.ax1x.com/2020/06/23/Nt7MxP.jpg">
-<meta property="article:published_time" content="2019-06-23T03:26:11.000Z">
-<meta property="article:modified_time" content="2020-06-23T03:30:39.576Z">
-<meta property="article:author" content="爱吃馒头不吃辣">
-<meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="ES6">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2020/06/23/Nt7MxP.jpg">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/2019/06/23/JS中模块的暴露和引入方式/"/>
-
-
-
-
-
-  <title>JS中模块的暴露和引入方式 | 爱吃馒头不吃辣的博客</title>
-  
-
-
-
-
-
-
-
-
-<meta name="generator" content="Hexo 4.2.1"></head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="生命不息，折腾不止！" />
     
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+    <title>
+      JS中模块的暴露和引入方式 - 爱吃馒头不吃辣的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
     
+<link rel="stylesheet" href="/style/style.css">
 
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">爱吃馒头不吃辣的博客</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+  <meta name="generator" content="Hexo 4.2.1"></head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#export和export-default："><span class="toc-text">export和export default：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#export命名导出（每个模块包含任意数量）："><span class="toc-text">export命名导出（每个模块包含任意数量）：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#import语句使用命名导出："><span class="toc-text">import语句使用命名导出：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#export-default默认导出（每个模块包含一个）："><span class="toc-text">export default默认导出（每个模块包含一个）：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#exports和module-exports："><span class="toc-text">exports和module.exports：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#exports导出（每个模块包含任意数量）："><span class="toc-text">exports导出（每个模块包含任意数量）：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#require语句使用导出："><span class="toc-text">require语句使用导出：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#module-exports导出（每个模块包含一个）："><span class="toc-text">module.exports导出（每个模块包含一个）：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#require语句使用导出：-1"><span class="toc-text">require语句使用导出：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
     
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/23/JS%E4%B8%AD%E6%A8%A1%E5%9D%97%E7%9A%84%E6%9A%B4%E9%9C%B2%E5%92%8C%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="爱吃馒头不吃辣">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="爱吃馒头不吃辣的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">JS中模块的暴露和引入方式</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-23T11:26:11+08:00">
-                2019-06-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
         </div>
-      </header>
-    
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          Home
+        </a>
+        
+        <a href="/archives" class="">
+          Archives
+        </a>
+        
+        <a href="/categories" class="">
+          Categories
+        </a>
+        
+        <a href="/tags" class="">
+          Tags
+        </a>
+        
+        <a href="/friends" class="">
+          Friends
+        </a>
+        
+        <a href="/about" class="">
+          About
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">爱吃馒头不吃辣</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">爱吃馒头不吃辣</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+        <div class="nav">
+          
+          <a href="/" class="">
+            Home
+          </a>
+          
+          <a href="/archives" class="">
+            Archives
+          </a>
+          
+          <a href="/categories" class="">
+            Categories
+          </a>
+          
+          <a href="/tags" class="">
+            Tags
+          </a>
+          
+          <a href="/friends" class="">
+            Friends
+          </a>
+          
+          <a href="/about" class="">
+            About
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/shixiaohu2206" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="https://www.facebook.com/shi.xiaohu.5" target="_block">
+              <span class="iconfont icon-facebook"></span>
+            </a>
+            
+            <a href="https://www.instagram.com/shi_xiaohu/" target="_block">
+              <span class="iconfont icon-instagram"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">JS中模块的暴露和引入方式</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/06/23</span>
+        </span>
 
-      
-      
+        
 
-      
-        <p><a href="https://imgchr.com/i/Nt7MxP" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/06/23/Nt7MxP.jpg" alt="Nt7MxP.jpg"></a></p>
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/JavaScript">JavaScript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/ES6">ES6</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><p><a href="https://imgchr.com/i/Nt7MxP" target="_blank" rel="noopener"><a href="https://s1.ax1x.com/2020/06/23/Nt7MxP.jpg" target="_blank" rel="noopener" data-caption="Nt7MxP.jpg" data-fancybox="images"><img src="https://s1.ax1x.com/2020/06/23/Nt7MxP.jpg" alt="Nt7MxP.jpg"></a></a></p>
 <blockquote>
-<h1 id="export和export-default："><a href="#export和export-default：" class="headerlink" title="export和export default："></a>export和export default：</h1></blockquote>
+<h1 id="export和export-default：">export和export default：<a class="post-anchor" href="#export和export-default："></a></h1></blockquote>
 <ul>
 <li>在创建JavaScript模块时，export 语句用于从模块中导出函数、对象或原始值，以便其他程序可以通过import语句使用它们。  </li>
 <li>能够在每一个模块中定义多个export 命名导出，但是只允许有一个export default 默认导出。<blockquote>
-<h2 id="export命名导出（每个模块包含任意数量）："><a href="#export命名导出（每个模块包含任意数量）：" class="headerlink" title="export命名导出（每个模块包含任意数量）："></a>export命名导出（每个模块包含任意数量）：</h2></blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//my-module.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//导出列表</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>, b = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">export</span> &#123;a, b&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出单个特性</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> name1, name2;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> name1 = <span class="number">1</span>, name2 = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">FunctionName</span>(<span class="params"></span>)</span>&#123;...&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>&#123;...&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//重命名导出</span></span><br><span class="line"><span class="keyword">export</span> &#123;a <span class="keyword">as</span> aa,b <span class="keyword">as</span> bb&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解构导出并重命名</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> &#123; name1, <span class="attr">name2</span>: bar &#125; = o;</span><br></pre></td></tr></table></figure>
+<h2 id="export命名导出（每个模块包含任意数量）：">export命名导出（每个模块包含任意数量）：<a class="post-anchor" href="#export命名导出（每个模块包含任意数量）："></a></h2></blockquote>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//my-module.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//导出列表</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>, b = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">export</span> {a, b}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出单个特性</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> name1, name2;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> name1 = <span class="number">1</span>, name2 = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">FunctionName</span>(<span class="params"></span>)</span>{...}</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassName</span> </span>{...}</span><br><span class="line"></span><br><span class="line"><span class="comment">//重命名导出</span></span><br><span class="line"><span class="keyword">export</span> {a <span class="keyword">as</span> aa,b <span class="keyword">as</span> bb};</span><br><span class="line"></span><br><span class="line"><span class="comment">// 解构导出并重命名</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> { name1, <span class="attr">name2</span>: bar } = o;</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
-<h2 id="import语句使用命名导出："><a href="#import语句使用命名导出：" class="headerlink" title="import语句使用命名导出："></a>import语句使用命名导出：</h2></blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; a, b,FunctionName &#125; <span class="keyword">from</span> <span class="string">'my-module.js'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="import语句使用命名导出：">import语句使用命名导出：<a class="post-anchor" href="#import语句使用命名导出："></a></h2></blockquote>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> { a, b,FunctionName } <span class="keyword">from</span> <span class="string">'my-module.js'</span>;</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
-<h2 id="export-default默认导出（每个模块包含一个）："><a href="#export-default默认导出（每个模块包含一个）：" class="headerlink" title="export default默认导出（每个模块包含一个）："></a>export default默认导出（每个模块包含一个）：</h2></blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//my-module.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> expression;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> (<span class="params">…</span>) </span>&#123; … &#125; </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">nameInfo</span>(<span class="params">…</span>) </span>&#123; … &#125; </span><br><span class="line"><span class="keyword">export</span> &#123; name1 <span class="keyword">as</span> <span class="keyword">default</span>, … &#125;;</span><br></pre></td></tr></table></figure></li>
-<li>更多详细信息可查询<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/export" target="_blank" rel="noopener">这里</a>官方文档<br/>
+<h2 id="export-default默认导出（每个模块包含一个）：">export default默认导出（每个模块包含一个）：<a class="post-anchor" href="#export-default默认导出（每个模块包含一个）："></a></h2></blockquote>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//my-module.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> expression;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> (<span class="params">…</span>) </span>{ … } </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">nameInfo</span>(<span class="params">…</span>) </span>{ … } </span><br><span class="line"><span class="keyword">export</span> { name1 <span class="keyword">as</span> <span class="keyword">default</span>, … };</span><br></pre></td></tr></tbody></table></figure></li>
+<li>更多详细信息可查询<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/export" target="_blank" rel="noopener">这里</a>官方文档<br>
 
 </li>
 </ul>
 <blockquote>
-<h1 id="exports和module-exports："><a href="#exports和module-exports：" class="headerlink" title="exports和module.exports："></a>exports和module.exports：</h1></blockquote>
+<h1 id="exports和module-exports：">exports和module.exports：<a class="post-anchor" href="#exports和module-exports："></a></h1></blockquote>
 <ul>
 <li><code>exports</code>允许使用快捷方式，因此<code>module.exports.f = ...</code>可以更简洁地写成<code>exports.f = ...</code>。但是，就像任何变量一样，如果为<code>exports</code>赋予了新值，则它将不再绑定到<code>module.exports</code>。  </li>
 <li>能够在每一个模块中定义多个<code>exports</code>导出，但是只允许有一个<code>module.exports</code>导出。<blockquote>
-<h2 id="exports导出（每个模块包含任意数量）："><a href="#exports导出（每个模块包含任意数量）：" class="headerlink" title="exports导出（每个模块包含任意数量）："></a>exports导出（每个模块包含任意数量）：</h2></blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//my-module.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//导出多个方法和变量</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>, b = <span class="number">2</span>;</span><br><span class="line">exports.a = a;</span><br><span class="line">exports.b = b;</span><br><span class="line">exports.FunctionName = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">123</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(exports);<span class="comment">//&#123; a: 1, b: 2, FunctionName: [Function] &#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="exports导出（每个模块包含任意数量）：">exports导出（每个模块包含任意数量）：<a class="post-anchor" href="#exports导出（每个模块包含任意数量）："></a></h2></blockquote>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//my-module.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//导出多个方法和变量</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>, b = <span class="number">2</span>;</span><br><span class="line">exports.a = a;</span><br><span class="line">exports.b = b;</span><br><span class="line">exports.FunctionName = <span class="function"><span class="params">()</span> =></span> {</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">123</span>)</span><br><span class="line">};</span><br><span class="line"><span class="built_in">console</span>.log(exports);<span class="comment">//{ a: 1, b: 2, FunctionName: [Function] }</span></span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
-<h2 id="require语句使用导出："><a href="#require语句使用导出：" class="headerlink" title="require语句使用导出："></a>require语句使用导出：</h2></blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;a, b, FunctionName&#125; = <span class="built_in">require</span>(<span class="string">'./my-module'</span>);<span class="comment">//可直接解构</span></span><br><span class="line"><span class="built_in">console</span>.log(a, b);<span class="comment">//1 2</span></span><br><span class="line">FunctionName();<span class="comment">//123</span></span><br></pre></td></tr></table></figure>
+<h2 id="require语句使用导出：">require语句使用导出：<a class="post-anchor" href="#require语句使用导出："></a></h2></blockquote>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> {a, b, FunctionName} = <span class="built_in">require</span>(<span class="string">'./my-module'</span>);<span class="comment">//可直接解构</span></span><br><span class="line"><span class="built_in">console</span>.log(a, b);<span class="comment">//1 2</span></span><br><span class="line">FunctionName();<span class="comment">//123</span></span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
-<h2 id="module-exports导出（每个模块包含一个）："><a href="#module-exports导出（每个模块包含一个）：" class="headerlink" title="module.exports导出（每个模块包含一个）："></a>module.exports导出（每个模块包含一个）：</h2></blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//my-module.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//导出多个方法和变量</span></span><br><span class="line"><span class="keyword">let</span> FunctionName = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">123</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>, b = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;a, b, FunctionName&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">module</span>.exports);<span class="comment">//&#123; a: 1, b: 2, FunctionName: [Function: FunctionName] &#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="module-exports导出（每个模块包含一个）：">module.exports导出（每个模块包含一个）：<a class="post-anchor" href="#module-exports导出（每个模块包含一个）："></a></h2></blockquote>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//my-module.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//导出多个方法和变量</span></span><br><span class="line"><span class="keyword">let</span> FunctionName = <span class="function"><span class="params">()</span> =></span> {</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">123</span>)</span><br><span class="line">};</span><br><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>, b = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">module</span>.exports = {a, b, FunctionName};</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">module</span>.exports);<span class="comment">//{ a: 1, b: 2, FunctionName: [Function: FunctionName] }</span></span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
-<h2 id="require语句使用导出：-1"><a href="#require语句使用导出：-1" class="headerlink" title="require语句使用导出："></a>require语句使用导出：</h2></blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;a, b, FunctionName&#125; = <span class="built_in">require</span>(<span class="string">'./my-module'</span>);<span class="comment">// 可直接解构</span></span><br><span class="line"><span class="built_in">console</span>.log(a, b);<span class="comment">//1 2</span></span><br><span class="line">FunctionName();<span class="comment">//123</span></span><br></pre></td></tr></table></figure></li>
-<li>更多详细信息可查询<a href="http://nodejs.cn/api/modules.html#modules_module_exports" target="_blank" rel="noopener">这里</a>官方文档<br/>
+<h2 id="require语句使用导出：-1">require语句使用导出：<a class="post-anchor" href="#require语句使用导出：-1"></a></h2></blockquote>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> {a, b, FunctionName} = <span class="built_in">require</span>(<span class="string">'./my-module'</span>);<span class="comment">// 可直接解构</span></span><br><span class="line"><span class="built_in">console</span>.log(a, b);<span class="comment">//1 2</span></span><br><span class="line">FunctionName();<span class="comment">//123</span></span><br></pre></td></tr></tbody></table></figure></li>
+<li>更多详细信息可查询<a href="http://nodejs.cn/api/modules.html#modules_module_exports" target="_blank" rel="noopener">这里</a>官方文档<br>
 
 </li>
 </ul>
 <blockquote>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1></blockquote>
+<h1 id="总结">总结<a class="post-anchor" href="#总结"></a></h1></blockquote>
 <ul>
 <li><code>export</code>和<code>export default</code>使用<code>import</code>导入。</li>
 <li><code>exports</code>和<code>module.exports</code>使用<code>require</code>导入。常用的<code>Nodejs</code>项目中。</li>
 <li><code>export</code>和<code>exports</code>在模块中可使用多个。 </li>
 <li><code>export default</code>和<code>module.exports</code>在模块中只可使用一个。 </li>
 </ul>
+</body></html>
 
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
-          
-            <a href="/tags/ES6/" rel="tag"># ES6</a>
-          
+  
+    <div class="post-reward">
+    <div id="reward-button">打赏</div>
+      <div id="qr">
+        <div class="wrap">
+            
+            <div class="bg-wrap">
+              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
+              支付宝
+            </div>
+            
+            
+            <div class="bg-wrap">
+                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
+              微信
+            </div>
+            
         </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/06/13/JS%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="next" title="JS常用正则表达式">
-                <i class="fa fa-chevron-left"></i> JS常用正则表达式
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/06/23/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">爱吃馒头不吃辣</p>
-              <p class="site-description motion-element" itemprop="description">生命不息，折腾不止！</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/%20%7C%7C%20archive">
-              
-                  <span class="site-state-item-count">5</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#export和export-default："><span class="nav-number">1.</span> <span class="nav-text">export和export default：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#export命名导出（每个模块包含任意数量）："><span class="nav-number">1.1.</span> <span class="nav-text">export命名导出（每个模块包含任意数量）：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#import语句使用命名导出："><span class="nav-number">1.2.</span> <span class="nav-text">import语句使用命名导出：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#export-default默认导出（每个模块包含一个）："><span class="nav-number">1.3.</span> <span class="nav-text">export default默认导出（每个模块包含一个）：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#exports和module-exports："><span class="nav-number">2.</span> <span class="nav-text">exports和module.exports：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#exports导出（每个模块包含任意数量）："><span class="nav-number">2.1.</span> <span class="nav-text">exports导出（每个模块包含任意数量）：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#require语句使用导出："><span class="nav-number">2.2.</span> <span class="nav-text">require语句使用导出：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#module-exports导出（每个模块包含一个）："><span class="nav-number">2.3.</span> <span class="nav-text">module.exports导出（每个模块包含一个）：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#require语句使用导出：-1"><span class="nav-number">2.4.</span> <span class="nav-text">require语句使用导出：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
       </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">爱吃馒头不吃辣</span>
-
+    </div>
   
-</div>
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
-
-
-
-
+  <div class="post-guide">
+    <div class="item left">
         
-
-
-
-
-
-
-
+          <a href="/2020/06/23/hello-world/">Hello World</a>
         
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
+    </div>
+    <div class="item right">
         
-      </div>
-    
-
-    
-
+          <a href="/2019/06/13/JS%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">JS常用正则表达式</a>
+        
+    </div>
   </div>
 
   
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="http://yoursite.com">爱吃馒头不吃辣</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="http://yoursite.com/2019/06/23/JS%E4%B8%AD%E6%A8%A1%E5%9D%97%E7%9A%84%E6%9A%B4%E9%9C%B2%E5%92%8C%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F/">http://yoursite.com/2019/06/23/JS%E4%B8%AD%E6%A8%A1%E5%9D%97%E7%9A%84%E6%9A%B4%E9%9C%B2%E5%92%8C%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="http://yoursite.com">爱吃馒头不吃辣</a>的博客，转载请注明出处！
+    </div>
+  </div>
 
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
+  <div id="comment"></div>
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="http://yoursite.com">爱吃馒头不吃辣</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
   
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-</body>
 </html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\",\"qqkongjian\",\"QQ\",\"douban\",\"facebook\",\"twitter\",\"google\"],\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
