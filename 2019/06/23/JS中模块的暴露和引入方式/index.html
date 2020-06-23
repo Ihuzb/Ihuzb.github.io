@@ -168,139 +168,155 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <article class="post-entry">
-    <div class="header">
+        <div id="tags">
+  <div class="title">
+    标签
+  </div>
+
+  
+  <div class="list">
+     
+    <li class="JavaScript active">
+      <span>JavaScript<sup>4</sup></span>
+    </li>
       
-      <div class="title">JS中模块的暴露和引入方式</div>
-      <div class="meta">
-        <span class="item">
-          <span class="iconfont icon-time-circle"></span>
+    <li class="ES6 ">
+      <span>ES6<sup>2</sup></span>
+    </li>
+      
+    <li class="HTML ">
+      <span>HTML<sup>1</sup></span>
+    </li>
+      
+    <li class="闭包 ">
+      <span>闭包<sup>1</sup></span>
+    </li>
+      
+    <li class="二叉树 ">
+      <span>二叉树<sup>1</sup></span>
+    </li>
+      
+    <li class="二叉排序树 ">
+      <span>二叉排序树<sup>1</sup></span>
+    </li>
+      
+    <li class="正则表达式 ">
+      <span>正则表达式<sup>1</sup></span>
+    </li>
+     
+  </div>
+  
+  <div class="post-wrap">
+     
+    <div class="post JavaScript active">
+      
+      <li>
+        <a href="/2019/06/10/JS%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E5%92%8C%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81/" title="JS函数防抖和函数节流">
+          <span>2019/06/10</span>
+          <span>JS函数防抖和函数节流</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/2019/06/11/JS%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/" title="JS实现二叉排序树">
+          <span>2019/06/11</span>
+          <span>JS实现二叉排序树</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/2019/06/13/JS%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="JS常用正则表达式">
+          <span>2019/06/13</span>
+          <span>JS常用正则表达式</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/2019/06/23/JS%E4%B8%AD%E6%A8%A1%E5%9D%97%E7%9A%84%E6%9A%B4%E9%9C%B2%E5%92%8C%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F/" title="JS中模块的暴露和引入方式">
           <span>2019/06/23</span>
-        </span>
-
-        
-
-         
-        <span class="item">
-          <span class="iconfont icon-folder"></span>
-          <span>
-              
-                
-                  <a href="/categories/JavaScript">JavaScript</a>
-                
-              
-          </span>
-        </span>
-        
-        
-         
-          <span class="item">
-            <span class="iconfont icon-tag1"></span>
-            <span>
-                
-                  
-                    <a href="/tags/JavaScript">JavaScript</a>
-                  
-                
-                  
-                    <a href="/tags/ES6">ES6</a>
-                  
-                
-            </span>
-          </span>
-         
-      </div>
-      <div>
-      </div>
+          <span>JS中模块的暴露和引入方式</span>
+        </a>
+      </li>
+      
     </div>
-    <html><head></head><body><p><a href="https://imgchr.com/i/Nt7MxP" target="_blank" rel="noopener"><a href="https://s1.ax1x.com/2020/06/23/Nt7MxP.jpg" target="_blank" rel="noopener" data-caption="Nt7MxP.jpg" data-fancybox="images"><img src="https://s1.ax1x.com/2020/06/23/Nt7MxP.jpg" alt="Nt7MxP.jpg"></a></a></p>
-<h1 id="export和export-default：">export和export default：<a class="post-anchor" href="#export和export-default："></a></h1><ul>
-<li>在创建JavaScript模块时，export 语句用于从模块中导出函数、对象或原始值，以便其他程序可以通过import语句使用它们。  </li>
-<li>能够在每一个模块中定义多个export 命名导出，但是只允许有一个export default 默认导出。</li>
-</ul>
-<h2 id="export命名导出（每个模块包含任意数量）：">export命名导出（每个模块包含任意数量）：<a class="post-anchor" href="#export命名导出（每个模块包含任意数量）："></a></h2><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//my-module.js</span><br><br><span class="hljs-comment">//导出列表</span><br><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>, b = <span class="hljs-number">2</span>;<br><span class="hljs-keyword">export</span> {a, b}<br><br><span class="hljs-comment">// 导出单个特性</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">let</span> name1, name2;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">let</span> name1 = <span class="hljs-number">1</span>, name2 = <span class="hljs-number">2</span>;<br><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">FunctionName</span>(<span class="hljs-params"></span>)</span>{...}<br><span class="hljs-keyword">export</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClassName</span> </span>{...}<br><br><span class="hljs-comment">//重命名导出</span><br><span class="hljs-keyword">export</span> {a <span class="hljs-keyword">as</span> aa,b <span class="hljs-keyword">as</span> bb};<br><br><span class="hljs-comment">// 解构导出并重命名</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> { name1, <span class="hljs-attr">name2</span>: bar } = o;<br></code></pre></td></tr></tbody></table></figure>
-
-<h2 id="import语句使用命名导出：">import语句使用命名导出：<a class="post-anchor" href="#import语句使用命名导出："></a></h2><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> { a, b,FunctionName } <span class="hljs-keyword">from</span> <span class="hljs-string">'my-module.js'</span>;<br></code></pre></td></tr></tbody></table></figure>
-
-<h2 id="export-default默认导出（每个模块包含一个）：">export default默认导出（每个模块包含一个）：<a class="post-anchor" href="#export-default默认导出（每个模块包含一个）："></a></h2><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//my-module.js</span><br><br><span class="hljs-comment">// 默认导出</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> expression;<br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">…</span>) </span>{ … } <br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">nameInfo</span>(<span class="hljs-params">…</span>) </span>{ … } <br><span class="hljs-keyword">export</span> { name1 <span class="hljs-keyword">as</span> <span class="hljs-keyword">default</span>, … };<br></code></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li>更多详细信息可查询<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/export" target="_blank" rel="noopener">这里</a>官方文档</li>
-</ul>
-<h1 id="exports和module-exports：">exports和module.exports：<a class="post-anchor" href="#exports和module-exports："></a></h1><ul>
-<li><code>exports</code>允许使用快捷方式，因此<code>module.exports.f = ...</code>可以更简洁地写成<code>exports.f = ...</code>。但是，就像任何变量一样，如果为<code>exports</code>赋予了新值，则它将不再绑定到<code>module.exports</code>。  </li>
-<li>能够在每一个模块中定义多个<code>exports</code>导出，但是只允许有一个<code>module.exports</code>导出。</li>
-</ul>
-<h2 id="exports导出（每个模块包含任意数量）：">exports导出（每个模块包含任意数量）：<a class="post-anchor" href="#exports导出（每个模块包含任意数量）："></a></h2><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//my-module.js</span><br><br><span class="hljs-comment">//导出多个方法和变量</span><br><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>, b = <span class="hljs-number">2</span>;<br>exports.a = a;<br>exports.b = b;<br>exports.FunctionName = <span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">123</span>)<br>};<br><span class="hljs-built_in">console</span>.log(exports);<span class="hljs-comment">//{ a: 1, b: 2, FunctionName: [Function] }</span><br></code></pre></td></tr></tbody></table></figure>
-
-<h2 id="require语句使用导出：">require语句使用导出：<a class="post-anchor" href="#require语句使用导出："></a></h2><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> {a, b, FunctionName} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./my-module'</span>);<span class="hljs-comment">//可直接解构</span><br><span class="hljs-built_in">console</span>.log(a, b);<span class="hljs-comment">//1 2</span><br>FunctionName();<span class="hljs-comment">//123</span><br></code></pre></td></tr></tbody></table></figure>
-
-<h2 id="module-exports导出（每个模块包含一个）：">module.exports导出（每个模块包含一个）：<a class="post-anchor" href="#module-exports导出（每个模块包含一个）："></a></h2><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//my-module.js</span><br><br><span class="hljs-comment">//导出多个方法和变量</span><br><span class="hljs-keyword">let</span> FunctionName = <span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-number">123</span>)<br>};<br><span class="hljs-keyword">let</span> a = <span class="hljs-number">1</span>, b = <span class="hljs-number">2</span>;<br><span class="hljs-built_in">module</span>.exports = {a, b, FunctionName};<br><span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">module</span>.exports);<span class="hljs-comment">//{ a: 1, b: 2, FunctionName: [Function: FunctionName] }</span><br></code></pre></td></tr></tbody></table></figure>
-
-<h2 id="require语句使用导出：-1">require语句使用导出：<a class="post-anchor" href="#require语句使用导出：-1"></a></h2><figure class="highlight javascript"><table><tbody><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> {a, b, FunctionName} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./my-module'</span>);<span class="hljs-comment">// 可直接解构</span><br><span class="hljs-built_in">console</span>.log(a, b);<span class="hljs-comment">//1 2</span><br>FunctionName();<span class="hljs-comment">//123</span><br></code></pre></td></tr></tbody></table></figure>
-
-<ul>
-<li>更多详细信息可查询<a href="http://nodejs.cn/api/modules.html#modules_module_exports" target="_blank" rel="noopener">这里</a>官方文档</li>
-</ul>
-<h1 id="总结">总结<a class="post-anchor" href="#总结"></a></h1><ul>
-<li><code>export</code>和<code>export default</code>使用<code>import</code>导入。</li>
-<li><code>exports</code>和<code>module.exports</code>使用<code>require</code>导入。常用的<code>Nodejs</code>项目中。</li>
-<li><code>export</code>和<code>exports</code>在模块中可使用多个。 </li>
-<li><code>export default</code>和<code>module.exports</code>在模块中只可使用一个。 </li>
-</ul>
-</body></html>
-
-  
-    <div class="post-reward">
-    <div id="reward-button">打赏</div>
-      <div id="qr">
-        <div class="wrap">
-            
-            <div class="bg-wrap">
-              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
-              支付宝
-            </div>
-            
-            
-            <div class="bg-wrap">
-                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
-              微信
-            </div>
-            
-        </div>
-      </div>
+      
+    <div class="post ES6 ">
+      
+      <li>
+        <a href="/2019/06/11/JS%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/" title="JS实现二叉排序树">
+          <span>2019/06/11</span>
+          <span>JS实现二叉排序树</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/2019/06/23/JS%E4%B8%AD%E6%A8%A1%E5%9D%97%E7%9A%84%E6%9A%B4%E9%9C%B2%E5%92%8C%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F/" title="JS中模块的暴露和引入方式">
+          <span>2019/06/23</span>
+          <span>JS中模块的暴露和引入方式</span>
+        </a>
+      </li>
+      
     </div>
-  
-  <div class="post-guide">
-    <div class="item left">
-        
+      
+    <div class="post HTML ">
+      
+      <li>
+        <a href="/2019/06/10/JS%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E5%92%8C%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81/" title="JS函数防抖和函数节流">
+          <span>2019/06/10</span>
+          <span>JS函数防抖和函数节流</span>
+        </a>
+      </li>
+      
     </div>
-    <div class="item right">
-        
-          <a href="/2019/06/13/JS%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">JS常用正则表达式</a>
-        
+      
+    <div class="post 闭包 ">
+      
+      <li>
+        <a href="/2019/06/10/JS%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E5%92%8C%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81/" title="JS函数防抖和函数节流">
+          <span>2019/06/10</span>
+          <span>JS函数防抖和函数节流</span>
+        </a>
+      </li>
+      
     </div>
+      
+    <div class="post 二叉树 ">
+      
+      <li>
+        <a href="/2019/06/11/JS%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/" title="JS实现二叉排序树">
+          <span>2019/06/11</span>
+          <span>JS实现二叉排序树</span>
+        </a>
+      </li>
+      
+    </div>
+      
+    <div class="post 二叉排序树 ">
+      
+      <li>
+        <a href="/2019/06/11/JS%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/" title="JS实现二叉排序树">
+          <span>2019/06/11</span>
+          <span>JS实现二叉排序树</span>
+        </a>
+      </li>
+      
+    </div>
+      
+    <div class="post 正则表达式 ">
+      
+      <li>
+        <a href="/2019/06/13/JS%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="JS常用正则表达式">
+          <span>2019/06/13</span>
+          <span>JS常用正则表达式</span>
+        </a>
+      </li>
+      
+    </div>
+     
   </div>
+   
+</div>
 
-  
-
-  <div class="post-copyright">
-    <div class="auth">
-      本文作者：<a href="http://yoursite.com">爱吃馒头不吃辣</a>
-    </div>
-    <div class="link">
-      永久链接：<a href="http://yoursite.com/2019/06/23/JS%E4%B8%AD%E6%A8%A1%E5%9D%97%E7%9A%84%E6%9A%B4%E9%9C%B2%E5%92%8C%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F/">http://yoursite.com/2019/06/23/JS%E4%B8%AD%E6%A8%A1%E5%9D%97%E7%9A%84%E6%9A%B4%E9%9C%B2%E5%92%8C%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F/</a>
-    </div>
-    <div class="declare">
-      版权声明：本文首发于<a href="http://yoursite.com">爱吃馒头不吃辣</a>的博客，转载请注明出处！
-    </div>
-  </div>
-
-  <div id="comment"></div>
-
-  
-  
-</article>
         <footer>
           <div class="copyright">
             ©2020
