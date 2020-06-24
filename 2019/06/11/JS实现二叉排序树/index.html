@@ -16,7 +16,7 @@
     <meta name="description" content="生命不息，折腾不止！" />
     
     <title>
-      JS实现二叉排序树 - Ihuzb的博客
+      :JS实现二叉排序树 - Ihuzb的博客
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/logo.jpeg" type="image/x-icon" />
@@ -167,7 +167,7 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">JS实现二叉排序树</div>
+      <div class="title">:JS实现二叉排序树</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
@@ -175,7 +175,7 @@
         </span>
 
         
-          <span class="item leancloud-visitors" id="/2019/06/11/JS%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/" data-flag-title="JS实现二叉排序树">
+          <span class="item leancloud-visitors" id="/2019/06/11/JS%E5%AE%9E%E7%8E%B0%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/" data-flag-title=":JS实现二叉排序树">
             <span class="iconfont icon-eye1"></span>
             <span class="leancloud-visitors-count"></span>
           </span>
@@ -204,15 +204,15 @@
                   
                 
                   
-                    <a href="/tags/ES6">ES6</a>
-                  
-                
-                  
                     <a href="/tags/二叉树">二叉树</a>
                   
                 
                   
                     <a href="/tags/二叉排序树">二叉排序树</a>
+                  
+                
+                  
+                    <a href="/tags/ES6">ES6</a>
                   
                 
             </span>
@@ -223,36 +223,26 @@
       </div>
     </div>
     <html><head></head><body><p><a href="https://imgchr.com/i/NtTBAH" target="_blank" rel="noopener"><a href="https://s1.ax1x.com/2020/06/23/NtTBAH.md.jpg" target="_blank" rel="noopener" data-caption="NtTBAH.md.jpg" data-fancybox="images"><img src="https://s1.ax1x.com/2020/06/23/NtTBAH.md.jpg" alt="NtTBAH.md.jpg"></a></a></p>
-<blockquote>
-<h2 id="二叉树的特点">二叉树的特点:<a class="post-anchor" href="#二叉树的特点"></a></h2></blockquote>
-<ul>
+<h2 id="二叉树的特点">二叉树的特点:<a class="post-anchor" href="#二叉树的特点"></a></h2><ul>
 <li>二叉树是一种数据结构。</li>
 <li>由一系列节点组成，具有层级结构。每个节点的特性包含有节点值，关系指针。节点之间存在对应关系。</li>
 <li>树中存在一个没有父节点的节点，叫做根节点。树的末尾存在一系列没有子节点的节点，成为叶子节点。其他可以叫做中间节点。</li>
-<li>树的根节点位于第一层，层级数越大，节点位置越深，层基数也叫做树高。<blockquote>
-<h2 id="二叉树排序是二叉树的一种类型，特点是">二叉树排序是二叉树的一种类型，特点是:<a class="post-anchor" href="#二叉树排序是二叉树的一种类型，特点是"></a></h2></blockquote>
-</li>
+<li>树的根节点位于第一层，层级数越大，节点位置越深，层基数也叫做树高。</li>
+</ul>
+<h2 id="二叉树排序是二叉树的一种类型，特点是">二叉树排序是二叉树的一种类型，特点是:<a class="post-anchor" href="#二叉树排序是二叉树的一种类型，特点是"></a></h2><ul>
 <li>节点分为左右子树。</li>
 <li>在不为空的情况下，左子树子节点的值都小于父节点的值。</li>
 <li>在不为空的情况下，右子树子节点的值都大于父节点得值。<br><a href="https://imgchr.com/i/NtoqTH" target="_blank" rel="noopener"><a href="https://s1.ax1x.com/2020/06/23/NtoqTH.png" target="_blank" rel="noopener" data-caption="NtoqTH.png" data-fancybox="images"><img src="https://s1.ax1x.com/2020/06/23/NtoqTH.png" alt="NtoqTH.png"></a></a></li>
 </ul>
-<blockquote>
-<h2 id="代码实现">代码实现<a class="post-anchor" href="#代码实现"></a></h2></blockquote>
-<blockquote>
-<h3 id="节点用对象来描述，节点特性用对象属性来描述。">节点用对象来描述，节点特性用对象属性来描述。<a class="post-anchor" href="#节点用对象来描述，节点特性用对象属性来描述。"></a></h3></blockquote>
-<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//创建节点类</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span> </span>{<br>    <span class="hljs-keyword">constructor</span>(key) {<br>        <span class="hljs-keyword">this</span>.key = key;<span class="hljs-comment">//节点值</span><br>        <span class="hljs-keyword">this</span>.left = <span class="hljs-literal">null</span>;<span class="hljs-comment">//左指针</span><br>        <span class="hljs-keyword">this</span>.right = <span class="hljs-literal">null</span>;<span class="hljs-comment">//右指针</span><br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
-<blockquote>
-<h3 id="二叉树结构用对象来描述。">二叉树结构用对象来描述。<a class="post-anchor" href="#二叉树结构用对象来描述。"></a></h3></blockquote>
-<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BinaryTree</span> </span>{<br>    <span class="hljs-keyword">constructor</span>() {<br>        <span class="hljs-keyword">this</span>.root = <span class="hljs-literal">null</span>;<br>    }<br><br>    <span class="hljs-comment">// 在这里写代码</span><br>}<br></code></pre></td></tr></tbody></table></figure>
-<blockquote>
-<h3 id="插入值">插入值<a class="post-anchor" href="#插入值"></a></h3></blockquote>
-<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//插入</span><br>insert(key) {<br>    <span class="hljs-keyword">const</span> newNode = <span class="hljs-keyword">new</span> Node(key);<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.root === <span class="hljs-literal">null</span>) {<span class="hljs-comment">//设置根节点</span><br>        <span class="hljs-keyword">this</span>.root = newNode;<br>    }<br>    <span class="hljs-keyword">this</span>.insertNode(<span class="hljs-keyword">this</span>.root, newNode);<br>}<br>insertNode(node, newNode) {<br>    <span class="hljs-keyword">if</span> (newNode.key < node.key) {<span class="hljs-comment">//插值小于节点值进入左子树</span><br>        <span class="hljs-keyword">if</span> (node.left === <span class="hljs-literal">null</span>) {<span class="hljs-comment">//直到左子树为空</span><br>            node.left = newNode<br>        } <span class="hljs-keyword">else</span> {<span class="hljs-comment">//左子树已存在</span><br>            <span class="hljs-keyword">this</span>.insertNode(node.left, newNode)<br>        }<br>    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (newNode.key > node.key){<span class="hljs-comment">//插入值大于节点值进入右子树</span><br>        <span class="hljs-keyword">if</span> (node.right === <span class="hljs-literal">null</span>) {<span class="hljs-comment">//直到右子树为空</span><br>            node.right = newNode<br>        } <span class="hljs-keyword">else</span> {<span class="hljs-comment">//右子树已存在</span><br>            <span class="hljs-keyword">this</span>.insertNode(node.right, newNode)<br>        }<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
-<blockquote>
-<h3 id="使用方法">使用方法<a class="post-anchor" href="#使用方法"></a></h3></blockquote>
-<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 实例化二叉树</span><br><span class="hljs-keyword">const</span> binaryTree = <span class="hljs-keyword">new</span> BinaryTree();<br><span class="hljs-comment">// key值</span><br><span class="hljs-keyword">const</span> keys = [<span class="hljs-number">19</span>, <span class="hljs-number">8</span>, <span class="hljs-number">15</span>, <span class="hljs-number">24</span>, <span class="hljs-number">45</span>, <span class="hljs-number">12</span>, <span class="hljs-number">5</span>];<br><span class="hljs-comment">// 生成二叉排序树</span><br>keys.forEach(<span class="hljs-function"><span class="hljs-params">key</span> =></span> binaryTree.insert(key));<br></code></pre></td></tr></tbody></table></figure>
-<blockquote>
-<h3 id="二叉排序树的遍历">二叉排序树的遍历<a class="post-anchor" href="#二叉排序树的遍历"></a></h3></blockquote>
-<h4 id="中序遍历">中序遍历<a class="post-anchor" href="#中序遍历"></a></h4><ul>
+<h2 id="代码实现">代码实现<a class="post-anchor" href="#代码实现"></a></h2><h3 id="节点用对象来描述，节点特性用对象属性来描述。">节点用对象来描述，节点特性用对象属性来描述。<a class="post-anchor" href="#节点用对象来描述，节点特性用对象属性来描述。"></a></h3><figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//创建节点类</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span> </span>{<br>    <span class="hljs-keyword">constructor</span>(key) {<br>        <span class="hljs-keyword">this</span>.key = key;<span class="hljs-comment">//节点值</span><br>        <span class="hljs-keyword">this</span>.left = <span class="hljs-literal">null</span>;<span class="hljs-comment">//左指针</span><br>        <span class="hljs-keyword">this</span>.right = <span class="hljs-literal">null</span>;<span class="hljs-comment">//右指针</span><br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="二叉树结构用对象来描述。">二叉树结构用对象来描述。<a class="post-anchor" href="#二叉树结构用对象来描述。"></a></h3><figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">BinaryTree</span> </span>{<br>    <span class="hljs-keyword">constructor</span>() {<br>        <span class="hljs-keyword">this</span>.root = <span class="hljs-literal">null</span>;<br>    }<br><br>    <span class="hljs-comment">// 在这里写代码</span><br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="插入值">插入值<a class="post-anchor" href="#插入值"></a></h3><figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//插入</span><br>insert(key) {<br>    <span class="hljs-keyword">const</span> newNode = <span class="hljs-keyword">new</span> Node(key);<br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.root === <span class="hljs-literal">null</span>) {<span class="hljs-comment">//设置根节点</span><br>        <span class="hljs-keyword">this</span>.root = newNode;<br>    }<br>    <span class="hljs-keyword">this</span>.insertNode(<span class="hljs-keyword">this</span>.root, newNode);<br>}<br>insertNode(node, newNode) {<br>    <span class="hljs-keyword">if</span> (newNode.key < node.key) {<span class="hljs-comment">//插值小于节点值进入左子树</span><br>        <span class="hljs-keyword">if</span> (node.left === <span class="hljs-literal">null</span>) {<span class="hljs-comment">//直到左子树为空</span><br>            node.left = newNode<br>        } <span class="hljs-keyword">else</span> {<span class="hljs-comment">//左子树已存在</span><br>            <span class="hljs-keyword">this</span>.insertNode(node.left, newNode)<br>        }<br>    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (newNode.key > node.key){<span class="hljs-comment">//插入值大于节点值进入右子树</span><br>        <span class="hljs-keyword">if</span> (node.right === <span class="hljs-literal">null</span>) {<span class="hljs-comment">//直到右子树为空</span><br>            node.right = newNode<br>        } <span class="hljs-keyword">else</span> {<span class="hljs-comment">//右子树已存在</span><br>            <span class="hljs-keyword">this</span>.insertNode(node.right, newNode)<br>        }<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="使用方法">使用方法<a class="post-anchor" href="#使用方法"></a></h3><figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 实例化二叉树</span><br><span class="hljs-keyword">const</span> binaryTree = <span class="hljs-keyword">new</span> BinaryTree();<br><span class="hljs-comment">// key值</span><br><span class="hljs-keyword">const</span> keys = [<span class="hljs-number">19</span>, <span class="hljs-number">8</span>, <span class="hljs-number">15</span>, <span class="hljs-number">24</span>, <span class="hljs-number">45</span>, <span class="hljs-number">12</span>, <span class="hljs-number">5</span>];<br><span class="hljs-comment">// 生成二叉排序树</span><br>keys.forEach(<span class="hljs-function"><span class="hljs-params">key</span> =></span> binaryTree.insert(key));<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="二叉排序树的遍历">二叉排序树的遍历<a class="post-anchor" href="#二叉排序树的遍历"></a></h3><h4 id="中序遍历">中序遍历<a class="post-anchor" href="#中序遍历"></a></h4><ul>
 <li>总是先遍历左子树，然后访问根节点，接着遍历右子树</li>
 </ul>
 <figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//中序遍历</span><br>inorderTraversal() {<br>    <span class="hljs-keyword">let</span> info = [];<br>    <span class="hljs-keyword">this</span>.inorderTraversalNode(<span class="hljs-keyword">this</span>.root, ({key}) => {<br>        info.push(key)<br>    });<br>    <span class="hljs-keyword">return</span> info;<br>}<br>inorderTraversalNode(node, callback) {<br>    <span class="hljs-keyword">if</span> (node) {<span class="hljs-comment">//当前节点</span><br>        <span class="hljs-keyword">this</span>.inorderTraversalNode(node.left, callback);<span class="hljs-comment">//遍历左子树</span><br>        callback(node);<span class="hljs-comment">//访问节点</span><br>        <span class="hljs-keyword">this</span>.inorderTraversalNode(node.right, callback);<span class="hljs-comment">//遍历右子树</span><br>    }<br>}<br><span class="hljs-comment">//遍历结果：[5, 8, 12, 15, 19, 24, 45]</span><br></code></pre></td></tr></tbody></table></figure>
@@ -284,9 +274,7 @@
 </ul>
 <figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//查找</span><br>search(key) {<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.searchNode(<span class="hljs-keyword">this</span>.root, key)<br>}<br>searchNode(node, key) {<br>    <span class="hljs-keyword">if</span> (node === <span class="hljs-literal">null</span>) {<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span><br>    }<br>    <span class="hljs-keyword">if</span> (key < node.key) {<span class="hljs-comment">//进入左子树</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.searchNode(node.left, key)<br>    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (key > node.key) {<span class="hljs-comment">//进入右子树</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.searchNode(node.right, key)<br>    } <span class="hljs-keyword">else</span> {<span class="hljs-comment">//相等</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span><br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
 
-<blockquote>
-<h3 id="二叉排序树的删除">二叉排序树的删除<a class="post-anchor" href="#二叉排序树的删除"></a></h3></blockquote>
-<ul>
+<h3 id="二叉排序树的删除">二叉排序树的删除<a class="post-anchor" href="#二叉排序树的删除"></a></h3><ul>
 <li>当删除的节点为叶子节点，关系指针为空，直接把叶子节点设置成空。</li>
 <li>当删除的节点存在左子树，把父节点的关系指针直接指向左子树。存在右子树同理。</li>
 <li>当删除的节点存在左右子树时，先去右子树找最小值，然后用最小值替换节点值，最后进入右子树删除最小值对应的节点。</li>
@@ -317,12 +305,8 @@
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2019/06/13/JS%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">JS常用正则表达式</a>
-        
     </div>
     <div class="item right">
-        
-          <a href="/2019/06/10/JS%E5%87%BD%E6%95%B0%E9%98%B2%E6%8A%96%E5%92%8C%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81/">JS函数防抖和函数节流</a>
         
     </div>
   </div>
