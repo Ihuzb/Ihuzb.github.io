@@ -150,7 +150,7 @@
               <span class="iconfont icon-github"></span>
             </a>
             
-            <a href="https://github.com/shixiaohu2206" target="_block">
+            <a href="https://s1.ax1x.com/2020/06/24/NacJfK.jpg" target="_block">
               <span class="iconfont icon-weixin"></span>
             </a>
              
@@ -204,15 +204,15 @@
                   
                 
                   
+                    <a href="/tags/ES6">ES6</a>
+                  
+                
+                  
                     <a href="/tags/二叉树">二叉树</a>
                   
                 
                   
                     <a href="/tags/二叉排序树">二叉排序树</a>
-                  
-                
-                  
-                    <a href="/tags/ES6">ES6</a>
                   
                 
             </span>
@@ -279,26 +279,6 @@
 </ul>
 <figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//删除</span><br>remove(key) {<br>    <span class="hljs-keyword">this</span>.root = <span class="hljs-keyword">this</span>.removeNode(<span class="hljs-keyword">this</span>.root, key)<br>}<br>removeNode(node, key) {<br>    <span class="hljs-keyword">if</span> (node === <span class="hljs-literal">null</span>) {<span class="hljs-comment">//没有找到值对应节点</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span><br>    }<br>    <span class="hljs-keyword">if</span> (key < node.key) {<span class="hljs-comment">//给定值小于当前节点值</span><br>        node.left = <span class="hljs-keyword">this</span>.removeNode(node.left, key);<br>        <span class="hljs-keyword">return</span> node<br>    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (key > node.key) {<span class="hljs-comment">//给定值大于当前节点值</span><br>        node.right = <span class="hljs-keyword">this</span>.removeNode(node.right, key);<br>        <span class="hljs-keyword">return</span> node<br>    } <span class="hljs-keyword">else</span> {<span class="hljs-comment">//找到对应的节点</span><br>        <span class="hljs-keyword">if</span> (node.left === <span class="hljs-literal">null</span> && node.right === <span class="hljs-literal">null</span>) {<span class="hljs-comment">//节点为叶子节点</span><br>            node = <span class="hljs-literal">null</span>;<br>            <span class="hljs-keyword">return</span> node<br>        }<br>        <span class="hljs-keyword">if</span> (node.right === <span class="hljs-literal">null</span>) {<span class="hljs-comment">//节点存在左子树</span><br>            node = node.left;<br>            <span class="hljs-keyword">return</span> node<br>        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (node.left === <span class="hljs-literal">null</span>) {<span class="hljs-comment">//节点存在右子树</span><br>            node = node.right;<br>            <span class="hljs-keyword">return</span> node<br>        }<br>        <span class="hljs-comment">//节点存在左右子树时，先去右子树找最小值</span><br>        <span class="hljs-keyword">const</span> minKey = <span class="hljs-keyword">this</span>.minNode(node.right);<br>        <span class="hljs-comment">//用最小值替换节点值</span><br>        node.key = minKey;<br>        <span class="hljs-comment">//进入右子树删除最小值对应的节点。</span><br>        <span class="hljs-keyword">this</span>.removeNode(node.right, minKey);<br>        <span class="hljs-keyword">return</span> node;<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure></body></html>
 
-  
-    <div class="post-reward">
-    <div id="reward-button">打赏</div>
-      <div id="qr">
-        <div class="wrap">
-            
-            <div class="bg-wrap">
-              <a href="/images/zhifubao.png" target="_block" class="bg" style="background-image:url('/images/zhifubao.png')"></a>
-              支付宝
-            </div>
-            
-            
-            <div class="bg-wrap">
-                <a href="/images/weixin.png" target="_block" class="bg" style="background-image:url('/images/weixin.png')"></a>
-              微信
-            </div>
-            
-        </div>
-      </div>
-    </div>
   
   <div class="post-guide">
     <div class="item left">
