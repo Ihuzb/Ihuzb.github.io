@@ -178,11 +178,11 @@
     
       <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
     
-      <category term="ES6" scheme="https://ihuzb.github.io/tags/ES6/"/>
-    
       <category term="二叉树" scheme="https://ihuzb.github.io/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
     
       <category term="二叉排序树" scheme="https://ihuzb.github.io/tags/%E4%BA%8C%E5%8F%89%E6%8E%92%E5%BA%8F%E6%A0%91/"/>
+    
+      <category term="ES6" scheme="https://ihuzb.github.io/tags/ES6/"/>
     
   </entry>
   
