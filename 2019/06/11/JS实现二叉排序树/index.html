@@ -204,15 +204,15 @@
                   
                 
                   
-                    <a href="/tags/ES6">ES6</a>
-                  
-                
-                  
                     <a href="/tags/二叉树">二叉树</a>
                   
                 
                   
                     <a href="/tags/二叉排序树">二叉排序树</a>
+                  
+                
+                  
+                    <a href="/tags/ES6">ES6</a>
                   
                 
             </span>
@@ -256,9 +256,7 @@
 <li>总是先遍历左子树，接着遍历右子树，最后访问根节点。</li>
 </ul>
 <figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//后序遍历</span><br>postOrderTraversal() {<br>    <span class="hljs-keyword">let</span> info = [];<br>    <span class="hljs-keyword">this</span>.postOrderTraversalNode(<span class="hljs-keyword">this</span>.root, ({key}) => {<br>        info.push(key)<br>    });<br>    <span class="hljs-keyword">return</span> info;<br>}<br>postOrderTraversalNode(node, callback){<br>    <span class="hljs-keyword">if</span> (node) {<span class="hljs-comment">//当前节点</span><br>        <span class="hljs-keyword">this</span>.postOrderTraversalNode(node.left, callback);<span class="hljs-comment">//遍历左子树</span><br>        <span class="hljs-keyword">this</span>.postOrderTraversalNode(node.right, callback);<span class="hljs-comment">//遍历右子树</span><br>        callback(node);<span class="hljs-comment">//访问节点</span><br>    }<br>}<br><span class="hljs-comment">//遍历结果：[5, 12, 15, 8, 45, 24, 19]</span><br></code></pre></td></tr></tbody></table></figure>
-<blockquote>
-<h3 id="二叉排序树的查找">二叉排序树的查找<a class="post-anchor" href="#二叉排序树的查找"></a></h3></blockquote>
-<h4 id="查找最大值">查找最大值<a class="post-anchor" href="#查找最大值"></a></h4><ul>
+<h3 id="二叉排序树的查找">二叉排序树的查找<a class="post-anchor" href="#二叉排序树的查找"></a></h3><h4 id="查找最大值">查找最大值<a class="post-anchor" href="#查找最大值"></a></h4><ul>
 <li>根据二叉排序树的特点，右子树的值都大于父节点得值。只需要进入节点的右子树查找，当某个节点的右子树为空时，该节点就是最大值。</li>
 </ul>
 <figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//最大值</span><br>max() {<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.maxNode(<span class="hljs-keyword">this</span>.root)<br>}<br>maxNode(node) {<br>    <span class="hljs-keyword">if</span> (node) {<br>        <span class="hljs-keyword">while</span> (node.right !== <span class="hljs-literal">null</span>) {<span class="hljs-comment">//右子树不为空时</span><br>            node = node.right;<br>        }<br>        <span class="hljs-keyword">return</span> node.key<br>    }<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span><br>}<br></code></pre></td></tr></tbody></table></figure>
