@@ -16,7 +16,7 @@
     <meta name="description" content="生命不息，折腾不止！" />
     
     <title>
-      十年前的梦想如果没有熄灭，就让它永远燃烧吧。 - Ihuzb的博客
+      JS函数防抖和函数节流 - Ihuzb的博客
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/logo.jpeg" type="image/x-icon" />
@@ -30,7 +30,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#我却只想说：最怕你一生碌碌无为，还安慰自己平凡可贵。"><span class="toc-text">我却只想说：最怕你一生碌碌无为，还安慰自己平凡可贵。</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#函数防抖"><span class="toc-text">函数防抖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用方法"><span class="toc-text">使用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数节流"><span class="toc-text">函数节流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用方法-1"><span class="toc-text">使用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -168,15 +168,15 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">十年前的梦想如果没有熄灭，就让它永远燃烧吧。</div>
+      <div class="title">JS函数防抖和函数节流</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2019/10/01</span>
+          <span>2019/06/10</span>
         </span>
 
         
-          <span class="item leancloud-visitors" id="/2019/10/01/ckbsy0yub001gygrbd6zu4n5r/" data-flag-title="十年前的梦想如果没有熄灭，就让它永远燃烧吧。">
+          <span class="item leancloud-visitors" id="/2019/06/10/ckbsy3ioz0002swrbgdg02z37/" data-flag-title="JS函数防抖和函数节流">
             <span class="iconfont icon-eye1"></span>
             <span class="leancloud-visitors-count"></span>
           </span>
@@ -188,33 +188,65 @@
           <span>
               
                 
-                  <a href="/categories/随笔">随笔</a>
+                  <a href="/categories/web前端">web前端</a>
                 
               
           </span>
         </span>
         
         
-        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/HTML">HTML</a>
+                  
+                
+                  
+                    <a href="/tags/闭包">闭包</a>
+                  
+                
+            </span>
+          </span>
+         
       </div>
       <div>
       </div>
     </div>
-    <html><head></head><body><p><a href="/2019/10/01/ckbsy0yub001gygrbd6zu4n5r/1.jpg" data-caption data-fancybox="images"><img src="/2019/10/01/ckbsy0yub001gygrbd6zu4n5r/1.jpg" alt></a></p>
-<p>我们读着这些别人的故事，别人的人生，无非是想把他人的经历，化成自己往前走的动力。</p>
-<p>太多人告诉你，这个世界满是黑暗，没有背景你用出头之日。</p>
-<p>太多人告诉你，别努力了，有些人的起点就是终点，你只是在白费力气。</p>
-<p>太多人告诉你，平平淡淡过一生，又有什么不好呢。</p>
-<h4 id="我却只想说：最怕你一生碌碌无为，还安慰自己平凡可贵。">我却只想说：最怕你一生碌碌无为，还安慰自己平凡可贵。<a class="post-anchor" href="#我却只想说：最怕你一生碌碌无为，还安慰自己平凡可贵。"></a></h4></body></html>
+    <html><head></head><body><p><a href="/2019/06/10/ckbsy3ioz0002swrbgdg02z37/1.jpg" data-caption data-fancybox="images"><img src="/2019/06/10/ckbsy3ioz0002swrbgdg02z37/1.jpg" alt></a></p>
+<ul>
+<li>在做输入框查询的时候，如不加限制尤其是在输入中文，每输入一个拼音都会触发事件，造成计算机资源没必要的消耗。</li>
+<li>使用防抖和节流可以很好的控制事件触发。<h2 id="函数防抖">函数防抖<a class="post-anchor" href="#函数防抖"></a></h2></li>
+<li>理解为每次输入都会开启一个定时器，但每次输入都会关闭上一个定时器，直到再也不输入，执行存在的定时器。</li>
+<li>创建一个闭包，使用<code>timeout</code>存储已创建的定时器，若有输入就关闭已创建的定时器，再创建一个新的定时器，使用<code>bind</code>处理 <code>this</code>问题，使用<code>arguments</code>传递参数。<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//防抖</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">debounce</span>(<span class="hljs-params">fn, interval = <span class="hljs-number">600</span></span>) </span>{<br>    <span class="hljs-keyword">let</span> timeout = <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">()</span> =></span> {<span class="hljs-comment">//创建一个闭包</span><br>        clearTimeout(timeout);<span class="hljs-comment">//关闭上一个定时器</span><br>        timeout = setTimeout(<span class="hljs-function">(<span class="hljs-params">(</span>) =></span> {<span class="hljs-comment">//创建新的定时器</span><br>            fn(<span class="hljs-built_in">arguments</span>)<br>        }).bind(<span class="hljs-keyword">this</span>), interval)<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+<h3 id="使用方法">使用方法<a class="post-anchor" href="#使用方法"></a></h3><figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> shuru = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'shuru'</span>);<br>shuru.oninput = debounce(<span class="hljs-function">(<span class="hljs-params">e</span>) =></span> {<br>    <span class="hljs-built_in">console</span>.log(shuru.value)<br>})<br></code></pre></td></tr></tbody></table></figure>
+<h2 id="函数节流">函数节流<a class="post-anchor" href="#函数节流"></a></h2></li>
+<li>理解为第一次输入时创建一个指点时间的定时器，使用<code>canRun</code>管理状态，初始状态为<code>true</code>，将状态修改为<code>false</code>，不管后面再怎么输入都不会再创建定时器，直到达到定时器时间即执行，修改状态为<code>true</code>，可以创建新的定时器。<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//节流</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">throttle</span>(<span class="hljs-params">fn, interval = <span class="hljs-number">600</span></span>) </span>{<br>    <span class="hljs-keyword">let</span> canRun = <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">()</span> =></span> {<br>        <span class="hljs-keyword">if</span> (!canRun) <span class="hljs-keyword">return</span>;<br>        canRun = <span class="hljs-literal">false</span>;<br>        setTimeout(<span class="hljs-function">(<span class="hljs-params">(</span>) =></span> {<br>            canRun = <span class="hljs-literal">true</span>;<br>            fn(<span class="hljs-built_in">arguments</span>)<br>        }).bind(<span class="hljs-keyword">this</span>), interval)<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+<h3 id="使用方法-1">使用方法<a class="post-anchor" href="#使用方法-1"></a></h3><figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> shuru = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'shuru'</span>);<br>shuru.oninput = throttle(<span class="hljs-function">(<span class="hljs-params">e</span>) =></span> {<br>    <span class="hljs-built_in">console</span>.log(shuru.value)<br>})<br></code></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+<h2 id="总结">总结<a class="post-anchor" href="#总结"></a></h2><ul>
+<li>函数防抖，直到不再输入才执行。</li>
+<li>函数节流，达到指定的时间就执行。</li>
+<li>其实函数节流和函数防抖的实现很简单，主要是通过<code>setTimeout</code>和闭包来实现，应用的时候选择合适的方式即可。</li>
+</ul>
+</body></html>
 
   
   <div class="post-guide">
     <div class="item left">
         
+          <a href="/2019/06/11/ckbsy3ip40006swrb725r7e3w/">JS实现二叉排序树</a>
+        
     </div>
     <div class="item right">
-        
-          <a href="/2019/08/15/ckbsy0yte0006ygrbe9os0rd8/">W4J音乐热评一项目建立</a>
         
     </div>
   </div>
@@ -223,13 +255,13 @@
 
   <div class="post-copyright">
     <div class="auth">
-      本文作者：<a href="http://yoursite.com">Ihuzb</a>
+      本文作者：<a href="https://ihuzb.github.io">Ihuzb</a>
     </div>
     <div class="link">
-      永久链接：<a href="http://yoursite.com/2019/10/01/ckbsy0yub001gygrbd6zu4n5r/">http://yoursite.com/2019/10/01/ckbsy0yub001gygrbd6zu4n5r/</a>
+      永久链接：<a href="https://ihuzb.github.io/2019/06/10/ckbsy3ioz0002swrbgdg02z37/">https://ihuzb.github.io/2019/06/10/ckbsy3ioz0002swrbgdg02z37/</a>
     </div>
     <div class="declare">
-      版权声明：本文首发于<a href="http://yoursite.com">Ihuzb</a>的博客，转载请注明出处！
+      版权声明：本文首发于<a href="https://ihuzb.github.io">Ihuzb</a>的博客，转载请注明出处！
     </div>
   </div>
 
@@ -241,7 +273,7 @@
         <footer>
           <div class="copyright">
             ©2020
-            <a href="http://yoursite.com">Ihuzb</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://ihuzb.github.io">Ihuzb</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
             <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
           </div>
           
