@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ihuzb.github.io/"/>
-  <updated>2020-06-28T08:44:27.550Z</updated>
+  <updated>2020-06-28T08:56:17.429Z</updated>
   <id>https://ihuzb.github.io/</id>
   
   <author>
@@ -21,13 +21,13 @@
     <link href="https://ihuzb.github.io/2020/06/28/NiyxNW1dZL/"/>
     <id>https://ihuzb.github.io/2020/06/28/NiyxNW1dZL/</id>
     <published>2020-06-28T08:38:40.000Z</published>
-    <updated>2020-06-28T08:44:27.550Z</updated>
+    <updated>2020-06-28T08:56:17.429Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h2 id=&quot;《海蒂和爷爷》&quot;&gt;《海蒂和爷爷》&lt;a class=&quot;post-anchor&quot; href=&quot;#《海蒂和爷爷》&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&quot;一部美得窒息的电影，每一帧都是壁纸。&quot;&gt;一部美得窒息的电影，每一帧都是
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h2 id=&quot;1《海蒂和爷爷》&quot;&gt;#1《海蒂和爷爷》&lt;a class=&quot;post-anchor&quot; href=&quot;#1《海蒂和爷爷》&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&quot;一部美得窒息的电影，每一帧都是壁纸。&quot;&gt;一部美得窒息的电影，每
       
     
     </summary>
@@ -457,6 +457,8 @@
     
       <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
     
+      <category term="ES6" scheme="https://ihuzb.github.io/tags/ES6/"/>
+    
       <category term="Node.js" scheme="https://ihuzb.github.io/tags/Node-js/"/>
     
       <category term="W4J" scheme="https://ihuzb.github.io/tags/W4J/"/>
@@ -464,8 +466,6 @@
       <category term="爬虫" scheme="https://ihuzb.github.io/tags/%E7%88%AC%E8%99%AB/"/>
     
       <category term="Puppeteer" scheme="https://ihuzb.github.io/tags/Puppeteer/"/>
-    
-      <category term="ES6" scheme="https://ihuzb.github.io/tags/ES6/"/>
     
       <category term="Redis" scheme="https://ihuzb.github.io/tags/Redis/"/>
     
