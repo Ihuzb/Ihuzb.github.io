@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="生命不息，折腾不止！" />
+    
+    <title>
+      W4J音乐热评一生成评论词云一Nodejs开启子进程 - Ihuzb的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/logo.jpeg" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Ihuzb的博客" type="application/atom+xml">
+</head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#功能场景"><span class="toc-text">功能场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#功能难点"><span class="toc-text">功能难点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-text">解决方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#子进程代码ciYun-js"><span class="toc-text">子进程代码ciYun.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#主进程代码index-js"><span class="toc-text">主进程代码index.js</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最终效果"><span class="toc-text">最终效果</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/friends" class="">
+          友链
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">Ihuzb</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Ihuzb</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/friends" class="">
+            友链
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/Ihuzb" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="https://s1.ax1x.com/2020/06/24/NacJfK.jpg" target="_block">
+              <span class="iconfont icon-weixin"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">W4J音乐热评一生成评论词云一Nodejs开启子进程</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/02/01</span>
+        </span>
+
+        
+          <span class="item leancloud-visitors" id="/2020/02/01/lilio0vu78/" data-flag-title="W4J音乐热评一生成评论词云一Nodejs开启子进程">
+            <span class="iconfont icon-eye1"></span>
+            <span class="leancloud-visitors-count"></span>
+          </span>
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/JavaScript">JavaScript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/Node.js">Node.js</a>
+                  
+                
+                  
+                    <a href="/tags/W4J">W4J</a>
+                  
+                
+                  
+                    <a href="/tags/segment">segment</a>
+                  
+                
+                  
+                    <a href="/tags/child_process">child_process</a>
+                  
+                
+                  
+                    <a href="/tags/词云">词云</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h2 id="功能场景">功能场景<a class="post-anchor" href="#功能场景"></a></h2><ol>
+<li>获取888条评论内容，使用<code>segment</code>进行分词。</li>
+<li>统计词出现次数，生成<code>{'喜欢':67,'爱情':56}</code>数据结构。</li>
+<li>前端使用<code>echarts-wordcloud</code>生成词云。</li>
+</ol>
+<h2 id="功能难点">功能难点<a class="post-anchor" href="#功能难点"></a></h2><ul>
+<li>使用 <a href="https://www.npmjs.com/package/segment" target="_blank" rel="noopener">segment</a> 中文分词模块，但是会有一个小问题：<code>请勿用此模块来对较长且无任何标点符号的文本进行分词，否则会导致分词时间成倍增加</code>。</li>
+<li>实际情况也是如此，个别时候分词会导致长时间无反应，相当长的时间，但有时候也会很流畅。</li>
+</ul>
+<h2 id="解决方案">解决方案<a class="post-anchor" href="#解决方案"></a></h2><ol>
+<li>开启<code>Nodejs</code>子进程，单独运行分词功能。</li>
+<li>若超出设定的运行时间，关闭子进程。提示用户重新生成。</li>
+</ol>
+<h2 id="代码实现">代码实现<a class="post-anchor" href="#代码实现"></a></h2><h3 id="子进程代码ciYun-js">子进程代码<code>ciYun.js</code><a class="post-anchor" href="#子进程代码ciYun-js"></a></h3><ul>
+<li>将其封装成自执行模块</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js">(<span class="hljs-function">(<span class="hljs-params">(</span>) =></span> {<br>    <span class="hljs-comment">//所有代码将写在这里</span><br>}))();<br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>获取评论信息，处理成长字符串</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> selectInfo = <span class="hljs-keyword">await</span> connectMysql.selectInfo(selectCiYunList);<br><span class="hljs-keyword">let</span> info = selectInfo.map(<span class="hljs-function"><span class="hljs-params">item</span> =></span> {<br>    <span class="hljs-keyword">return</span> item.comment_text<br>}).join(<span class="hljs-string">','</span>);<br><span class="hljs-comment">//info==>前任这种东西呢,过了好久你再回头,都不知道当初看上他什么了......</span><br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>设置<code>segment</code>参数，进行分词</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//使用前引入</span><br><span class="hljs-keyword">const</span> Segment = <span class="hljs-built_in">require</span>(<span class="hljs-string">'segment'</span>);<br><span class="hljs-keyword">const</span> segment = <span class="hljs-keyword">new</span> Segment();<br><span class="hljs-comment">// 使用默认的识别模块及字典，载入字典文件需要1秒，仅初始化时执行一次即可</span><br>segment.useDefault();<br><span class="hljs-comment">//去除停止符,载入词典</span><br>segment.loadStopwordDict(<span class="hljs-string">'stopword.txt'</span>);<br> <br><span class="hljs-comment">//使用分词</span><br><span class="hljs-keyword">let</span> overInfo = segment.doSegment(info, {<br>    simple: <span class="hljs-literal">true</span>,<span class="hljs-comment">//不返回词性</span><br>    stripPunctuation: <span class="hljs-literal">true</span>,<span class="hljs-comment">//去除标点符号</span><br>    stripStopword: <span class="hljs-literal">true</span>,<span class="hljs-comment">//配合loadStopwordDict使用去除停止符</span><br>});<br><span class="hljs-comment">//overInfo==>['戴着','耳机','听到','耳朵','躺着',......</span><br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>分词数组进行统计词个数</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> numObject = {};<br><span class="hljs-keyword">let</span> hanzi = <span class="hljs-regexp">/^[\u4e00-\u9fa5]*$/</span>;<br>overInfo.forEach(<span class="hljs-function">(<span class="hljs-params">value, index</span>) =></span> {<br>    <span class="hljs-comment">//获取是汉字的词并且字数大于1</span><br>    <span class="hljs-keyword">if</span> (value.length > <span class="hljs-number">1</span> && hanzi.test(value)) {<br>        numObject[value] == <span class="hljs-keyword">void</span> <span class="hljs-number">0</span> ? numObject[value] = <span class="hljs-number">1</span> : numObject[value] = ++numObject[value]<br>    }<br>});<br><span class="hljs-comment">//numObject==>{'葛炮版': 1,'入门': 1,'下载': 10,'镜音': 1,'双子': 1,......</span><br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>将准备好的数据通过<code>IPC</code>通道发送到父进程，之后关闭<code>IPC</code>通道</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//process 对象是一个全局变量，它提供有关当前 Node.js 进程的信息并对其进行控制。</span><br>process.send({ciyunInfo});<span class="hljs-comment">//发送数据</span><br>process.disconnect();<span class="hljs-comment">//关闭通道</span><br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="主进程代码index-js">主进程代码<code>index.js</code><a class="post-anchor" href="#主进程代码index-js"></a></h3><ul>
+<li>创建异步子进程的方法，更多信息可参考<a href="http://nodejs.cn/api/child_process.html" target="_blank" rel="noopener">child_process</a></li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//使用子进程执行命令，缓存子进程的输出，并将子进程的输出以回调函数参数的形式返回。</span><br>child_process.exec(command[, options][, callback])<br><span class="hljs-comment">//使用指定的命令行参数创建新进程。</span><br>child_process.spawn(command[, args][, options])<br><span class="hljs-comment">//是 spawn()的特殊形式，用于在子进程中运行的模块，如 fork('/haha.js') 相当于 spawn('node', ['/haha.js']) 。与spawn方法不同的是，fork会在父进程与子进程之间，建立一个通信管道，用于进程之间的通信。</span><br>child_process.fork(modulePath[, args][, options])<br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>创建子进程运行<code>ciYun.js</code></li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> {fork} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'child_process'</span>);<br><span class="hljs-keyword">const</span> forked = fork(<span class="hljs-string">'./pageService/ciYun.js'</span>);<br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>监听子进程通过<code>IPC</code>通道发送的数据</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js">forked.on(<span class="hljs-string">'message'</span>, (<span class="hljs-keyword">async</span> msg => {<br>    <span class="hljs-comment">//msg==>{'葛炮版': 1,'入门': 1,'下载': 10,'镜音': 1,'双子': 1,......</span><br>}));<br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>设置超时时间，若超时关闭子进程</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js">setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{<br>    forked.kill();<br>}, <span class="hljs-number">5000</span>);<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="最终效果">最终效果<a class="post-anchor" href="#最终效果"></a></h2><p><a href="https://upload-images.jianshu.io/upload_images/7059932-5f0b636e04a271b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" target="_blank" rel="noopener" data-caption="微信截图_20200520110933.png" data-fancybox="images"><img src="https://upload-images.jianshu.io/upload_images/7059932-5f0b636e04a271b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="微信截图_20200520110933.png"></a></p>
+</body></html>
+
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/06/28/NiyxNW1dZL/">电影鉴赏</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/01/15/09vmKIOyQJ/">W4J音乐热评一Puppeteer设置代理IP</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://ihuzb.github.io">Ihuzb</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://ihuzb.github.io/2020/02/01/lilio0vu78/">https://ihuzb.github.io/2020/02/01/lilio0vu78/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://ihuzb.github.io">Ihuzb</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://ihuzb.github.io">Ihuzb</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\"],\"valine\":{\"API_ID\":\"6pO8V6ukbSWsxKuznsFbuHjr-gzGzoHsz\",\"API_KEY\":\"CuGM6KzUrCdShp23y42i5QHn\"},\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

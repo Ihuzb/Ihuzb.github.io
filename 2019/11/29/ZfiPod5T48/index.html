@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="生命不息，折腾不止！" />
+    
+    <title>
+      TypeScript学习笔记 对象类型接口&amp;函数类型接口 - Ihuzb的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/logo.jpeg" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Ihuzb的博客" type="application/atom+xml">
+</head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#对象类型接口"><span class="toc-text">对象类型接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义接口"><span class="toc-text">定义接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绕过类型检查"><span class="toc-text">绕过类型检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可选属性"><span class="toc-text">可选属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#只读属性"><span class="toc-text">只读属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可索引接口"><span class="toc-text">可索引接口</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数类型接口"><span class="toc-text">函数类型接口</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/friends" class="">
+          友链
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">Ihuzb</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Ihuzb</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/friends" class="">
+            友链
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/Ihuzb" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="https://s1.ax1x.com/2020/06/24/NacJfK.jpg" target="_block">
+              <span class="iconfont icon-weixin"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">TypeScript学习笔记 对象类型接口&函数类型接口</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/11/29</span>
+        </span>
+
+        
+          <span class="item leancloud-visitors" id="/2019/11/29/ZfiPod5T48/" data-flag-title="TypeScript学习笔记 对象类型接口&函数类型接口">
+            <span class="iconfont icon-eye1"></span>
+            <span class="leancloud-visitors-count"></span>
+          </span>
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/TypeScript">TypeScript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/TypeScript">TypeScript</a>
+                  
+                
+                  
+                    <a href="/tags/学习笔记">学习笔记</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h1 id="对象类型接口">对象类型接口<a class="post-anchor" href="#对象类型接口"></a></h1><ul>
+<li>接口可以用来约束对象，函数以及类的结构和类型。</li>
+</ul>
+<h2 id="定义接口">定义接口<a class="post-anchor" href="#定义接口"></a></h2><ul>
+<li>即使传入多余的字段也可以通过类型检查。</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> List {<br>    id: <span class="hljs-built_in">number</span>;<br>    name: <span class="hljs-built_in">string</span>;<br>}<br><br><span class="hljs-keyword">interface</span> Result {<br>    data: List[];<br>}<br><br><span class="hljs-keyword">let</span> render = <span class="hljs-function">(<span class="hljs-params">result: Result</span>) =></span> {<br>    result.data.forEach(<span class="hljs-function"><span class="hljs-params">value</span> =></span> {<br>        <span class="hljs-built_in">console</span>.log(value.id, value.name)<br>    })<br>};<br><br><span class="hljs-keyword">let</span> result = {<br>    data: [<br>        {id: <span class="hljs-number">1</span>, name: <span class="hljs-string">'A'</span>, sex: <span class="hljs-string">'男'</span>},<br>        {id: <span class="hljs-number">2</span>, name: <span class="hljs-string">'B'</span>}<br>    ]<br>}<br>render(result);<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="绕过类型检查">绕过类型检查<a class="post-anchor" href="#绕过类型检查"></a></h2><ul>
+<li>类型断言</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">//第一种 类型断言</span><br>render({<br>    data: [<br>        {id: <span class="hljs-number">1</span>, name: <span class="hljs-string">'A'</span>, sex: <span class="hljs-string">'男'</span>},<br>        {id: <span class="hljs-number">2</span>, name: <span class="hljs-string">'B'</span>}<br>    ]<br>} <span class="hljs-keyword">as</span> Result);<br></code></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">//第二种 类型断言</span><br>render(<Result>{<br>    data: [<br>        {id: <span class="hljs-number">1</span>, name: <span class="hljs-string">'A'</span>, sex: <span class="hljs-string">'男'</span>},<br>        {id: <span class="hljs-number">2</span>, name: <span class="hljs-string">'B'</span>}<br>    ]<br>});<br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>字符串索引签名<ul>
+<li>用任意的字符串索引<code>list</code>可以得到任意的结果。</li>
+<li><code>list</code>就可以支持多个属性。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> List {<br>    id: <span class="hljs-built_in">number</span>;<br>    name: <span class="hljs-built_in">string</span>;<br>    <span class="hljs-comment">// 字符串索引签名</span><br>    [x: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">any</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="可选属性">可选属性<a class="post-anchor" href="#可选属性"></a></h2><ul>
+<li>属性后加上<code>?</code>，表示可选属性。</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> List {<br>    id: <span class="hljs-built_in">number</span>;<br>    name: <span class="hljs-built_in">string</span>;<br>    <span class="hljs-comment">// 加上？ 表示可选属性</span><br>    age?: <span class="hljs-built_in">number</span>;<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="只读属性">只读属性<a class="post-anchor" href="#只读属性"></a></h2><ul>
+<li>属性前加上<code>readonly</code>，表示只读属性。</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> List {<br>    <span class="hljs-comment">// readonly表示只读属性，只</span><br>    readonly id: <span class="hljs-built_in">number</span>;<br>    name: <span class="hljs-built_in">string</span>;<br>    age?: <span class="hljs-built_in">number</span>;<br>    <span class="hljs-comment">// [x: string]: any;</span><br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="可索引接口">可索引接口<a class="post-anchor" href="#可索引接口"></a></h2><ul>
+<li>数字索引接口，相当于字符串类型的数组。</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> StringArray {<br>    [index: <span class="hljs-built_in">number</span>]: <span class="hljs-built_in">string</span><br>}<br><br><span class="hljs-keyword">let</span> chars: StringArray = [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>];<br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>字符传索引接口。</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> Names {<br>    [x: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">string</span>;<br>}<br><br><span class="hljs-keyword">let</span> names: Names = {<span class="hljs-string">'a'</span>: <span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>: <span class="hljs-string">'b'</span>}<br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>混合索引接口。注意返回的类型。</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> Names {<br>    [x: <span class="hljs-built_in">string</span>]: <span class="hljs-built_in">string</span>;<br>    [z: <span class="hljs-built_in">number</span>]: <span class="hljs-built_in">string</span><br>}<br><br><span class="hljs-keyword">let</span> names: Names = {<span class="hljs-string">'a'</span>: <span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>: <span class="hljs-string">'b'</span>, <span class="hljs-number">5</span>: <span class="hljs-string">'c'</span>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h1 id="函数类型接口">函数类型接口<a class="post-anchor" href="#函数类型接口"></a></h1><figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 第一种</span><br><span class="hljs-keyword">type</span> Cdd = <span class="hljs-function">(<span class="hljs-params">x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span></span>) =></span> <span class="hljs-built_in">number</span><br><span class="hljs-comment">// 第二种</span><br><span class="hljs-keyword">interface</span> Add {<br>    (x: <span class="hljs-built_in">number</span>, y: <span class="hljs-built_in">number</span>): <span class="hljs-built_in">number</span><br>}<br><br><span class="hljs-keyword">let</span> cccc: Cdd = <span class="hljs-function">(<span class="hljs-params">x, y</span>) =></span> x + y<br><span class="hljs-comment">// 6</span><br><span class="hljs-built_in">console</span>.log(cccc(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>))<br></code></pre></td></tr></tbody></table></figure></body></html>
+
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/12/01/kS4LfLOW08/">W4J音乐热评一Puppeteer爬虫初体验</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/11/27/GK8jzgcyF0/">TypeScript学习笔记 枚举类型</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://ihuzb.github.io">Ihuzb</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://ihuzb.github.io/2019/11/29/ZfiPod5T48/">https://ihuzb.github.io/2019/11/29/ZfiPod5T48/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://ihuzb.github.io">Ihuzb</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://ihuzb.github.io">Ihuzb</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\"],\"valine\":{\"API_ID\":\"6pO8V6ukbSWsxKuznsFbuHjr-gzGzoHsz\",\"API_KEY\":\"CuGM6KzUrCdShp23y42i5QHn\"},\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

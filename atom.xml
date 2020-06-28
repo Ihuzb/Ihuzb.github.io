@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ihuzb.github.io/"/>
-  <updated>2020-06-24T08:59:04.890Z</updated>
+  <updated>2020-06-28T08:44:27.550Z</updated>
   <id>https://ihuzb.github.io/</id>
   
   <author>
@@ -17,11 +17,206 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>随笔#1</title>
+    <title>电影鉴赏</title>
+    <link href="https://ihuzb.github.io/2020/06/28/NiyxNW1dZL/"/>
+    <id>https://ihuzb.github.io/2020/06/28/NiyxNW1dZL/</id>
+    <published>2020-06-28T08:38:40.000Z</published>
+    <updated>2020-06-28T08:44:27.550Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h2 id=&quot;《海蒂和爷爷》&quot;&gt;《海蒂和爷爷》&lt;a class=&quot;post-anchor&quot; href=&quot;#《海蒂和爷爷》&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3 id=&quot;一部美得窒息的电影，每一帧都是壁纸。&quot;&gt;一部美得窒息的电影，每一帧都是
+      
+    
+    </summary>
+    
+    
+      <category term="电影" scheme="https://ihuzb.github.io/categories/%E7%94%B5%E5%BD%B1/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>W4J音乐热评一生成评论词云一Nodejs开启子进程</title>
+    <link href="https://ihuzb.github.io/2020/02/01/lilio0vu78/"/>
+    <id>https://ihuzb.github.io/2020/02/01/lilio0vu78/</id>
+    <published>2020-02-01T01:15:46.000Z</published>
+    <updated>2020-06-28T00:26:45.398Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h2 id=&quot;功能场景&quot;&gt;功能场景&lt;a class=&quot;post-anchor&quot; href=&quot;#功能场景&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;获取888条评论内容，使用&lt;code&gt;segment&lt;/code&gt;进行分词。&lt;/li&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
+    
+      <category term="Node.js" scheme="https://ihuzb.github.io/tags/Node-js/"/>
+    
+      <category term="W4J" scheme="https://ihuzb.github.io/tags/W4J/"/>
+    
+      <category term="segment" scheme="https://ihuzb.github.io/tags/segment/"/>
+    
+      <category term="child_process" scheme="https://ihuzb.github.io/tags/child-process/"/>
+    
+      <category term="词云" scheme="https://ihuzb.github.io/tags/%E8%AF%8D%E4%BA%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>W4J音乐热评一Puppeteer设置代理IP</title>
+    <link href="https://ihuzb.github.io/2020/01/15/09vmKIOyQJ/"/>
+    <id>https://ihuzb.github.io/2020/01/15/09vmKIOyQJ/</id>
+    <published>2020-01-15T09:23:54.000Z</published>
+    <updated>2020-06-28T00:26:45.396Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;ul&gt;
+&lt;li&gt;当频繁的爬取难免会被网站发现被封锁IP,这个时候代理IP就显得很重要.&lt;/li&gt;
+&lt;li&gt;毕竟,魔高一尺,道高一丈.知己知彼,百战不殆.🤓&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;阿布云HTTP隧道&quot;&gt;阿布云HT
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
+    
+      <category term="Node.js" scheme="https://ihuzb.github.io/tags/Node-js/"/>
+    
+      <category term="W4J" scheme="https://ihuzb.github.io/tags/W4J/"/>
+    
+      <category term="爬虫" scheme="https://ihuzb.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="Puppeteer" scheme="https://ihuzb.github.io/tags/Puppeteer/"/>
+    
+      <category term="generic-pool" scheme="https://ihuzb.github.io/tags/generic-pool/"/>
+    
+      <category term="代理IP" scheme="https://ihuzb.github.io/tags/%E4%BB%A3%E7%90%86IP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>W4J音乐热评一Puppeteer爬虫并发和连接池(2)</title>
+    <link href="https://ihuzb.github.io/2020/01/05/BWYsMSQVZr/"/>
+    <id>https://ihuzb.github.io/2020/01/05/BWYsMSQVZr/</id>
+    <published>2020-01-05T04:50:48.000Z</published>
+    <updated>2020-06-28T00:26:45.393Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;ul&gt;
+&lt;li&gt;上一节我们完成了并发数的控制，这一节完成连接池。&lt;/li&gt;
+&lt;li&gt;因为单纯只用并发数来控制的话，每次爬取新的页面都会开启新的浏览器，使用完毕后关闭，会造成很大的资源开销。&lt;/li&gt;
+&lt;li&gt;使用连接池，一次性创
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
+    
+      <category term="Node.js" scheme="https://ihuzb.github.io/tags/Node-js/"/>
+    
+      <category term="W4J" scheme="https://ihuzb.github.io/tags/W4J/"/>
+    
+      <category term="爬虫" scheme="https://ihuzb.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="Puppeteer" scheme="https://ihuzb.github.io/tags/Puppeteer/"/>
+    
+      <category term="async" scheme="https://ihuzb.github.io/tags/async/"/>
+    
+      <category term="generic-pool" scheme="https://ihuzb.github.io/tags/generic-pool/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>W4J音乐热评一Puppeteer爬虫并发和连接池(1)</title>
+    <link href="https://ihuzb.github.io/2020/01/05/QFUu7Q8EkJ/"/>
+    <id>https://ihuzb.github.io/2020/01/05/QFUu7Q8EkJ/</id>
+    <published>2020-01-05T03:38:24.000Z</published>
+    <updated>2020-06-28T00:26:45.389Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;ul&gt;
+&lt;li&gt;上一节我们完成了Puppeteer的初体验，爬取音乐《囍》的评论。&lt;/li&gt;
+&lt;li&gt;但是一首一首音乐的爬取效率未免过低，准备并发和连接池的功能。&lt;/li&gt;
+&lt;li&gt;设置并发次数，同时爬取多首音乐评论信息。&lt;/l
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
+    
+      <category term="Node.js" scheme="https://ihuzb.github.io/tags/Node-js/"/>
+    
+      <category term="W4J" scheme="https://ihuzb.github.io/tags/W4J/"/>
+    
+      <category term="爬虫" scheme="https://ihuzb.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="Puppeteer" scheme="https://ihuzb.github.io/tags/Puppeteer/"/>
+    
+      <category term="async" scheme="https://ihuzb.github.io/tags/async/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>随笔#2 《呓语》</title>
+    <link href="https://ihuzb.github.io/2019/12/30/i0B3blfEjS/"/>
+    <id>https://ihuzb.github.io/2019/12/30/i0B3blfEjS/</id>
+    <published>2019-12-30T03:01:33.000Z</published>
+    <updated>2020-06-28T00:26:45.414Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;/2019/12/30/i0B3blfEjS/1.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/2019/12/30/i0B3blfEjS/1.jp
+      
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="https://ihuzb.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>随笔#1 闲暇</title>
     <link href="https://ihuzb.github.io/2019/12/12/bEVsM82DMu/"/>
     <id>https://ihuzb.github.io/2019/12/12/bEVsM82DMu/</id>
     <published>2019-12-12T08:01:52.000Z</published>
-    <updated>2020-06-24T08:59:04.890Z</updated>
+    <updated>2020-06-28T00:26:45.410Z</updated>
     
     <summary type="html">
     
@@ -35,6 +230,186 @@
     
       <category term="随笔" scheme="https://ihuzb.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
+    
+  </entry>
+  
+  <entry>
+    <title>TypeScript学习笔记 函数</title>
+    <link href="https://ihuzb.github.io/2019/12/01/QVI855IGBf/"/>
+    <id>https://ihuzb.github.io/2019/12/01/QVI855IGBf/</id>
+    <published>2019-12-01T11:14:28.000Z</published>
+    <updated>2020-06-28T00:26:45.384Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;函数&quot;&gt;函数&lt;a class=&quot;post-anchor&quot; href=&quot;#函数&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2 id=&quot;定义函数&quot;&gt;定义函数&lt;a class=&quot;post-anchor&quot; href=&quot;#定义函数&quot;&gt;&lt;/a&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="TypeScript" scheme="https://ihuzb.github.io/categories/TypeScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
+    
+      <category term="TypeScript" scheme="https://ihuzb.github.io/tags/TypeScript/"/>
+    
+      <category term="学习笔记" scheme="https://ihuzb.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>W4J音乐热评一Puppeteer爬虫初体验</title>
+    <link href="https://ihuzb.github.io/2019/12/01/kS4LfLOW08/"/>
+    <id>https://ihuzb.github.io/2019/12/01/kS4LfLOW08/</id>
+    <published>2019-12-01T07:34:16.000Z</published>
+    <updated>2020-06-28T00:26:45.386Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h2 id=&quot;Puppeteer介绍&quot;&gt;Puppeteer介绍&lt;a class=&quot;post-anchor&quot; href=&quot;#Puppeteer介绍&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;通俗理解&lt;code&gt;Puppeteer&lt;/c
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
+    
+      <category term="Node.js" scheme="https://ihuzb.github.io/tags/Node-js/"/>
+    
+      <category term="W4J" scheme="https://ihuzb.github.io/tags/W4J/"/>
+    
+      <category term="爬虫" scheme="https://ihuzb.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    
+      <category term="Puppeteer" scheme="https://ihuzb.github.io/tags/Puppeteer/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TypeScript学习笔记 对象类型接口&amp;函数类型接口</title>
+    <link href="https://ihuzb.github.io/2019/11/29/ZfiPod5T48/"/>
+    <id>https://ihuzb.github.io/2019/11/29/ZfiPod5T48/</id>
+    <published>2019-11-29T08:00:25.000Z</published>
+    <updated>2020-06-28T00:26:45.382Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;对象类型接口&quot;&gt;对象类型接口&lt;a class=&quot;post-anchor&quot; href=&quot;#对象类型接口&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;接口可以用来约束对象，函数以及类的结构和类型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h
+      
+    
+    </summary>
+    
+    
+      <category term="TypeScript" scheme="https://ihuzb.github.io/categories/TypeScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
+    
+      <category term="TypeScript" scheme="https://ihuzb.github.io/tags/TypeScript/"/>
+    
+      <category term="学习笔记" scheme="https://ihuzb.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TypeScript学习笔记 枚举类型</title>
+    <link href="https://ihuzb.github.io/2019/11/27/GK8jzgcyF0/"/>
+    <id>https://ihuzb.github.io/2019/11/27/GK8jzgcyF0/</id>
+    <published>2019-11-27T06:57:33.000Z</published>
+    <updated>2020-06-28T00:26:45.379Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;枚举&quot;&gt;枚举&lt;a class=&quot;post-anchor&quot; href=&quot;#枚举&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;一组有名字的常量集合。&lt;/li&gt;
+&lt;li&gt;枚举的值无法通过外部修改。&lt;/li&gt;
+&lt;li&gt;数字枚举&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="TypeScript" scheme="https://ihuzb.github.io/categories/TypeScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
+    
+      <category term="TypeScript" scheme="https://ihuzb.github.io/tags/TypeScript/"/>
+    
+      <category term="学习笔记" scheme="https://ihuzb.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TypeScript学习笔记 构建工具</title>
+    <link href="https://ihuzb.github.io/2019/11/26/ZQQEDSYRzB/"/>
+    <id>https://ihuzb.github.io/2019/11/26/ZQQEDSYRzB/</id>
+    <published>2019-11-26T02:14:02.000Z</published>
+    <updated>2020-06-28T00:26:45.360Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;TypeScript构建工具&quot;&gt;TypeScript构建工具&lt;a class=&quot;post-anchor&quot; href=&quot;#TypeScript构建工具&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2 id=&quot;安装webpack&quot;&gt;安装w
+      
+    
+    </summary>
+    
+    
+      <category term="TypeScript" scheme="https://ihuzb.github.io/categories/TypeScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
+    
+      <category term="TypeScript" scheme="https://ihuzb.github.io/tags/TypeScript/"/>
+    
+      <category term="学习笔记" scheme="https://ihuzb.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TypeScript学习笔记 入门知识</title>
+    <link href="https://ihuzb.github.io/2019/11/25/tnJSg4etzv/"/>
+    <id>https://ihuzb.github.io/2019/11/25/tnJSg4etzv/</id>
+    <published>2019-11-25T07:40:42.000Z</published>
+    <updated>2020-06-28T00:26:45.355Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;强类型与弱类型&quot;&gt;强类型与弱类型&lt;a class=&quot;post-anchor&quot; href=&quot;#强类型与弱类型&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;强类型语言：不允许改变变量的数据类型，除非进行强制类型转换。&lt;ul&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="TypeScript" scheme="https://ihuzb.github.io/categories/TypeScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
+    
+      <category term="TypeScript" scheme="https://ihuzb.github.io/tags/TypeScript/"/>
+    
+      <category term="学习笔记" scheme="https://ihuzb.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -65,7 +440,7 @@
     <link href="https://ihuzb.github.io/2019/08/15/Cxe19LQ32P/"/>
     <id>https://ihuzb.github.io/2019/08/15/Cxe19LQ32P/</id>
     <published>2019-08-15T07:05:44.000Z</published>
-    <updated>2020-06-24T06:25:37.912Z</updated>
+    <updated>2020-06-28T00:26:45.402Z</updated>
     
     <summary type="html">
     
@@ -82,11 +457,15 @@
     
       <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
     
-      <category term="ES6" scheme="https://ihuzb.github.io/tags/ES6/"/>
-    
       <category term="Node.js" scheme="https://ihuzb.github.io/tags/Node-js/"/>
     
+      <category term="W4J" scheme="https://ihuzb.github.io/tags/W4J/"/>
+    
+      <category term="爬虫" scheme="https://ihuzb.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    
       <category term="Puppeteer" scheme="https://ihuzb.github.io/tags/Puppeteer/"/>
+    
+      <category term="ES6" scheme="https://ihuzb.github.io/tags/ES6/"/>
     
       <category term="Redis" scheme="https://ihuzb.github.io/tags/Redis/"/>
     
@@ -97,8 +476,6 @@
       <category term="Antd" scheme="https://ihuzb.github.io/tags/Antd/"/>
     
       <category term="Echarts" scheme="https://ihuzb.github.io/tags/Echarts/"/>
-    
-      <category term="爬虫" scheme="https://ihuzb.github.io/tags/%E7%88%AC%E8%99%AB/"/>
     
   </entry>
   

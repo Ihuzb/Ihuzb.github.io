@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="生命不息，折腾不止！" />
+    
+    <title>
+      TypeScript学习笔记 入门知识 - Ihuzb的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/logo.jpeg" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Ihuzb的博客" type="application/atom+xml">
+</head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#强类型与弱类型"><span class="toc-text">强类型与弱类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#静态类型和动态类型"><span class="toc-text">静态类型和动态类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用TypeScript"><span class="toc-text">使用TypeScript</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装TypeScript"><span class="toc-text">安装TypeScript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建TypeScript配置文件"><span class="toc-text">创建TypeScript配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一句’Hello-TypeScript’"><span class="toc-text">第一句’Hello TypeScript’</span></a></li></ol></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/friends" class="">
+          友链
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">Ihuzb</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Ihuzb</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/friends" class="">
+            友链
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/Ihuzb" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="https://s1.ax1x.com/2020/06/24/NacJfK.jpg" target="_block">
+              <span class="iconfont icon-weixin"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">TypeScript学习笔记 入门知识</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/11/25</span>
+        </span>
+
+        
+          <span class="item leancloud-visitors" id="/2019/11/25/tnJSg4etzv/" data-flag-title="TypeScript学习笔记 入门知识">
+            <span class="iconfont icon-eye1"></span>
+            <span class="leancloud-visitors-count"></span>
+          </span>
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/TypeScript">TypeScript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/TypeScript">TypeScript</a>
+                  
+                
+                  
+                    <a href="/tags/学习笔记">学习笔记</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h1 id="强类型与弱类型">强类型与弱类型<a class="post-anchor" href="#强类型与弱类型"></a></h1><ul>
+<li>强类型语言：不允许改变变量的数据类型，除非进行强制类型转换。<ul>
+<li>严格的限制，可以避免很多低级错误。Java</li>
+</ul>
+</li>
+<li>弱类型语言：变量可以被赋予不同的数据类型。<ul>
+<li>JS就是弱类型语言，虽然灵活，但是会造成bug。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> x = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">let</span> y = <span class="hljs-literal">true</span>;<br>x = y;<br><span class="hljs-comment">//true</span><br><span class="hljs-keyword">let</span> z = <span class="hljs-string">'a'</span>;<br>x = z;<br><span class="hljs-comment">//'a'</span><br></code></pre></td></tr></tbody></table></figure>
+
+<h1 id="静态类型和动态类型">静态类型和动态类型<a class="post-anchor" href="#静态类型和动态类型"></a></h1><ul>
+<li>静态类型语言：在编译阶段确定所有变量的类型。<ul>
+<li>对类型极度严格，立即发现错误，运行时性能好，自文档化</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tbody><tr><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">//C++</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span>{</span><br>    <span class="hljs-keyword">public</span>:<br>        <span class="hljs-keyword">int</span> x;<br>        <span class="hljs-keyword">int</span> y;<br>}<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">add</span><span class="hljs-params">(C a,C b)</span></span>{<br>    <span class="hljs-keyword">return</span> a.x + a.y + b.x + b.y<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>动态类型语言：在执行阶段确定所有变量的类型。<ul>
+<li>对类型非常宽松，Bug可能隐藏数月甚至数年，运行时性能差，可读性差。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//JS</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">C</span> </span>{<br>    <span class="hljs-keyword">constructor</span>(x, y) {<br>        <span class="hljs-keyword">this</span>.x = x;<br>        <span class="hljs-keyword">this</span>.y = y;<br>    }<br>}<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span>(<span class="hljs-params">a, b</span>) </span>{<br>    <span class="hljs-keyword">return</span> a.x + a.y + b.x + b.y<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h1 id="使用TypeScript">使用TypeScript<a class="post-anchor" href="#使用TypeScript"></a></h1><h2 id="安装TypeScript">安装TypeScript<a class="post-anchor" href="#安装TypeScript"></a></h2><figure class="highlight"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//全局安装TypeScript</span><br># npm i typescript -g<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="创建TypeScript配置文件">创建TypeScript配置文件<a class="post-anchor" href="#创建TypeScript配置文件"></a></h2><figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"># tsc --init<br><span class="hljs-comment">//生成tsconfig.json文件，ts的所有配置都可以在这里面设置</span><br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="第一句’Hello-TypeScript’">第一句’Hello TypeScript’<a class="post-anchor" href="#第一句’Hello-TypeScript’"></a></h2><ul>
+<li>创建<code>src</code>目录，新建<code>index.ts</code>文件，写入代码；</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">let</span> hello: <span class="hljs-built_in">string</span> = <span class="hljs-string">'Hello TypeScript'</span>;<br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>编译ts文件，在控制台执行以下代码；</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"># tsc ./src/index.ts<br><span class="hljs-comment">//生成index.js文件。</span><br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>生成的<code>index.js</code>文件内容；</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> hello = <span class="hljs-string">'Hello TypeScript'</span>;<br></code></pre></td></tr></tbody></table></figure>
+</body></html>
+
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/11/26/ZQQEDSYRzB/">TypeScript学习笔记 构建工具</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/10/01/11aBShmS5l/">十年前的梦想如果没有熄灭，就让它永远燃烧吧。</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://ihuzb.github.io">Ihuzb</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://ihuzb.github.io/2019/11/25/tnJSg4etzv/">https://ihuzb.github.io/2019/11/25/tnJSg4etzv/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://ihuzb.github.io">Ihuzb</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://ihuzb.github.io">Ihuzb</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\"],\"valine\":{\"API_ID\":\"6pO8V6ukbSWsxKuznsFbuHjr-gzGzoHsz\",\"API_KEY\":\"CuGM6KzUrCdShp23y42i5QHn\"},\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
