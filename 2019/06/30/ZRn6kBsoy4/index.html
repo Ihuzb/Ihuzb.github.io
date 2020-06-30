@@ -16,7 +16,7 @@
     <meta name="description" content="生命不息，折腾不止！" />
     
     <title>
-      归档2020 - Ihuzb的博客
+      JavaScript-Promise对象 - Ihuzb的博客
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/logo.jpeg" type="image/x-icon" />
@@ -27,6 +27,11 @@
 </head>
   <body>
     <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#语法"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#描述"><span class="toc-text">描述</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -61,7 +66,7 @@
           首页
         </a>
         
-        <a href="/archives" class="current">
+        <a href="/archives" class="">
           归档
         </a>
         
@@ -115,7 +120,7 @@
             首页
           </a>
           
-          <a href="/archives" class="current">
+          <a href="/archives" class="">
             归档
           </a>
           
@@ -160,88 +165,124 @@
     </div>
     <div id="container">
       <div class="main animated bounceInRight delay-0.7s">
-        <div id="archives">
-    
-        <div class="title">
-            归档 
-             - 2020
-        </div>
-    
-
-
-
-
-    
-    
-    <section class="wrap">
-        <div class="meta">
-            <a href="/archives/2020" >
-                2020
-            </a>
-        </div>
-        <div class="year">
-            
-            <article class="item">
-            <a href="/2020/06/29/2ZnFPV9lOW/" title="健身计划 弹力绳">
-                <span>2020/06/29</span>
-                <span>健身计划 弹力绳</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/06/28/NiyxNW1dZL/" title="电影鉴赏">
-                <span>2020/06/28</span>
-                <span>电影鉴赏</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/02/01/lilio0vu78/" title="W4J音乐热评一生成评论词云一Nodejs开启子进程">
-                <span>2020/02/01</span>
-                <span>W4J音乐热评一生成评论词云一Nodejs开启子进程</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/15/09vmKIOyQJ/" title="W4J音乐热评一Puppeteer设置代理IP">
-                <span>2020/01/15</span>
-                <span>W4J音乐热评一Puppeteer设置代理IP</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/05/BWYsMSQVZr/" title="W4J音乐热评一Puppeteer爬虫并发和连接池(2)">
-                <span>2020/01/05</span>
-                <span>W4J音乐热评一Puppeteer爬虫并发和连接池(2)</span>
-            </a>
-            </article>
-            
-
-
-            <article class="item">
-            <a href="/2020/01/05/QFUu7Q8EkJ/" title="W4J音乐热评一Puppeteer爬虫并发和连接池(1)">
-                <span>2020/01/05</span>
-                <span>W4J音乐热评一Puppeteer爬虫并发和连接池(1)</span>
-            </a>
-            </article>
-            
-    
-        </div>
-    </section>
+        <article class="post-entry">
+    <div class="header">
       
-<div class="paginator">
-    <span class="page-number current">1</span>
-</div>
-</div>
+      <div class="title">JavaScript-Promise对象</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/06/30</span>
+        </span>
 
+        
+          <span class="item leancloud-visitors" id="/2019/06/30/ZRn6kBsoy4/" data-flag-title="JavaScript-Promise对象">
+            <span class="iconfont icon-eye1"></span>
+            <span class="leancloud-visitors-count"></span>
+          </span>
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/JavaScript">JavaScript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/Promise">Promise</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h1 id="介绍">介绍<a class="post-anchor" href="#介绍"></a></h1><ul>
+<li><code>Promise</code>是一个对象，它代表了一个异步操作的最终完成或者失败，及其结果值。</li>
+<li>本质上Promise是一个函数返回的对象，可以在它上面绑定回调函数，这样就不需要再一开始把回调函数作为参数传入这个函数。</li>
+</ul>
+<h1 id="语法">语法<a class="post-anchor" href="#语法"></a></h1><ul>
+<li><code>executor</code>是带有<code>resolve</code>和<code>reject</code>两个参数的函数。</li>
+<li><code>Promise</code>构造函数执行时立即调用<code>executor</code>函数，<code>resolve</code>和<code>reject</code>两个函数作为参数传递给<code>executor</code>。</li>
+<li><code>resolve</code>和<code>reject</code>函数被调用时，分别将<code>Promise</code>的状态改为<code>fulfilled</code>(完成)或<code>rejected</code>(失败)。</li>
+<li><code>executor</code>内部通常会执行一些异步操作，一旦异步操作执行完毕，成功时调用<code>resolve</code>函数将<code>Promise</code>状态改成<code>fulfilled</code>，失败时调用<code>reject</code>函数将<code>Promise</code>状态改成<code>rejected</code>。</li>
+<li>如果在<code>executor</code>函数中抛出一个错误，那么该<code>Promise</code>状态为<code>r</code>ejected<code>。</code>executor`函数的返回值会被忽略</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>( <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{...} <span class="hljs-comment">/* executor */</span>  );<br></code></pre></td></tr></tbody></table></figure>
+
+<h1 id="描述">描述<a class="post-anchor" href="#描述"></a></h1><ul>
+<li>一个 Promise有以下几种状态:<ul>
+<li>pending: 初始状态，既不是成功，也不是失败状态。</li>
+<li>fulfilled: 意味着操作成功完成。</li>
+<li>rejected: 意味着操作失败。</li>
+</ul>
+</li>
+<li>pending 状态的 Promise 对象可能会变为fulfilled 状态并传递一个值给相应的状态处理方法，也可能变为失败状态（rejected）并传递失败信息。</li>
+<li>当其中任一种情况出现时，Promise 对象的 then 方法绑定的处理方法（handlers ）就会被调用。<ul>
+<li>then方法包含两个参数：onfulfilled 和 onrejected，它们都是 Function 类型。</li>
+</ul>
+</li>
+<li>当Promise状态为fulfilled时，调用 then 的 onfulfilled 方法。</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =></span> {<br>    resolve(<span class="hljs-string">'操作成功！'</span>)<br>});<br><br>a.then(<span class="hljs-function"><span class="hljs-params">value</span> =></span> {<br>    <span class="hljs-comment">// 操作成功！ onfulfilled</span><br>    <span class="hljs-built_in">console</span>.log(value, <span class="hljs-string">'onfulfilled'</span>)<br>}, err => {<br>    <span class="hljs-built_in">console</span>.log(err, <span class="hljs-string">'onRejected'</span>)<br>});<br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>当Promise状态为rejected时，调用 then 的 onrejected 方法。</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =></span> {<br>    reject(<span class="hljs-string">'操作失败！'</span>)<br>});<br><br>a.then(<span class="hljs-function"><span class="hljs-params">value</span> =></span> {<br>    <span class="hljs-built_in">console</span>.log(value, <span class="hljs-string">'onfulfilled'</span>)<br>}, err => {<br>    <span class="hljs-comment">//操作失败！ onRejected</span><br>    <span class="hljs-built_in">console</span>.log(err, <span class="hljs-string">'onRejected'</span>)<br>});<br></code></pre></td></tr></tbody></table></figure>
+</body></html>
+
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/07/01/BqI2F0KXTQ/">JS中String字符串对象常用属性和方法</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/06/23/x1rQ0FB2ub/">JS中模块的暴露和引入方式</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://ihuzb.github.io">Ihuzb</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://ihuzb.github.io/2019/06/30/ZRn6kBsoy4/">https://ihuzb.github.io/2019/06/30/ZRn6kBsoy4/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://ihuzb.github.io">Ihuzb</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
         <footer>
           <div class="copyright">
             ©2020
