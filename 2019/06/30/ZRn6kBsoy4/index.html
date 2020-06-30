@@ -30,7 +30,7 @@
     
     <div id="post-toc" class="animated hiddenToc hide">
       <span class="title">Toc</span>
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#语法"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#描述"><span class="toc-text">描述</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Promise介绍"><span class="toc-text">Promise介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Promise语法"><span class="toc-text">Promise语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Promise描述"><span class="toc-text">Promise描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Promise方法"><span class="toc-text">Promise方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise-all-iterable"><span class="toc-text">Promise.all(iterable)</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div id="fixed-menu-wrap">
@@ -215,11 +215,11 @@
       <div>
       </div>
     </div>
-    <html><head></head><body><h1 id="介绍">介绍<a class="post-anchor" href="#介绍"></a></h1><ul>
+    <html><head></head><body><h1 id="Promise介绍">Promise介绍<a class="post-anchor" href="#Promise介绍"></a></h1><ul>
 <li><code>Promise</code>是一个对象，它代表了一个异步操作的最终完成或者失败，及其结果值。</li>
 <li>本质上Promise是一个函数返回的对象，可以在它上面绑定回调函数，这样就不需要再一开始把回调函数作为参数传入这个函数。</li>
 </ul>
-<h1 id="语法">语法<a class="post-anchor" href="#语法"></a></h1><ul>
+<h1 id="Promise语法">Promise语法<a class="post-anchor" href="#Promise语法"></a></h1><ul>
 <li><code>executor</code>是带有<code>resolve</code>和<code>reject</code>两个参数的函数。</li>
 <li><code>Promise</code>构造函数执行时立即调用<code>executor</code>函数，<code>resolve</code>和<code>reject</code>两个函数作为参数传递给<code>executor</code>。</li>
 <li><code>resolve</code>和<code>reject</code>函数被调用时，分别将<code>Promise</code>的状态改为<code>fulfilled</code>(完成)或<code>rejected</code>(失败)。</li>
@@ -228,26 +228,38 @@
 </ul>
 <figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>( <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">resolve, reject</span>) </span>{...} <span class="hljs-comment">/* executor */</span>  );<br></code></pre></td></tr></tbody></table></figure>
 
-<h1 id="描述">描述<a class="post-anchor" href="#描述"></a></h1><ul>
-<li>一个 Promise有以下几种状态:<ul>
-<li>pending: 初始状态，既不是成功，也不是失败状态。</li>
-<li>fulfilled: 意味着操作成功完成。</li>
-<li>rejected: 意味着操作失败。</li>
+<h1 id="Promise描述">Promise描述<a class="post-anchor" href="#Promise描述"></a></h1><ul>
+<li>一个<code>Promise</code>有以下几种状态:<ul>
+<li><code>pending</code>: 初始状态，既不是成功，也不是失败状态。</li>
+<li><code>fulfilled</code>: 意味着操作成功完成。</li>
+<li><code>rejected</code>: 意味着操作失败。</li>
 </ul>
 </li>
-<li>pending 状态的 Promise 对象可能会变为fulfilled 状态并传递一个值给相应的状态处理方法，也可能变为失败状态（rejected）并传递失败信息。</li>
-<li>当其中任一种情况出现时，Promise 对象的 then 方法绑定的处理方法（handlers ）就会被调用。<ul>
-<li>then方法包含两个参数：onfulfilled 和 onrejected，它们都是 Function 类型。</li>
+<li><code>pending</code>状态的<code>Promise</code>对象可能会变为<code>fulfilled</code>状态并传递一个值给相应的状态处理方法，也可能变为失败状态<code>rejected</code>并传递失败信息。</li>
+<li>当其中任一种情况出现时，<code>Promise</code>对象的<code>then</code>方法绑定的处理方法<code>handlers</code>就会被调用。<ul>
+<li><code>then</code>方法包含两个参数：<code>onfulfilled</code>和<code>onrejected</code>，它们都是<code>Function</code>类型。</li>
 </ul>
 </li>
-<li>当Promise状态为fulfilled时，调用 then 的 onfulfilled 方法。</li>
+<li>当<code>Promise</code>状态为<code>fulfilled</code>时，调用<code>then</code>的<code>onfulfilled</code>方法。</li>
 </ul>
 <figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =></span> {<br>    resolve(<span class="hljs-string">'操作成功！'</span>)<br>});<br><br>a.then(<span class="hljs-function"><span class="hljs-params">value</span> =></span> {<br>    <span class="hljs-comment">// 操作成功！ onfulfilled</span><br>    <span class="hljs-built_in">console</span>.log(value, <span class="hljs-string">'onfulfilled'</span>)<br>}, err => {<br>    <span class="hljs-built_in">console</span>.log(err, <span class="hljs-string">'onRejected'</span>)<br>});<br></code></pre></td></tr></tbody></table></figure>
 
 <ul>
-<li>当Promise状态为rejected时，调用 then 的 onrejected 方法。</li>
+<li>当<code>Promise</code>状态为<code>rejected</code>时，调用<code>then</code>的<code>onrejected</code>方法。</li>
 </ul>
 <figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =></span> {<br>    reject(<span class="hljs-string">'操作失败！'</span>)<br>});<br><br>a.then(<span class="hljs-function"><span class="hljs-params">value</span> =></span> {<br>    <span class="hljs-built_in">console</span>.log(value, <span class="hljs-string">'onfulfilled'</span>)<br>}, err => {<br>    <span class="hljs-comment">//操作失败！ onRejected</span><br>    <span class="hljs-built_in">console</span>.log(err, <span class="hljs-string">'onRejected'</span>)<br>});<br></code></pre></td></tr></tbody></table></figure>
+
+<h1 id="Promise方法">Promise方法<a class="post-anchor" href="#Promise方法"></a></h1><h3 id="Promise-all-iterable">Promise.all(iterable)<a class="post-anchor" href="#Promise-all-iterable"></a></h3><ul>
+<li><code>Promise.all(iterable)</code>方法返回一个<code>Promise</code>实例，此实例在<code>iterable</code>参数内所有的<code>promise</code>都完成<code>resolved</code>。</li>
+<li>如果参数中<code>promise</code>有一个失败<code>rejected</code>，此实例回调失败<code>reject</code>，失败的原因是第一个失败<code>promise</code>的结果。<ul>
+<li>如果你传入的<code>promise</code>中，有四个<code>promise</code>在一定的时间之后调用成功函数，有一个立即调用失败函数，那么<code>Promise.all</code>将立即变为失败。</li>
+</ul>
+</li>
+<li>此方法在集合多个<code>promise</code>的返回结果时很有用，它通常在启动多个异步任务并发运行并为其结果创建承诺之后使用，以便人们可以等待所有任务完成。</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 全部执行结果为成功时</span><br><span class="hljs-keyword">let</span> a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =></span> {<br>    resolve(<span class="hljs-number">1</span>)<br>});<br><span class="hljs-keyword">let</span> b = <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">2</span>);<br><span class="hljs-comment">// 如果非promise值，这些值将被忽略，但仍然会被放在返回数组中</span><br><span class="hljs-keyword">let</span> c = <span class="hljs-number">3</span>;<br><span class="hljs-built_in">Promise</span>.all([a, b, c]).then(<span class="hljs-function"><span class="hljs-params">value</span> =></span> {<br>    <span class="hljs-comment">// [1,2,3]</span><br>    <span class="hljs-built_in">console</span>.log(value)<br>});<br></code></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// b执行失败，返回第一个失败的结果</span><br><span class="hljs-keyword">let</span> a = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =></span> {<br>    resolve(<span class="hljs-number">1</span>)<br>});<br><span class="hljs-keyword">let</span> b = <span class="hljs-built_in">Promise</span>.reject(<span class="hljs-number">2</span>);<br><span class="hljs-keyword">let</span> c = <span class="hljs-built_in">Promise</span>.reject(<span class="hljs-number">3</span>);<br><span class="hljs-built_in">Promise</span>.all([a, b, c]).then(<span class="hljs-function"><span class="hljs-params">value</span> =></span> {<br>    <span class="hljs-built_in">console</span>.log(value)<br>}, err => {<br>    <span class="hljs-comment">// 2</span><br>    <span class="hljs-built_in">console</span>.log(err)<br>});<br></code></pre></td></tr></tbody></table></figure>
 </body></html>
 
   

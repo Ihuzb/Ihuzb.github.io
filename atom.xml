@@ -172,9 +172,9 @@
     
       <category term="Puppeteer" scheme="https://ihuzb.github.io/tags/Puppeteer/"/>
     
-      <category term="async" scheme="https://ihuzb.github.io/tags/async/"/>
-    
       <category term="generic-pool" scheme="https://ihuzb.github.io/tags/generic-pool/"/>
+    
+      <category term="async" scheme="https://ihuzb.github.io/tags/async/"/>
     
   </entry>
   
@@ -534,14 +534,14 @@
     <link href="https://ihuzb.github.io/2019/06/30/ZRn6kBsoy4/"/>
     <id>https://ihuzb.github.io/2019/06/30/ZRn6kBsoy4/</id>
     <published>2019-06-30T08:14:04.000Z</published>
-    <updated>2020-06-30T08:52:24.419Z</updated>
+    <updated>2020-06-30T09:29:56.599Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;介绍&quot;&gt;介绍&lt;a class=&quot;post-anchor&quot; href=&quot;#介绍&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Promise&lt;/code&gt;是一个对象，它代表了一个异步操作的最终完成或者失败，及其结
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;Promise介绍&quot;&gt;Promise介绍&lt;a class=&quot;post-anchor&quot; href=&quot;#Promise介绍&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Promise&lt;/code&gt;是一个对象，它代
       
     
     </summary>
