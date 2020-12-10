@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="生命不息，折腾不止！" />
+    
+    <title>
+      TypeScript学习笔记 类与接口的关系 - Ihuzb的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/logo.jpeg" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Ihuzb的博客" type="application/atom+xml">
+</head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#类类型接口"><span class="toc-text">类类型接口</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#接口继承接口"><span class="toc-text">接口继承接口</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#接口继承类"><span class="toc-text">接口继承类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/friends" class="">
+          友链
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">Ihuzb</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Ihuzb</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/friends" class="">
+            友链
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/Ihuzb" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="https://s1.ax1x.com/2020/06/24/NacJfK.jpg" target="_block">
+              <span class="iconfont icon-weixin"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">TypeScript学习笔记 类与接口的关系</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/12/11</span>
+        </span>
+
+        
+          <span class="item leancloud-visitors" id="/2019/12/11/98gxEa87zw/" data-flag-title="TypeScript学习笔记 类与接口的关系">
+            <span class="iconfont icon-eye1"></span>
+            <span class="leancloud-visitors-count"></span>
+          </span>
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/TypeScript">TypeScript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/TypeScript">TypeScript</a>
+                  
+                
+                  
+                    <a href="/tags/学习笔记">学习笔记</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h1 id="类类型接口">类类型接口<a class="post-anchor" href="#类类型接口"></a></h1><ul>
+<li>implements关键字，类实现接口。</li>
+<li>类实现接口必须实现接口中所有属性。如果类定义自己的方法或属性是可以的。</li>
+<li>接口只能约束类的公有成员。接口也不能约束类的构造函数。</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 定义Human接口</span><br><span class="hljs-keyword">interface</span> Human {<br>    name: <span class="hljs-built_in">string</span>;<br>    eat(): <span class="hljs-built_in">void</span>;<br>}<br><span class="hljs-comment">// Asian是按Human接口</span><br><span class="hljs-keyword">class</span> Asian <span class="hljs-keyword">implements</span> Human {<br>    <span class="hljs-keyword">constructor</span>(<span class="hljs-params">name: <span class="hljs-built_in">string</span></span>) {<br>        <span class="hljs-keyword">this</span>.name = name<br>    }<br>    name: <span class="hljs-built_in">string</span>;<br>    <span class="hljs-comment">// private name: string; 将name定义为私有成员，这样是不可以的</span><br>    eat() {}<br>    <span class="hljs-comment">// 自定义方法</span><br>    sleep() {}<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h1 id="接口继承接口">接口继承接口<a class="post-anchor" href="#接口继承接口"></a></h1><ul>
+<li>接口可以像类一样相互继承，一个接口可以继承多个接口。</li>
+<li>接口的继承可抽离出可重用的接口，也可以将多个接口合并成一个接口。<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">interface</span> Human {<br>    name: <span class="hljs-built_in">string</span>;<br>    eat(): <span class="hljs-built_in">void</span>;<br>}<br><br><span class="hljs-comment">// Man接口继承Human接口</span><br><span class="hljs-keyword">interface</span> Man <span class="hljs-keyword">extends</span> Human {<br>    run(): <span class="hljs-built_in">void</span><br>}<br><br><span class="hljs-keyword">interface</span> Child {<br>    cry(): <span class="hljs-built_in">void</span><br>}<br><span class="hljs-comment">// 继承多个接口，用逗号分开</span><br><span class="hljs-keyword">interface</span> Boy <span class="hljs-keyword">extends</span> Man, Child {}<br><span class="hljs-comment">// 定义对象，符合Boy的定义。</span><br><span class="hljs-comment">// 这里需要包含4个属性，分别来自Human，Man，Child</span><br><span class="hljs-keyword">let</span> boy:Boy={<br>    <span class="hljs-comment">// Human</span><br>    name:<span class="hljs-string">''</span>,<br>    eat(){},<br>    <span class="hljs-comment">// Man</span><br>    run(){},<br>    <span class="hljs-comment">// Child</span><br>    cry(){}<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+<h1 id="接口继承类">接口继承类<a class="post-anchor" href="#接口继承类"></a></h1><ul>
+<li>接口把类的成员都抽象出来。只有类的成员结构没有具体实现。</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 接口继承类</span><br><span class="hljs-keyword">class</span> Auto {<br>    state = <span class="hljs-number">1</span><br>}<br><br><span class="hljs-comment">// 接口中就隐含了state属性</span><br><span class="hljs-keyword">interface</span> AutoInter <span class="hljs-keyword">extends</span> Auto {}<br><br><span class="hljs-keyword">let</span> fun = <span class="hljs-function">(<span class="hljs-params">auto: AutoInter</span>) =></span> {<br>    <span class="hljs-comment">// {state: 3}</span><br>    <span class="hljs-built_in">console</span>.log(auto)<br>}<br><span class="hljs-keyword">let</span> auto = {<br>    state: <span class="hljs-number">3</span><br>}<br>fun(auto);<br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>类实现接口，定义类C实现AutoInter接口</li>
+<li>定义Bus是Auto的子类，实现AutoInter接口</li>
+<li>接口在抽离类成员的时候，受保护成员，私有成员和公共成员都会抽离。</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 类实现接口</span><br><span class="hljs-keyword">class</span> Auto {<br>    state = <span class="hljs-number">1</span><br>    <span class="hljs-comment">// private state2 = 0</span><br>}<br><br><span class="hljs-comment">// 接口中就隐含了state属性</span><br><span class="hljs-keyword">interface</span> AutoInter <span class="hljs-keyword">extends</span> Auto {}<br><br><span class="hljs-comment">// 定义类C实现AutoInter接口</span><br><span class="hljs-keyword">class</span> C <span class="hljs-keyword">implements</span> AutoInter {<br>    state = <span class="hljs-number">1</span><br>}<br><span class="hljs-keyword">let</span> c=<span class="hljs-keyword">new</span> C();<br><span class="hljs-comment">// 1</span><br><span class="hljs-built_in">console</span>.log(c.state);<br><br><span class="hljs-comment">// 定义Bus是Auto的子类，实现AutoInter接口</span><br><span class="hljs-keyword">class</span> Bus <span class="hljs-keyword">extends</span> Auto <span class="hljs-keyword">implements</span> AutoInter {<br><span class="hljs-comment">//因为Bus是Auto的子类，可以直接调用state</span><br>}<br><span class="hljs-keyword">let</span> bus=<span class="hljs-keyword">new</span> Bus();<br><span class="hljs-comment">// 1</span><br><span class="hljs-built_in">console</span>.log(bus.state)<br></code></pre></td></tr></tbody></table></figure>
+
+<h1 id="总结">总结<a class="post-anchor" href="#总结"></a></h1><ul>
+<li>接口之间可以相互继承，能实现接口的复用。</li>
+<li>类之间也可以相互继承，能实现方法和属性的服用。</li>
+<li>接口可以通过类来实现，接口只能约束类的公有成员。</li>
+<li>接口可以抽离出类的成员，包括公有成员，私有成员和受保护成员。</li>
+</ul>
+</body></html>
+
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/12/12/bEVsM82DMu/">随笔#1 闲暇</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/12/09/6WJMcN5tvl/">TypeScript学习笔记 抽象类与多态</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://ihuzb.github.io">Ihuzb</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://ihuzb.github.io/2019/12/11/98gxEa87zw/">https://ihuzb.github.io/2019/12/11/98gxEa87zw/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://ihuzb.github.io">Ihuzb</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://ihuzb.github.io">Ihuzb</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\"],\"valine\":{\"API_ID\":\"6pO8V6ukbSWsxKuznsFbuHjr-gzGzoHsz\",\"API_KEY\":\"CuGM6KzUrCdShp23y42i5QHn\"},\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

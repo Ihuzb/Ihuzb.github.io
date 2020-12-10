@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="生命不息，折腾不止！" />
+    
+    <title>
+      Vue学习笔记1 - Ihuzb的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/logo.jpeg" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Ihuzb的博客" type="application/atom+xml">
+</head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MVVM理解"><span class="toc-text">MVVM理解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优点"><span class="toc-text">优点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue生命周期"><span class="toc-text">Vue生命周期</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#computed-计算属性"><span class="toc-text">computed 计算属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#块级作用域，let和const；对象的增强写法。"><span class="toc-text">块级作用域，let和const；对象的增强写法。</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#v-on事件传递event"><span class="toc-text">v-on事件传递event</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#v-on修饰符"><span class="toc-text">v-on修饰符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DOM渲染问题"><span class="toc-text">DOM渲染问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#v-show和v-if的区别"><span class="toc-text">v-show和v-if的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#组件的key属性"><span class="toc-text">组件的key属性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#检测数组更新"><span class="toc-text">检测数组更新</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#我为什么data必须是一个函数"><span class="toc-text">我为什么data必须是一个函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#slot插槽，使组件具有扩展性"><span class="toc-text">slot插槽，使组件具有扩展性</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/friends" class="">
+          友链
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">Ihuzb</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Ihuzb</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/friends" class="">
+            友链
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/Ihuzb" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="https://s1.ax1x.com/2020/06/24/NacJfK.jpg" target="_block">
+              <span class="iconfont icon-weixin"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">Vue学习笔记1</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/07/19</span>
+        </span>
+
+        
+          <span class="item leancloud-visitors" id="/2019/07/19/HMGDd5XGEN/" data-flag-title="Vue学习笔记1">
+            <span class="iconfont icon-eye1"></span>
+            <span class="leancloud-visitors-count"></span>
+          </span>
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/JavaScript">JavaScript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/Vue.js">Vue.js</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h1 id="MVVM理解">MVVM理解<a class="post-anchor" href="#MVVM理解"></a></h1><h2 id="介绍">介绍<a class="post-anchor" href="#介绍"></a></h2><p>MVVM是Model-View-ViewModel的缩写。</p>
+<p><strong>Model</strong>代表数据模型，可以在Model中定义数据修改和操作的业务逻辑。</p>
+<p><strong>View</strong>代表UI组件，负责将数据模型转化成UI展示出来。通常就是DOM层。</p>
+<p><strong>ViewModel</strong>代表视图模型层，是View和Model沟通的桥梁。一方面实现了DataBinding，也就是数据绑定，将Model的改变实时的反应到View中，View数据的变化也会同步到Model中。另一方面它实现了DOMListener，也就是DOM监听，当DOM发生一些时间（点击，滚动，touch等）时，可以监听到，并在需要的情况下改变对应的Data。</p>
+<h2 id="优点">优点<a class="post-anchor" href="#优点"></a></h2><ul>
+<li>分离视图（View）和模型（Model），降低代码耦合，提高试图或者逻辑的重用性。</li>
+<li>自动更新DOM：利用双向绑定，数据更新后视图自动更新，让开发者从繁琐的手动DOM中解放。</li>
+</ul>
+<p>##　缺点</p>
+<ul>
+<li>Bug很难调试。</li>
+<li>对于大型的图形应用程序，视图比较多，ViewModel的构建和维护的成本都会比较高。</li>
+</ul>
+<h1 id="Vue生命周期">Vue生命周期<a class="post-anchor" href="#Vue生命周期"></a></h1><p><strong>beforeCreate</strong>（创建前）在数据观测和初始化事件还未开始。<br><strong>created</strong>（创建后）完成数据观测，属性和方法的运算，初始化事件，$el属性还没显示出来。<br><strong>beforeMount</strong>（载入前）在挂载开始之前被调用，相关的render函数首次被调用。实例已完成以下的配置：编译模板，把data里面的数据和模板生成html。注意此时还没有挂载到html到页面上。<br><strong>mounted</strong>（载入后）在el被新创建的vm.$el替换，并挂载到实例上去之后调用。实例已完成以下配置：用上面编译好的html内容替换el属性指向的DOM对象。完成模板中的html渲染到html页面中。此过程中进行ajax交互。<br><strong>beforeUpdate</strong>（更新前）在数据更新之前调用，发生在虚拟DOM重新渲染和打补丁之前。可以在该钩子中进一步的更改状态，不会触发附加的重渲染过程。<br><strong>updated</strong>（更新后）在由于数据更改导致的虚拟DOM重新渲染和打补丁之后调用。调用时，组建DOM已经更新，所以可以执行依赖于DOM的操作。然而在大多数情况下，应该避免在此期间更新状态，因为这可能导致更新无限循环。该钩子在服务器渲染期间不被调用。<br><strong>beforeDestroy</strong>（销毁前）在实例销毁之前调用。实例仍然完全可用。<br><strong>destroyed</strong>（销毁后）在实例销毁之后调用。调用后，所有事件监听器会被一处，所有的子实例也会被销毁。该钩子在服务器端渲染期间不被调用。</p>
+<h1 id="computed-计算属性">computed 计算属性<a class="post-anchor" href="#computed-计算属性"></a></h1><ul>
+<li>计算属性会进行缓存，如果多次使用，计算属性只会调用一次。<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js">computed: {<br>      NBA: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">`<span class="hljs-subst">${<span class="hljs-keyword">this</span>.firstName}</span>-<span class="hljs-subst">${<span class="hljs-keyword">this</span>.lastName}</span>`</span><br>      },<br>      CBA: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.movies.join(<span class="hljs-string">','</span>);<br>      }<br>    }<br></code></pre></td></tr></tbody></table></figure></li>
+<li>为什么计算属性是个函数，使用的时候当成普通属性来使用?<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// 计算属性的本质就是set方法</span><br>computed: {<br>      fullName: {<br>        <span class="hljs-keyword">set</span>: function(){<br><br>        },<br>        <span class="hljs-keyword">get</span>: function () {<br>          <span class="hljs-keyword">return</span> <span class="hljs-string">'ABC'</span><br>        }<br>      }<br>    },<br></code></pre></td></tr></tbody></table></figure></li>
+<li>计算属性的缓存，为什么使用计算属性而不使用方法？<ul>
+<li>使用方法调用几次就会执行几次。</li>
+<li>使用计算属性，只调用一次。会对内部的属性进行检查值有没有变化。</li>
+</ul>
+</li>
+</ul>
+<h1 id="块级作用域，let和const；对象的增强写法。">块级作用域，let和const；对象的增强写法。<a class="post-anchor" href="#块级作用域，let和const；对象的增强写法。"></a></h1><ul>
+<li>for循环var的问题使用闭包解决，因为函数是一个作用域。</li>
+<li>const使用<ul>
+<li>一旦给const修饰的标识符被赋值之后，不能修改。</li>
+<li>在使用const定义标识符，必须进行赋值。</li>
+<li>常量的含义是指向的对象不能修改，但是可以改变对象内部的属性。</li>
+</ul>
+</li>
+<li>优先使用const，如果需要更改的变量使用let。</li>
+</ul>
+<h1 id="v-on事件传递event">v-on事件传递event<a class="post-anchor" href="#v-on事件传递event"></a></h1><ul>
+<li>使用$event传递按钮event对象<figure class="highlight html"><table><tbody><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag"><<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"eventShow(NBA,$event)"</span>></span>安妮1<span class="hljs-tag"></<span class="hljs-name">button</span>></span><br></code></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+<h1 id="v-on修饰符">v-on修饰符<a class="post-anchor" href="#v-on修饰符"></a></h1><ul>
+<li>stop阻止事件冒泡，父标签和子标签都有点击事件的时候；<ul>
+<li>@click.stop</li>
+</ul>
+</li>
+<li>prevent阻止默认行为，阻止from标签的提交事件。<figure class="highlight html"><table><tbody><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag"><<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"baidu"</span> @<span class="hljs-attr">submit.prevent</span>></span><br>    <span class="hljs-tag"><<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> @<span class="hljs-attr">click.prevent</span>=<span class="hljs-string">"eventShow"</span>></span>安妮1<span class="hljs-tag"></<span class="hljs-name">button</span>></span><br><span class="hljs-tag"></<span class="hljs-name">form</span>></span><br></code></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+<h1 id="DOM渲染问题">DOM渲染问题<a class="post-anchor" href="#DOM渲染问题"></a></h1><ul>
+<li>input有输入内容情况下，切换别的input显示，文字依然显示之前的输入内容。</li>
+<li>因为Vue在进行DOM渲染是，出于性能考虑会使用已存在的元素。</li>
+<li>给对应的input添加key，并且保证key的不同。</li>
+</ul>
+<h1 id="v-show和v-if的区别">v-show和v-if的区别<a class="post-anchor" href="#v-show和v-if的区别"></a></h1><ul>
+<li><code>v-show</code>的本质是<code>css</code>样式<code>display:none</code>，只是隐藏元素还存在。</li>
+<li><code>v-if</code>的本质会直接删除DOM，需要的时候再创建。</li>
+<li>当需要在显示与隐藏之间频繁切换使用v-show，只一次切换使用v-if。</li>
+</ul>
+<h1 id="组件的key属性">组件的key属性<a class="post-anchor" href="#组件的key属性"></a></h1><ul>
+<li>Vue的虚拟DOM的Diff算法有关系。</li>
+<li>当某一层有很多相同的节点时，也就是列表节点时，希望插入一个新的节点。</li>
+<li>需要使用key给每个节点做一个唯一的表示，Diff算法就可以正确的识别此节点，找到正确的位置区插入新的节点。</li>
+<li>key的作用主要是为了高效的更新虚拟DOM。</li>
+</ul>
+<h1 id="检测数组更新">检测数组更新<a class="post-anchor" href="#检测数组更新"></a></h1><ul>
+<li>因为数据是响应式的所以修改数据页面也会更新。</li>
+<li>响应式的方法<ul>
+<li>push</li>
+<li>pop</li>
+<li>shift</li>
+<li>unshift</li>
+<li>splice 删除/插入/替换</li>
+<li>sort</li>
+<li>reverse</li>
+<li>Vue.set(修改的对象，索引值，修改后的值)</li>
+</ul>
+</li>
+<li>非响应式的方法<ul>
+<li>根据下标修改</li>
+</ul>
+</li>
+</ul>
+<h1 id="我为什么data必须是一个函数">我为什么data必须是一个函数<a class="post-anchor" href="#我为什么data必须是一个函数"></a></h1><ul>
+<li>组件多次使用data都会返回一个新的独立的对象，新的栈空间创建新的变量并返回。</li>
+</ul>
+<h1 id="slot插槽，使组件具有扩展性">slot插槽，使组件具有扩展性<a class="post-anchor" href="#slot插槽，使组件具有扩展性"></a></h1></body></html>
+
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/08/15/Cxe19LQ32P/">W4J音乐热评一项目建立</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/07/02/hzroUWRdFa/">JavaScript-async/await</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://ihuzb.github.io">Ihuzb</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://ihuzb.github.io/2019/07/19/HMGDd5XGEN/">https://ihuzb.github.io/2019/07/19/HMGDd5XGEN/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://ihuzb.github.io">Ihuzb</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2020
+            <a href="https://ihuzb.github.io">Ihuzb</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\"],\"valine\":{\"API_ID\":\"6pO8V6ukbSWsxKuznsFbuHjr-gzGzoHsz\",\"API_KEY\":\"CuGM6KzUrCdShp23y42i5QHn\"},\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

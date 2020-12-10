@@ -16,7 +16,7 @@
     <meta name="description" content="生命不息，折腾不止！" />
     
     <title>
-      随笔#2 《呓语》 - Ihuzb的博客
+      JavaScript-async/await - Ihuzb的博客
     </title>
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/images/logo.jpeg" type="image/x-icon" />
@@ -27,6 +27,11 @@
 </head>
   <body>
     <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#async-function"><span class="toc-text">async function</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#await"><span class="toc-text">await</span></a></li></ol>
+    </div>
     
     <div id="fixed-menu-wrap">
       <span class="iconfont icon-sousuo search-box menu-reset"></span>
@@ -163,15 +168,15 @@
         <article class="post-entry">
     <div class="header">
       
-      <div class="title">随笔#2 《呓语》</div>
+      <div class="title">JavaScript-async/await</div>
       <div class="meta">
         <span class="item">
           <span class="iconfont icon-time-circle"></span>
-          <span>2019/12/30</span>
+          <span>2019/07/02</span>
         </span>
 
         
-          <span class="item leancloud-visitors" id="/2019/12/30/i0B3blfEjS/" data-flag-title="随笔#2 《呓语》">
+          <span class="item leancloud-visitors" id="/2019/07/02/hzroUWRdFa/" data-flag-title="JavaScript-async/await">
             <span class="iconfont icon-eye1"></span>
             <span class="leancloud-visitors-count"></span>
           </span>
@@ -183,37 +188,66 @@
           <span>
               
                 
-                  <a href="/categories/随笔">随笔</a>
+                  <a href="/categories/JavaScript">JavaScript</a>
                 
               
           </span>
         </span>
         
         
-        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/async/await">async/await</a>
+                  
+                
+            </span>
+          </span>
+         
       </div>
       <div>
       </div>
     </div>
-    <html><head></head><body><p><a href="/2019/12/30/i0B3blfEjS/1.jpg" data-caption data-fancybox="images"><img src="/2019/12/30/i0B3blfEjS/1.jpg" alt></a></p>
-<p>人生好像梦，做完一段，还未醒，就要做下一段。</p>
-<p>期待的开始，不堪的结果，人总是会记住遗憾。</p>
-<p>人生小起大落，活了这么久，见过很多景色和人，总有些话放在心里不想说。</p>
-<p>前路漫漫总会有个伴，就这样吧，即使遇到的人都伪善。</p>
-<p>前路还长，梦还很多，被这话欺骗的何止你我。</p>
-<p>我什么都懂，什么都明白，可我就是不想转弯。</p>
-</body></html>
+    <html><head></head><body><h1 id="async-function">async function<a class="post-anchor" href="#async-function"></a></h1><ul>
+<li><code>async function</code>用来定义一个异步函数。如果在代码中使用了异步函数，就会发现它的语法和结构会更像是标准的同步函数。</li>
+<li>一个<code>async</code>异步函数可以包含<code>await</code>指令，该指令会暂停异步函数的执行，并等待<code>Promise</code>执行，然后继续执行异步函数，并返回结果。</li>
+<li><code>await</code>关键字只在异步函数内有效。如果你在异步函数外使用它，会抛出语法错误。</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> a = <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">1</span>);<br><span class="hljs-keyword">let</span> b = <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">2</span>);<br><span class="hljs-keyword">let</span> run = <span class="hljs-keyword">async</span> () => {<br>    <span class="hljs-keyword">let</span> info = <span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.all([a, b]);<br>    <span class="hljs-comment">//[ 1, 2 ]</span><br>    <span class="hljs-built_in">console</span>.log(info)<br>}<br>run();<br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>使用<code>async</code>函数重写<code>promise</code>链</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//promise链式写法</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getProcessedData</span>(<span class="hljs-params">url</span>) </span>{<br>  <span class="hljs-keyword">return</span> downloadData(url) <span class="hljs-comment">// 返回一个 promise 对象</span><br>    .catch(<span class="hljs-function"><span class="hljs-params">e</span> =></span> {<br>      <span class="hljs-keyword">return</span> downloadFallbackData(url)  <span class="hljs-comment">// 返回一个 promise 对象</span><br>    })<br>    .then(<span class="hljs-function"><span class="hljs-params">v</span> =></span> {<br>      <span class="hljs-keyword">return</span> processDataInWorker(v); <span class="hljs-comment">// 返回一个 promise 对象</span><br>    });<br>}<br><br><span class="hljs-comment">// async 重写后</span><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getProcessedData</span>(<span class="hljs-params">url</span>) </span>{<br>  <span class="hljs-keyword">let</span> v;<br>  <span class="hljs-keyword">try</span> {<br>    v = <span class="hljs-keyword">await</span> downloadData(url); <br>  } <span class="hljs-keyword">catch</span> (e) {<br>    v = <span class="hljs-keyword">await</span> downloadFallbackData(url);<br>  }<br>  <span class="hljs-keyword">return</span> processDataInWorker(v);<br>}<br></code></pre></td></tr></tbody></table></figure>
+<ul>
+<li>最后的<code>return</code>语句中没有<code>await</code>操作符，因为<code>async function</code>的返回值将被隐式地传递给<code>Promise.resolve</code>。</li>
+</ul>
+<h1 id="await">await<a class="post-anchor" href="#await"></a></h1><ul>
+<li><code>await</code>操作符用于等待一个<code>Promise</code>对象。它只能在异步函数<code>async function</code>中使用。</li>
+<li><code>await</code>表达式会暂停当前<code>async function</code>的执行，等待<code>Promise</code>处理完成。</li>
+<li>若<code>Promise</code>正常处理<code>fulfilled</code>，其回调的<code>resolve</code>函数参数作为<code>await</code>表达式的值，继续执行<code>async function</code>。</li>
+<li>若<code>Promise</code>处理异常<code>rejected</code>，<code>await</code>表达式会把<code>Promise</code>的异常原因抛出。</li>
+<li>另外，如果<code>await</code>操作符后的表达式的值不是一个<code>Promise</code>，则返回该值本身。</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> a = <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-number">1</span>);<br><span class="hljs-keyword">let</span> b = <span class="hljs-built_in">Promise</span>.reject(<span class="hljs-number">2</span>);<br><br><span class="hljs-keyword">let</span> run = <span class="hljs-keyword">async</span> () => {<br>    <span class="hljs-comment">//处理正常</span><br>    <span class="hljs-keyword">let</span> infoA = <span class="hljs-keyword">await</span> a;<br>    <span class="hljs-comment">// 1</span><br>    <span class="hljs-built_in">console</span>.log(infoA);<br><br>    <span class="hljs-comment">//处理异常</span><br>    <span class="hljs-keyword">try</span> {<br>        <span class="hljs-keyword">let</span> infoB = <span class="hljs-keyword">await</span> b;<br>    } <span class="hljs-keyword">catch</span> (e) {<br>        <span class="hljs-comment">// 2</span><br>        <span class="hljs-built_in">console</span>.log(e)<br>    }<br><br>}<br>run();<br></code></pre></td></tr></tbody></table></figure></body></html>
 
   
   <div class="post-guide">
     <div class="item left">
         
-          <a href="/2020/01/05/QFUu7Q8EkJ/">W4J音乐热评一Puppeteer爬虫并发和连接池(1)</a>
+          <a href="/2019/07/19/HMGDd5XGEN/">Vue学习笔记1</a>
         
     </div>
     <div class="item right">
         
-          <a href="/2019/12/12/bEVsM82DMu/">随笔#1 闲暇</a>
+          <a href="/2019/07/01/BqI2F0KXTQ/">JS中String字符串对象常用属性和方法</a>
         
     </div>
   </div>
@@ -225,7 +259,7 @@
       本文作者：<a href="https://ihuzb.github.io">Ihuzb</a>
     </div>
     <div class="link">
-      永久链接：<a href="https://ihuzb.github.io/2019/12/30/i0B3blfEjS/">https://ihuzb.github.io/2019/12/30/i0B3blfEjS/</a>
+      永久链接：<a href="https://ihuzb.github.io/2019/07/02/hzroUWRdFa/">https://ihuzb.github.io/2019/07/02/hzroUWRdFa/</a>
     </div>
     <div class="declare">
       版权声明：本文首发于<a href="https://ihuzb.github.io">Ihuzb</a>的博客，转载请注明出处！

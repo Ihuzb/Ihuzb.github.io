@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ihuzb.github.io/"/>
-  <updated>2020-06-30T08:13:04.344Z</updated>
+  <updated>2020-12-10T08:35:47.070Z</updated>
   <id>https://ihuzb.github.io/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《爱的博弈》</title>
+    <link href="https://ihuzb.github.io/2020/12/10/0D2JqVGwXA/"/>
+    <id>https://ihuzb.github.io/2020/12/10/0D2JqVGwXA/</id>
+    <published>2020-12-10T01:00:20.000Z</published>
+    <updated>2020-12-10T08:35:47.070Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h2 id=&quot;当博弈论遇见爱情&quot;&gt;当博弈论遇见爱情&lt;a class=&quot;post-anchor&quot; href=&quot;#当博弈论遇见爱情&quot;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;从博弈论的角度来思考两个人之间的忠诚度。&lt;/p&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="https://ihuzb.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>美团面试</title>
+    <link href="https://ihuzb.github.io/2020/07/27/PQ52Gq9Azq/"/>
+    <id>https://ihuzb.github.io/2020/07/27/PQ52Gq9Azq/</id>
+    <published>2020-07-27T11:07:20.000Z</published>
+    <updated>2020-07-29T08:12:38.927Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;自我介绍&quot;&gt;自我介绍&lt;a class=&quot;post-anchor&quot; href=&quot;#自我介绍&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;你好，我叫×××，在项目中担任前端组长的职务。&lt;/li&gt;
+&lt;li&gt;所作的项目是前后端分
+      
+    
+    </summary>
+    
+    
+      <category term="面试" scheme="https://ihuzb.github.io/categories/%E9%9D%A2%E8%AF%95/"/>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
+    
+      <category term="Vue.js" scheme="https://ihuzb.github.io/tags/Vue-js/"/>
+    
+  </entry>
   
   <entry>
     <title>健身计划 弹力绳</title>
@@ -69,7 +120,7 @@
     <link href="https://ihuzb.github.io/2020/02/01/lilio0vu78/"/>
     <id>https://ihuzb.github.io/2020/02/01/lilio0vu78/</id>
     <published>2020-02-01T01:15:46.000Z</published>
-    <updated>2020-06-28T00:26:45.398Z</updated>
+    <updated>2020-07-29T08:12:38.914Z</updated>
     
     <summary type="html">
     
@@ -216,24 +267,61 @@
   </entry>
   
   <entry>
-    <title>随笔#2 《呓语》</title>
-    <link href="https://ihuzb.github.io/2019/12/30/i0B3blfEjS/"/>
-    <id>https://ihuzb.github.io/2019/12/30/i0B3blfEjS/</id>
-    <published>2019-12-30T03:01:33.000Z</published>
-    <updated>2020-06-28T00:26:45.414Z</updated>
+    <title>TypeScript学习笔记 泛型类与泛型约束</title>
+    <link href="https://ihuzb.github.io/2019/12/16/v3H9oaesFL/"/>
+    <id>https://ihuzb.github.io/2019/12/16/v3H9oaesFL/</id>
+    <published>2019-12-16T12:30:20.000Z</published>
+    <updated>2020-07-29T08:12:38.881Z</updated>
     
     <summary type="html">
     
       
       
-        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;/2019/12/30/i0B3blfEjS/1.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/2019/12/30/i0B3blfEjS/1.jp
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;泛型类&quot;&gt;泛型类&lt;a class=&quot;post-anchor&quot; href=&quot;#泛型类&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;泛型不能约束类的静态成员，&lt;code&gt;static&lt;/code&gt;修饰符修饰的成员。&lt;/li&gt;
       
     
     </summary>
     
     
-      <category term="随笔" scheme="https://ihuzb.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+      <category term="TypeScript" scheme="https://ihuzb.github.io/categories/TypeScript/"/>
     
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
+    
+      <category term="TypeScript" scheme="https://ihuzb.github.io/tags/TypeScript/"/>
+    
+      <category term="学习笔记" scheme="https://ihuzb.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TypeScript学习笔记 泛型函数与泛型接口</title>
+    <link href="https://ihuzb.github.io/2019/12/14/rJmYZPcdMZ/"/>
+    <id>https://ihuzb.github.io/2019/12/14/rJmYZPcdMZ/</id>
+    <published>2019-12-14T10:50:42.000Z</published>
+    <updated>2020-07-29T08:12:38.893Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;泛型&quot;&gt;泛型&lt;a class=&quot;post-anchor&quot; href=&quot;#泛型&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;希望一个函数和接口可以支持多种数据类型，有很大的灵活性。&lt;/li&gt;
+&lt;li&gt;不预先确定的数据类型，
+      
+    
+    </summary>
+    
+    
+      <category term="TypeScript" scheme="https://ihuzb.github.io/categories/TypeScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
+    
+      <category term="TypeScript" scheme="https://ihuzb.github.io/tags/TypeScript/"/>
+    
+      <category term="学习笔记" scheme="https://ihuzb.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -256,6 +344,93 @@
     
       <category term="随笔" scheme="https://ihuzb.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
     
+    
+  </entry>
+  
+  <entry>
+    <title>TypeScript学习笔记 类与接口的关系</title>
+    <link href="https://ihuzb.github.io/2019/12/11/98gxEa87zw/"/>
+    <id>https://ihuzb.github.io/2019/12/11/98gxEa87zw/</id>
+    <published>2019-12-11T09:33:59.000Z</published>
+    <updated>2020-07-29T08:12:38.891Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;类类型接口&quot;&gt;类类型接口&lt;a class=&quot;post-anchor&quot; href=&quot;#类类型接口&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;implements关键字，类实现接口。&lt;/li&gt;
+&lt;li&gt;类实现接口必须实现接
+      
+    
+    </summary>
+    
+    
+      <category term="TypeScript" scheme="https://ihuzb.github.io/categories/TypeScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
+    
+      <category term="TypeScript" scheme="https://ihuzb.github.io/tags/TypeScript/"/>
+    
+      <category term="学习笔记" scheme="https://ihuzb.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TypeScript学习笔记 抽象类与多态</title>
+    <link href="https://ihuzb.github.io/2019/12/09/6WJMcN5tvl/"/>
+    <id>https://ihuzb.github.io/2019/12/09/6WJMcN5tvl/</id>
+    <published>2019-12-09T07:12:45.000Z</published>
+    <updated>2020-07-29T08:12:38.889Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;TypeScript抽象类&quot;&gt;TypeScript抽象类&lt;a class=&quot;post-anchor&quot; href=&quot;#TypeScript抽象类&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;抽象类，只能被继承，不能被抽象化
+      
+    
+    </summary>
+    
+    
+      <category term="TypeScript" scheme="https://ihuzb.github.io/categories/TypeScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
+    
+      <category term="TypeScript" scheme="https://ihuzb.github.io/tags/TypeScript/"/>
+    
+      <category term="学习笔记" scheme="https://ihuzb.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TypeScript学习笔记 类继承和成员修饰符</title>
+    <link href="https://ihuzb.github.io/2019/12/04/MdQbv7MmeD/"/>
+    <id>https://ihuzb.github.io/2019/12/04/MdQbv7MmeD/</id>
+    <published>2019-12-04T03:13:19.000Z</published>
+    <updated>2020-07-29T08:12:38.886Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;ES6-class类&quot;&gt;ES6 class类&lt;a class=&quot;post-anchor&quot; href=&quot;#ES6-class类&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;tabl
+      
+    
+    </summary>
+    
+    
+      <category term="TypeScript" scheme="https://ihuzb.github.io/categories/TypeScript/"/>
+    
+    
+      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
+    
+      <category term="TypeScript" scheme="https://ihuzb.github.io/tags/TypeScript/"/>
+    
+      <category term="学习笔记" scheme="https://ihuzb.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
@@ -436,175 +611,6 @@
       <category term="TypeScript" scheme="https://ihuzb.github.io/tags/TypeScript/"/>
     
       <category term="学习笔记" scheme="https://ihuzb.github.io/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>十年前的梦想如果没有熄灭，就让它永远燃烧吧。</title>
-    <link href="https://ihuzb.github.io/2019/10/01/11aBShmS5l/"/>
-    <id>https://ihuzb.github.io/2019/10/01/11aBShmS5l/</id>
-    <published>2019-09-30T21:11:45.000Z</published>
-    <updated>2020-06-24T06:21:47.062Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;/2019/10/01/11aBShmS5l/1.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/2019/10/01/11aBShmS5l/1.jp
-      
-    
-    </summary>
-    
-    
-      <category term="随笔" scheme="https://ihuzb.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>W4J音乐热评一项目建立</title>
-    <link href="https://ihuzb.github.io/2019/08/15/Cxe19LQ32P/"/>
-    <id>https://ihuzb.github.io/2019/08/15/Cxe19LQ32P/</id>
-    <published>2019-08-15T07:05:44.000Z</published>
-    <updated>2020-06-28T00:26:45.402Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;/2019/08/15/Cxe19LQ32P/1.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/2019/08/15/Cxe19LQ32P/1.jp
-      
-    
-    </summary>
-    
-    
-      <category term="JavaScript" scheme="https://ihuzb.github.io/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
-    
-      <category term="ES6" scheme="https://ihuzb.github.io/tags/ES6/"/>
-    
-      <category term="Node.js" scheme="https://ihuzb.github.io/tags/Node-js/"/>
-    
-      <category term="W4J" scheme="https://ihuzb.github.io/tags/W4J/"/>
-    
-      <category term="爬虫" scheme="https://ihuzb.github.io/tags/%E7%88%AC%E8%99%AB/"/>
-    
-      <category term="Puppeteer" scheme="https://ihuzb.github.io/tags/Puppeteer/"/>
-    
-      <category term="Redis" scheme="https://ihuzb.github.io/tags/Redis/"/>
-    
-      <category term="Mysql" scheme="https://ihuzb.github.io/tags/Mysql/"/>
-    
-      <category term="Vue" scheme="https://ihuzb.github.io/tags/Vue/"/>
-    
-      <category term="Antd" scheme="https://ihuzb.github.io/tags/Antd/"/>
-    
-      <category term="Echarts" scheme="https://ihuzb.github.io/tags/Echarts/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JS中String字符串对象常用属性和方法</title>
-    <link href="https://ihuzb.github.io/2019/07/01/BqI2F0KXTQ/"/>
-    <id>https://ihuzb.github.io/2019/07/01/BqI2F0KXTQ/</id>
-    <published>2019-07-01T02:52:45.000Z</published>
-    <updated>2020-06-24T06:22:52.633Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;属性&quot;&gt;属性&lt;a class=&quot;post-anchor&quot; href=&quot;#属性&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;h2 id=&quot;String-prototype&quot;&gt;String.prototype&lt;a class=&quot;post-a
-      
-    
-    </summary>
-    
-    
-      <category term="JavaScript" scheme="https://ihuzb.github.io/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript-Promise对象</title>
-    <link href="https://ihuzb.github.io/2019/06/30/ZRn6kBsoy4/"/>
-    <id>https://ihuzb.github.io/2019/06/30/ZRn6kBsoy4/</id>
-    <published>2019-06-30T08:14:04.000Z</published>
-    <updated>2020-06-30T09:29:56.599Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;h1 id=&quot;Promise介绍&quot;&gt;Promise介绍&lt;a class=&quot;post-anchor&quot; href=&quot;#Promise介绍&quot;&gt;&lt;/a&gt;&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Promise&lt;/code&gt;是一个对象，它代
-      
-    
-    </summary>
-    
-    
-      <category term="JavaScript" scheme="https://ihuzb.github.io/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
-    
-      <category term="Promise" scheme="https://ihuzb.github.io/tags/Promise/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JS中模块的暴露和引入方式</title>
-    <link href="https://ihuzb.github.io/2019/06/23/x1rQ0FB2ub/"/>
-    <id>https://ihuzb.github.io/2019/06/23/x1rQ0FB2ub/</id>
-    <published>2019-06-23T03:26:11.000Z</published>
-    <updated>2020-06-24T06:22:41.037Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;/2019/06/23/x1rQ0FB2ub/1.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/2019/06/23/x1rQ0FB2ub/1.jp
-      
-    
-    </summary>
-    
-    
-      <category term="JavaScript" scheme="https://ihuzb.github.io/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
-    
-      <category term="ES6" scheme="https://ihuzb.github.io/tags/ES6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JS常用正则表达式</title>
-    <link href="https://ihuzb.github.io/2019/06/13/yIxumQvhiY/"/>
-    <id>https://ihuzb.github.io/2019/06/13/yIxumQvhiY/</id>
-    <published>2019-06-13T01:22:18.000Z</published>
-    <updated>2020-06-24T06:22:00.465Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;/2019/06/13/yIxumQvhiY/1.jpg&quot; data-caption data-fancybox=&quot;images&quot;&gt;&lt;img src=&quot;/2019/06/13/yIxumQvhiY/1.jp
-      
-    
-    </summary>
-    
-    
-      <category term="JavaScript" scheme="https://ihuzb.github.io/categories/JavaScript/"/>
-    
-    
-      <category term="JavaScript" scheme="https://ihuzb.github.io/tags/JavaScript/"/>
-    
-      <category term="正则表达式" scheme="https://ihuzb.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     
   </entry>
   
