@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="生命不息，折腾不止！" />
+    
+    <title>
+      TypeScript学习笔记 类继承和成员修饰符 - Ihuzb的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/logo.jpeg" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Ihuzb的博客" type="application/atom+xml">
+</head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ES6-class类"><span class="toc-text">ES6 class类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TypeScript-calss类"><span class="toc-text">TypeScript calss类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义类"><span class="toc-text">定义类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类的继承"><span class="toc-text">类的继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类的修饰符"><span class="toc-text">类的修饰符</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#public-private"><span class="toc-text">public&#x2F;private</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#protected"><span class="toc-text">protected</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#readonly"><span class="toc-text">readonly</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static"><span class="toc-text">static</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构造函数参数添加修饰符"><span class="toc-text">构造函数参数添加修饰符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#实例后访问"><span class="toc-text">实例后访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类直接访问"><span class="toc-text">类直接访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可以被继承"><span class="toc-text">可以被继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不可以被继承"><span class="toc-text">不可以被继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#类内部访问"><span class="toc-text">类内部访问</span></a></li></ol></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/friends" class="">
+          友链
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">Ihuzb</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Ihuzb</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/friends" class="">
+            友链
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/Ihuzb" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="https://s1.ax1x.com/2020/06/24/NacJfK.jpg" target="_block">
+              <span class="iconfont icon-weixin"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">TypeScript学习笔记 类继承和成员修饰符</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/12/04</span>
+        </span>
+
+        
+          <span class="item leancloud-visitors" id="/2019/12/04/MdQbv7MmeD/" data-flag-title="TypeScript学习笔记 类继承和成员修饰符">
+            <span class="iconfont icon-eye1"></span>
+            <span class="leancloud-visitors-count"></span>
+          </span>
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/TypeScript">TypeScript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/TypeScript">TypeScript</a>
+                  
+                
+                  
+                    <a href="/tags/学习笔记">学习笔记</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h1 id="ES6-class类">ES6 class类<a class="post-anchor" href="#ES6-class类"></a></h1><figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span> </span>{<br>    <span class="hljs-keyword">constructor</span>(name) {<br>        <span class="hljs-keyword">this</span>.name = name<br>    }<br>}<br><span class="hljs-keyword">let</span> dog=<span class="hljs-keyword">new</span> Dog(<span class="hljs-string">'wangwang'</span>);<br><span class="hljs-built_in">console</span>.log(dog.name);<br></code></pre></td></tr></tbody></table></figure>
+
+<h1 id="TypeScript-calss类">TypeScript calss类<a class="post-anchor" href="#TypeScript-calss类"></a></h1><h2 id="定义类">定义类<a class="post-anchor" href="#定义类"></a></h2><ul>
+<li>使用ts重构上面的<code>class类</code>，给构造函数的参数和成员属性添加类型注解。</li>
+<li>类成员的属性，都是实例属性，而不是原型属性。</li>
+<li>类成员的方法，都是实例方法。</li>
+<li>实例的属性必须有初始值，或者在构造函数中被初始化。</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">class</span> Dog {<br>    <span class="hljs-comment">// 构造函数的参数添加类型注解</span><br>    <span class="hljs-keyword">constructor</span>(<span class="hljs-params">jiao: <span class="hljs-built_in">string</span></span>) {<br>        <span class="hljs-comment">// 构造函数中被初始化</span><br>        <span class="hljs-keyword">this</span>.name = jiao<br>    }<br>    <span class="hljs-comment">// 成员属性的类型注解</span><br>    name: <span class="hljs-built_in">string</span><br>    <br>}<br><br><span class="hljs-keyword">let</span> dog = <span class="hljs-keyword">new</span> Dog(<span class="hljs-string">'wangwang'</span>);<br><span class="hljs-built_in">console</span>.log(dog.name);<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="类的继承">类的继承<a class="post-anchor" href="#类的继承"></a></h2><figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">class</span> Husky <span class="hljs-keyword">extends</span> Dog {<br>    <span class="hljs-keyword">constructor</span>(<span class="hljs-params">jiao: <span class="hljs-built_in">string</span>, color: <span class="hljs-built_in">string</span></span>) {<br>        <span class="hljs-keyword">super</span>(jiao);<br>        <span class="hljs-keyword">this</span>.color = color<br>    }<br><br>    color: <span class="hljs-built_in">string</span><br>}<br><br><span class="hljs-keyword">let</span> husky = <span class="hljs-keyword">new</span> Husky(<span class="hljs-string">'miaomiao'</span>, <span class="hljs-string">'red'</span>);<br><span class="hljs-comment">// miaomiao red</span><br><span class="hljs-built_in">console</span>.log(husky.name, husky.color)<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="类的修饰符">类的修饰符<a class="post-anchor" href="#类的修饰符"></a></h2><h3 id="public-private">public/private<a class="post-anchor" href="#public-private"></a></h3><ul>
+<li><code>public</code>公有成员，类的所有属性默认都是公有成员。</li>
+<li><code>private</code>私有成员，只能在类的本身调用，不能被实例和子类调用。</li>
+<li><code>private</code>如果加在构造函数，表示这个类既不能实例化，也不能继承。</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">class</span> Dog {<br>    <span class="hljs-comment">// private 这个类既不能实例化，也不能继承</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">constructor</span>(<span class="hljs-params">jiao: <span class="hljs-built_in">string</span></span>) {<br>        <span class="hljs-keyword">this</span>.name = jiao<br>        <span class="hljs-keyword">this</span>.nuwName = jiao<br>    }<br>    <span class="hljs-comment">// public 公有成员</span><br>    <span class="hljs-keyword">public</span> name: <span class="hljs-built_in">string</span><br>    <span class="hljs-comment">// private 私有成员</span><br>    <span class="hljs-keyword">private</span> nuwName: <span class="hljs-built_in">string</span><br>}<br><span class="hljs-comment">// 如果构造函数设为私有，则这里会报错。</span><br><span class="hljs-keyword">let</span> dog = <span class="hljs-keyword">new</span> Dog(<span class="hljs-string">'wangwang'</span>);<br><span class="hljs-comment">// 无法使用</span><br><span class="hljs-built_in">console</span>.log(dog.nuwName);<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="protected">protected<a class="post-anchor" href="#protected"></a></h3><ul>
+<li><code>protected</code>受保护成员，只能在类或子类访问，不能再类实例中访问。</li>
+<li><code>protected</code>如果加在构造函数，表示这个类不能被实例化,能被继承。</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">class</span> Dog {<br>    <span class="hljs-comment">//protected 这个类不能被实例化 能被继承</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {<br>    }<br>    <span class="hljs-comment">// protected 受保护成员，只能在类或子类访问，不能再类实例中访问</span><br>    <span class="hljs-keyword">protected</span> height: <span class="hljs-built_in">number</span> = <span class="hljs-number">123</span><br>}<br><span class="hljs-comment">// 如果构造函数设为受保护，则这里会报错。</span><br><span class="hljs-keyword">let</span> dog = <span class="hljs-keyword">new</span> Dog();<br><span class="hljs-comment">// 无法使用</span><br><span class="hljs-built_in">console</span>.log(dog.height);<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="readonly">readonly<a class="post-anchor" href="#readonly"></a></h3><ul>
+<li><code>readonly</code>只读属性，不可以被更改，一定要初始化。</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">class</span> Dog {<br>    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {<br>    }<br>    <span class="hljs-comment">// readonly 只读属性，不可以被更改，一定要初始化。</span><br>    readonly height: <span class="hljs-built_in">number</span> = <span class="hljs-number">123</span><br>}<br><span class="hljs-keyword">let</span> dog = <span class="hljs-keyword">new</span> Dog();<br><span class="hljs-comment">// 123</span><br><span class="hljs-built_in">console</span>.log(dog.height);<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="static">static<a class="post-anchor" href="#static"></a></h3><ul>
+<li><code>static</code>静态成员，只能用过类名来调用，不能通过实例来调用，但是可以被继承。</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">class</span> Dog {<br>    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {<br>    }<br>    <span class="hljs-comment">// readonly 只读属性，不可以被更改，一定要初始化。</span><br>    <span class="hljs-keyword">static</span> height: <span class="hljs-built_in">number</span> = <span class="hljs-number">123</span><br>}<br><span class="hljs-keyword">let</span> dog = <span class="hljs-keyword">new</span> Dog();<br><span class="hljs-comment">// 无法使用</span><br><span class="hljs-built_in">console</span>.log(dog.height);<br><span class="hljs-comment">// 123</span><br><span class="hljs-built_in">console</span>.log(Dog.height);<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="构造函数参数添加修饰符">构造函数参数添加修饰符<a class="post-anchor" href="#构造函数参数添加修饰符"></a></h3><ul>
+<li>将参数变成实例的属性，即可省略类中的定义。</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">class</span> Dog {<br>    <span class="hljs-comment">// 将参数变成实例的属性，即可省略类中的定义。</span><br>    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">public</span> name: <span class="hljs-built_in">string</span></span>) {<br>        <span class="hljs-keyword">this</span>.name = name<br>    }<br>}<br><span class="hljs-keyword">let</span> dog = <span class="hljs-keyword">new</span> Dog(<span class="hljs-string">'wangwang'</span>);<br><span class="hljs-built_in">console</span>.log(dog.name);<br></code></pre></td></tr></tbody></table></figure>
+
+<h1 id="总结">总结<a class="post-anchor" href="#总结"></a></h1><h2 id="实例后访问">实例后访问<a class="post-anchor" href="#实例后访问"></a></h2><ul>
+<li><code>public</code>公有成员，<code>readonly</code>只读属性</li>
+</ul>
+<h2 id="类直接访问">类直接访问<a class="post-anchor" href="#类直接访问"></a></h2><ul>
+<li><code>static</code>静态成员</li>
+</ul>
+<h2 id="可以被继承">可以被继承<a class="post-anchor" href="#可以被继承"></a></h2><ul>
+<li><code>public</code>公有成员，<code>protected</code>，<code>readonly</code>只读属性，<code>static</code>静态成员</li>
+</ul>
+<h2 id="不可以被继承">不可以被继承<a class="post-anchor" href="#不可以被继承"></a></h2><ul>
+<li><code>private</code>私有成员</li>
+</ul>
+<h2 id="类内部访问">类内部访问<a class="post-anchor" href="#类内部访问"></a></h2><ul>
+<li><code>private</code>私有成员，<code>protected</code>受保护成员</li>
+</ul>
+</body></html>
+
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/12/09/6WJMcN5tvl/">TypeScript学习笔记 抽象类与多态</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/12/01/QVI855IGBf/">TypeScript学习笔记 函数</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://ihuzb.github.io">Ihuzb</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://ihuzb.github.io/2019/12/04/MdQbv7MmeD/">https://ihuzb.github.io/2019/12/04/MdQbv7MmeD/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://ihuzb.github.io">Ihuzb</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2021
+            <a href="https://ihuzb.github.io">Ihuzb</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\"],\"valine\":{\"API_ID\":\"6pO8V6ukbSWsxKuznsFbuHjr-gzGzoHsz\",\"API_KEY\":\"CuGM6KzUrCdShp23y42i5QHn\"},\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

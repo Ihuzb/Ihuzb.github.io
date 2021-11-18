@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="生命不息，折腾不止！" />
+    
+    <title>
+      W4J音乐热评一Puppeteer爬虫并发和连接池(2) - Ihuzb的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/logo.jpeg" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Ihuzb的博客" type="application/atom+xml">
+</head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Puppeteer连接池"><span class="toc-text">Puppeteer连接池</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/friends" class="">
+          友链
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">Ihuzb</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Ihuzb</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/friends" class="">
+            友链
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/Ihuzb" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="https://s1.ax1x.com/2020/06/24/NacJfK.jpg" target="_block">
+              <span class="iconfont icon-weixin"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">W4J音乐热评一Puppeteer爬虫并发和连接池(2)</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2020/01/05</span>
+        </span>
+
+        
+          <span class="item leancloud-visitors" id="/2020/01/05/BWYsMSQVZr/" data-flag-title="W4J音乐热评一Puppeteer爬虫并发和连接池(2)">
+            <span class="iconfont icon-eye1"></span>
+            <span class="leancloud-visitors-count"></span>
+          </span>
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/JavaScript">JavaScript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/Node.js">Node.js</a>
+                  
+                
+                  
+                    <a href="/tags/W4J">W4J</a>
+                  
+                
+                  
+                    <a href="/tags/爬虫">爬虫</a>
+                  
+                
+                  
+                    <a href="/tags/Puppeteer">Puppeteer</a>
+                  
+                
+                  
+                    <a href="/tags/async">async</a>
+                  
+                
+                  
+                    <a href="/tags/generic-pool">generic-pool</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><ul>
+<li>上一节我们完成了并发数的控制，这一节完成连接池。</li>
+<li>因为单纯只用并发数来控制的话，每次爬取新的页面都会开启新的浏览器，使用完毕后关闭，会造成很大的资源开销。</li>
+<li>使用连接池，一次性创建指定个数的浏览器实例，随用随取，减少资源开销。</li>
+</ul>
+<h2 id="Puppeteer连接池">Puppeteer连接池<a class="post-anchor" href="#Puppeteer连接池"></a></h2><ul>
+<li>使用<code>generic-pool</code>,这是一个基于<code>Promise</code>的通用链接池库。</li>
+<li>有了他之后我们就可以 将<code>Puppeteer</code>实例放在我们的链接池中,首先启动指定数量的浏览器实例，如果有请求进来，那么就去池子里面去取一个实例。</li>
+<li>更多详细信息可点击这里<a href="https://github.com/coopernurse/node-pool" target="_blank" rel="noopener">generic-pool</a></li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"># 安装generic-pool<br>npm i generic-pool --save<br><br># 安装完成<br>+ generic-pool@<span class="hljs-number">3.7</span><span class="hljs-number">.1</span><br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>创建一个文件专门处理连接池<code>genericPool.js</code></li>
+<li>代码参考大佬<a href="https://blog.guowenfh.com/2019/06/16/2019/puppeteer-pool/" target="_blank" rel="noopener">使用 generic-pool 优化 puppeteer 并发问题</a>这篇文章,稍加修改.</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//genericPool.js</span><br><span class="hljs-keyword">const</span> puppeteer = <span class="hljs-built_in">require</span>(<span class="hljs-string">'puppeteer'</span>)<br><span class="hljs-keyword">const</span> genericPool = <span class="hljs-built_in">require</span>(<span class="hljs-string">'generic-pool'</span>)<br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 初始化一个 Puppeteer 池</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">{Object}</span> </span>[options={}] 创建池的配置配置</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">{Number}</span> </span>[options.max=10] 最多产生多少个 puppeteer 实例 。如果你设置它，请确保 在引用关闭时调用清理池。 pool.drain().then(()=>pool.clear())</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">{Number}</span> </span>[options.min=1] 保证池中最少有多少个实例存活</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">{Number}</span> </span>[options.maxUses=2048] 每一个 实例 最大可重用次数，超过后将重启实例。0表示不检验</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">{Number}</span> </span>[options.testOnBorrow=2048] 在将 实例 提供给用户之前，池应该验证这些实例。</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">{Boolean}</span> </span>[options.autostart=false] 是不是需要在 池 初始化时 初始化 实例</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">{Number}</span> </span>[options.idleTimeoutMillis=3600000] 如果一个实例 60分钟 都没访问就关掉他</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">{Number}</span> </span>[options.evictionRunIntervalMillis=180000] 每 3分钟 检查一次 实例的访问状态</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">{Object}</span> </span>[options.puppeteerArgs={}] puppeteer.launch 启动的参数</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">{Function}</span> </span>[options.validator=(instance)=>Promise.resolve(true))] 用户自定义校验 参数是 取到的一个实例</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param <span class="hljs-type">{Object}</span> </span>[options.otherConfig={}] 剩余的其他参数 // For all opts, see opts at https://github.com/coopernurse/node-pool#createpool</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return <span class="hljs-type">{Object}</span> <span class="hljs-variable">pool</span></span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">const</span> initPuppeteerPool = <span class="hljs-function">(<span class="hljs-params">options = {}</span>) =></span> {<br>    <span class="hljs-keyword">const</span> {<br>        max = <span class="hljs-number">10</span>,<br>        min = <span class="hljs-number">3</span>,<span class="hljs-comment">//建议连接池最小(min)实例数,应与并发数一致</span><br>        maxUses = <span class="hljs-number">2048</span>,<br>        testOnBorrow = <span class="hljs-literal">true</span>,<br>        autostart = <span class="hljs-literal">false</span>,<br>        idleTimeoutMillis = <span class="hljs-number">3600000</span>,<br>        evictionRunIntervalMillis = <span class="hljs-number">180000</span>,<br>        puppeteerArgs = {},<br>        validator = <span class="hljs-function"><span class="hljs-params">()</span> =></span> <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-literal">true</span>),<br>        ...otherConfig<br>    } = options<br><br>    <span class="hljs-keyword">const</span> factory = {<br>        create: <span class="hljs-function"><span class="hljs-params">()</span> =></span><br>            puppeteer.launch(puppeteerArgs).then(<span class="hljs-function"><span class="hljs-params">instance</span> =></span> {<br>                <span class="hljs-comment">// 创建一个 puppeteer 实例 ，并且初始化使用次数为 0</span><br>                instance.useCount = <span class="hljs-number">0</span><br>                <span class="hljs-keyword">return</span> instance<br>            }),<br>        destroy: <span class="hljs-function"><span class="hljs-params">instance</span> =></span> {<br>            instance.close()<br>        },<br>        validate: <span class="hljs-function"><span class="hljs-params">instance</span> =></span> {<br>            <span class="hljs-comment">// 执行一次自定义校验，并且校验校验 实例已使用次数。 当 返回 reject 时 表示实例不可用</span><br>            <span class="hljs-keyword">return</span> validator(instance).then(<span class="hljs-function"><span class="hljs-params">valid</span> =></span> <span class="hljs-built_in">Promise</span>.resolve(valid && (maxUses <= <span class="hljs-number">0</span> || instance.useCount < maxUses)))<br>        }<br>    }<br>    <span class="hljs-keyword">const</span> config = {<br>        max,<br>        min,<br>        testOnBorrow,<br>        autostart,<br>        idleTimeoutMillis,<br>        evictionRunIntervalMillis,<br>        ...otherConfig<br>    }<br>    <span class="hljs-keyword">const</span> pool = genericPool.createPool(factory, config)<br>    <span class="hljs-keyword">const</span> genericAcquire = pool.acquire.bind(pool)<br>    <span class="hljs-comment">// 重写了原有池的消费实例的方法。添加一个实例使用次数的增加</span><br>    pool.acquire = <span class="hljs-function"><span class="hljs-params">()</span> =></span><br>        genericAcquire().then(<span class="hljs-function"><span class="hljs-params">instance</span> =></span> {<br>            instance.useCount += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">return</span> instance<br>        })<br>    pool.use = <span class="hljs-function"><span class="hljs-params">fn</span> =></span> {<br>        <span class="hljs-keyword">let</span> resource<br>        <span class="hljs-keyword">return</span> pool<br>            .acquire()<br>            .then(<span class="hljs-function"><span class="hljs-params">r</span> =></span> {<br>                resource = r<br>                <span class="hljs-keyword">return</span> resource<br>            })<br>            .then(fn)<br>            .then(<br>                result => {<br>                    <span class="hljs-comment">// 不管业务方使用实例成功与后都表示一下实例消费完成</span><br>                    pool.release(resource)<br>                    <span class="hljs-keyword">return</span> result<br>                },<br>                err => {<br>                    pool.release(resource)<br>                    <span class="hljs-keyword">throw</span> err<br>                }<br>            )<br>    }<br>    <span class="hljs-keyword">return</span> pool<br>}<br><span class="hljs-built_in">module</span>.exports = initPuppeteerPool<br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>整体流程如下：<ul>
+<li>在服务启动时启动池。</li>
+<li>请求到达 => 从池中取得一个<code>Puppeteer</code>实例 => 打开tab页 => 运行代码 => 关闭tab页 => 返回数据（其他的管理都交给池了）</li>
+</ul>
+</li>
+<li>那么我们之前的代码也要稍加修改.</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//index.js</span><br><span class="hljs-keyword">const</span> puppeteer = <span class="hljs-built_in">require</span>(<span class="hljs-string">'puppeteer'</span>);<br><span class="hljs-keyword">const</span> mapLimit = <span class="hljs-built_in">require</span>(<span class="hljs-string">'async/mapLimit'</span>);<br><span class="hljs-keyword">const</span> initPuppeteerPool = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./genericPool'</span>);<br><span class="hljs-comment">//准备的音乐id数组</span><br><span class="hljs-keyword">let</span> musicId = [<span class="hljs-number">1407551413</span>, <span class="hljs-number">1303289043</span>, <span class="hljs-number">1417862046</span>];<br><span class="hljs-comment">// 全局只应该被初始化一次</span><br><span class="hljs-keyword">const</span> pool = initPuppeteerPool({ <br>    puppeteerArgs: {<br>        timeout: <span class="hljs-number">15000</span>,<br>        ignoreHTTPSErrors: <span class="hljs-literal">true</span>,<br>        devtools: <span class="hljs-literal">true</span>,<br>        headless: <span class="hljs-literal">true</span>,<br>        args: [<br>            <span class="hljs-string">'-–disable-dev-shm-usage'</span>,<br>            <span class="hljs-string">'-–disable-setuid-sandbox'</span>,<br>            <span class="hljs-string">'-–no-first-run'</span>,<br>            <span class="hljs-string">'--no-sandbox'</span>,<br>            <span class="hljs-string">'-–no-zygote'</span>,<br>            <span class="hljs-string">'-–single-process'</span><br>        ]<br>    }<br>})<br><span class="hljs-comment">//并发次数为3,建议连接池最小(min)实例数,应与并发数一致</span><br>mapLimit(musicId, <span class="hljs-number">3</span>, (item, callback) => {<br>    (<span class="hljs-keyword">async</span> () => {<br>        <span class="hljs-comment">//并发执行爬取代码，返回结果</span><br>        <span class="hljs-keyword">let</span> info = <span class="hljs-keyword">await</span> selectInfo(item);<br>        callback(<span class="hljs-literal">null</span>, info);<br>    })();<br>}, (err, results) => {<br>    <span class="hljs-comment">//三首音乐爬取完成再返回结果</span><br>    <span class="hljs-built_in">console</span>.log(results);<br>});<br><span class="hljs-comment">//定义函数，内部返回Promise</span><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">selectInfo</span>(<span class="hljs-params">id</span>) </span>{<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-keyword">async</span> (resolve, reject) => {<br>        <span class="hljs-comment">// 在业务中取出实例使用</span><br>        <span class="hljs-keyword">const</span> page = <span class="hljs-keyword">await</span> pool.use(<span class="hljs-keyword">async</span> browser => {<br>            <span class="hljs-keyword">const</span> page = <span class="hljs-keyword">await</span> browser.newPage();<br>            <span class="hljs-comment">//同样的域名不同id</span><br>            <span class="hljs-keyword">await</span> page.goto(<span class="hljs-string">`https://music.163.com/#/song?id=<span class="hljs-subst">${id}</span>`</span>);<br>            <span class="hljs-keyword">return</span> page<br>        })<br>        <span class="hljs-keyword">const</span> iframe = <span class="hljs-keyword">await</span> page.frames().find(<span class="hljs-function"><span class="hljs-params">f</span> =></span> f.name() === <span class="hljs-string">'contentFrame'</span>);<br>        <span class="hljs-keyword">const</span> musicComment = <span class="hljs-keyword">await</span> iframe.$(<span class="hljs-string">'.cmmts.j-flag'</span>);<br>        <span class="hljs-keyword">let</span> commentList = <span class="hljs-keyword">await</span> iframe.evaluate(<span class="hljs-function">(<span class="hljs-params">e</span>) =></span> {<br>            <span class="hljs-keyword">let</span> comment = <span class="hljs-built_in">Array</span>.from(e.getElementsByClassName(<span class="hljs-string">'cnt f-brk'</span>));<br>            <span class="hljs-comment">//只获取前五条</span><br>            <span class="hljs-keyword">return</span> comment.map(<span class="hljs-function">(<span class="hljs-params">item</span>) =></span> item.innerText).filter(<span class="hljs-function">(<span class="hljs-params">item, index</span>) =></span> index <= <span class="hljs-number">5</span>);<br>        }, musicComment);<br>        <span class="hljs-comment">//关闭标签页!!!!!</span><br>        <span class="hljs-keyword">await</span> page.close();<br>        <span class="hljs-comment">//返回当前音乐爬取的数据</span><br>        resolve(commentList);<br>    })<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>这次时关闭标签页而不是关闭浏览器.</li>
+<li>最终的效果,谁用谁知道,运行速度有很大的提升.</li>
+<li>至此,一个比较完整的并发和连接池的爬虫就完成了,下一步该解决IP的问题.</li>
+</ul>
+</body></html>
+
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2020/01/15/09vmKIOyQJ/">W4J音乐热评一Puppeteer设置代理IP</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2020/01/05/QFUu7Q8EkJ/">W4J音乐热评一Puppeteer爬虫并发和连接池(1)</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://ihuzb.github.io">Ihuzb</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://ihuzb.github.io/2020/01/05/BWYsMSQVZr/">https://ihuzb.github.io/2020/01/05/BWYsMSQVZr/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://ihuzb.github.io">Ihuzb</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2021
+            <a href="https://ihuzb.github.io">Ihuzb</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\"],\"valine\":{\"API_ID\":\"6pO8V6ukbSWsxKuznsFbuHjr-gzGzoHsz\",\"API_KEY\":\"CuGM6KzUrCdShp23y42i5QHn\"},\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

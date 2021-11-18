@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="生命不息，折腾不止！" />
+    
+    <title>
+      TypeScript学习笔记 构建工具 - Ihuzb的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/logo.jpeg" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Ihuzb的博客" type="application/atom+xml">
+</head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TypeScript构建工具"><span class="toc-text">TypeScript构建工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装webpack"><span class="toc-text">安装webpack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备webpack配置文件"><span class="toc-text">准备webpack配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建build目录"><span class="toc-text">创建build目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建tpl目录"><span class="toc-text">创建tpl目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置webpack-base-config-js公共环境"><span class="toc-text">配置webpack.base.config.js公共环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置webpack-dev-config-js开发环境"><span class="toc-text">配置webpack.dev.config.js开发环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置webpack-pro-config-js生产环境"><span class="toc-text">配置webpack.pro.config.js生产环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置webpack-config-js入口文件"><span class="toc-text">配置webpack.config.js入口文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改npm脚本"><span class="toc-text">修改npm脚本</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用TypeScript构建工具"><span class="toc-text">使用TypeScript构建工具</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/friends" class="">
+          友链
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">Ihuzb</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Ihuzb</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/friends" class="">
+            友链
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/Ihuzb" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="https://s1.ax1x.com/2020/06/24/NacJfK.jpg" target="_block">
+              <span class="iconfont icon-weixin"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">TypeScript学习笔记 构建工具</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/11/26</span>
+        </span>
+
+        
+          <span class="item leancloud-visitors" id="/2019/11/26/ZQQEDSYRzB/" data-flag-title="TypeScript学习笔记 构建工具">
+            <span class="iconfont icon-eye1"></span>
+            <span class="leancloud-visitors-count"></span>
+          </span>
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/TypeScript">TypeScript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/TypeScript">TypeScript</a>
+                  
+                
+                  
+                    <a href="/tags/学习笔记">学习笔记</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h1 id="TypeScript构建工具">TypeScript构建工具<a class="post-anchor" href="#TypeScript构建工具"></a></h1><h2 id="安装webpack">安装webpack<a class="post-anchor" href="#安装webpack"></a></h2><ul>
+<li>本地安装<code>webpack</code>，<code>webpack-cli</code>，<code>webpack-dev-server</code><figure class="highlight"><table><tbody><tr><td class="code"><pre><code class="hljs js"># npm install webpack webpack-cli webpack-dev-server -save<br></code></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+<h2 id="准备webpack配置文件">准备webpack配置文件<a class="post-anchor" href="#准备webpack配置文件"></a></h2><ul>
+<li>配置文件分为：公共环境，开发环境，生产环境。</li>
+<li>其中，开发环境和生产环境需要做的事情不一样，为了工程的可维护性，单独配置，最后通过插件合并。</li>
+</ul>
+<h3 id="创建build目录">创建build目录<a class="post-anchor" href="#创建build目录"></a></h3><ul>
+<li>build目录内分别创建<code>webpack.base.config.js</code>(公共环境)，<code>webpack.dev.config.js</code>(开发环境)，<code>webpack.pro.config.js</code>(生产环境)，<code>webpack.config.js</code>4个配置文件。</li>
+<li><code>webpack.config.js</code>是所有所有配置文件的入口。公共环境，开发环境和生产环境的配置在这里合并。</li>
+</ul>
+<p><a href="/2019/11/26/ZQQEDSYRzB/1.png" data-caption data-fancybox="images"><img src="/2019/11/26/ZQQEDSYRzB/1.png" alt></a></p>
+<h3 id="创建tpl目录">创建tpl目录<a class="post-anchor" href="#创建tpl目录"></a></h3><ul>
+<li>在<code>src</code>目录下创建<code>tpl</code>目录用于存放模板，再创建<code>index.html</code>文件。</li>
+</ul>
+<p><a href="/2019/11/26/ZQQEDSYRzB/4.png" data-caption data-fancybox="images"><img src="/2019/11/26/ZQQEDSYRzB/4.png" alt></a></p>
+<h3 id="配置webpack-base-config-js公共环境">配置webpack.base.config.js公共环境<a class="post-anchor" href="#配置webpack-base-config-js公共环境"></a></h3><ul>
+<li>本地安装<code>html-webpack-plugin</code>，<code>ts-loader</code>，<code>typescript</code></li>
+<li><code>html-webpack-plugin</code>，通过模板生成网站首页，把输出文件自动嵌入到文件中。</li>
+<li><code>ts-loader</code>，webpack编译ts。</li>
+</ul>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><code class="hljs js"># npm install html-webpack-plugin ts-loader typescript -save<br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>配置文件内容</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//./build/webpack.base.config.js</span><br><span class="hljs-keyword">const</span> HtmlWebpackPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">'html-webpack-plugin'</span>);<br><br><span class="hljs-built_in">module</span>.exports = {<br>    <span class="hljs-comment">//指定入口文件</span><br>    entry: <span class="hljs-string">'./src/index.ts'</span>,<br>    <span class="hljs-comment">//输出</span><br>    output: {<br>        <span class="hljs-comment">//输出文件名</span><br>        filename: <span class="hljs-string">'app.js'</span><br>    },<br>    resolve: {<br>        <span class="hljs-comment">//扩展名</span><br>        extensions: [<span class="hljs-string">'.js'</span>, <span class="hljs-string">'.ts'</span>, <span class="hljs-string">'.tsx'</span>]<br>    },<br>    <span class="hljs-built_in">module</span>: {<br>        rules: [<br>            {<br>                test: <span class="hljs-regexp">/\.tsx?$/i</span>,<br>                use: [{<br>                    <span class="hljs-comment">//打包编译ts</span><br>                    loader: <span class="hljs-string">'ts-loader'</span><br>                }],<br>                exclude: <span class="hljs-regexp">/node_modules/</span><br>            }<br>        ]<br>    },<br>    plugins: [<br>        <span class="hljs-keyword">new</span> HtmlWebpackPlugin({<br>            template: <span class="hljs-string">'./src/tpl/index.html'</span><br>        })<br>    ]<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="配置webpack-dev-config-js开发环境">配置webpack.dev.config.js开发环境<a class="post-anchor" href="#配置webpack-dev-config-js开发环境"></a></h3><ul>
+<li>当JS异常抛出时，想知道错误发生在文件的哪一行，<code>Source Maps</code>可以解决这个问题。</li>
+<li><code>cheap</code>会忽略文件的列信息，只需要行信息。</li>
+<li><code>module</code>会定位到ts的源码，而不是通过<code>ts-loader</code>转移后的js源码。</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//./build/webpack.dev.config.js</span><br><span class="hljs-built_in">module</span>.exports = {<br>    devtool: <span class="hljs-string">'cheap-module-eval-source-map'</span><br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="配置webpack-pro-config-js生产环境">配置webpack.pro.config.js生产环境<a class="post-anchor" href="#配置webpack-pro-config-js生产环境"></a></h3><ul>
+<li>安装<code>clean-webpack-plugin</code>,每次成功构建之后，清空目录<code>dist</code>目录</li>
+<li>为了避免缓存，构建的时候会在文件后加上hash，多次构建就会产生很多无用的。</li>
+</ul>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><code class="hljs js"># npm install clean-webpack-plugin -save<br></code></pre></td></tr></tbody></table></figure>
+<ul>
+<li>配置文件内容</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//./build/webpack.pro.config.js</span><br><span class="hljs-keyword">const</span> {CleanWebpackPlugin} = <span class="hljs-built_in">require</span>(<span class="hljs-string">'clean-webpack-plugin'</span>);<br><br><span class="hljs-built_in">module</span>.exports = {<br>    plugins: [<br>        <span class="hljs-keyword">new</span> CleanWebpackPlugin()<br>    ]<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="配置webpack-config-js入口文件">配置webpack.config.js入口文件<a class="post-anchor" href="#配置webpack-config-js入口文件"></a></h3><ul>
+<li>安装<code>webpack-merge</code>，将其他三个配置文件进行合并。</li>
+</ul>
+<figure class="highlight"><table><tbody><tr><td class="code"><pre><code class="hljs js"># npm install webpack-merge -save<br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>配置文件内容</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//./build/webpack.config.js</span><br><span class="hljs-keyword">const</span> merge = <span class="hljs-built_in">require</span>(<span class="hljs-string">'webpack-merge'</span>);<br><span class="hljs-keyword">const</span> baseConfig = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./webpack.base.config'</span>);<br><span class="hljs-keyword">const</span> devConfig = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./webpack.dev.config'</span>);<br><span class="hljs-keyword">const</span> proConfig = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./webpack.pro.config'</span>);<br><span class="hljs-comment">//判断当前环境是开发环境还是生产环境</span><br><span class="hljs-keyword">const</span> config = process.NODE_ENV === <span class="hljs-string">'development'</span> ? devConfig : proConfig<br><br><span class="hljs-built_in">module</span>.exports = merge(baseConfig, config)<br></code></pre></td></tr></tbody></table></figure>
+
+<h2 id="修改npm脚本">修改npm脚本<a class="post-anchor" href="#修改npm脚本"></a></h2><ul>
+<li>修改<code>package.json</code>，开发环境启动和生产环境启动</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//./package.json</span><br><span class="hljs-comment">//更改入口</span><br><span class="hljs-string">"main"</span>: <span class="hljs-string">"./src/index.ts"</span>,<br><span class="hljs-string">"scripts"</span>: {<br>  <span class="hljs-comment">//启动开发环境</span><br>  <span class="hljs-string">"start"</span>: <span class="hljs-string">"webpack-dev-server --mode=development --config ./build/webpack.config.js"</span>,<br>  <span class="hljs-comment">//启动生产环境</span><br>  <span class="hljs-string">"build"</span>: <span class="hljs-string">"webpack --mode=production --config ./build/webpack.config.js"</span>,<br>},<br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li><code>npm run start</code>，运行开发环境，打开<code>http://127.0.0.1:8080/</code>查看。代码结果可直接在浏览器控制台查看。</li>
+<li><code>npm run build</code>，运行生产环境，生成<code>dist</code>文件。生成的<code>index.html</code>文件使用之前<code>/src/tpl/index.html</code>为模板，新增生成的<code>app.js</code>文件引用。</li>
+</ul>
+<p><a href="/2019/11/26/ZQQEDSYRzB/3.png" data-caption data-fancybox="images"><img src="/2019/11/26/ZQQEDSYRzB/3.png" alt></a></p>
+<h1 id="使用TypeScript构建工具">使用TypeScript构建工具<a class="post-anchor" href="#使用TypeScript构建工具"></a></h1><ul>
+<li>修改一下<code>index.ts</code>文件内容;</li>
+</ul>
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">let</span> hello: string = <span class="hljs-string">'Hello TypeScript'</span>;<br><span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'.app'</span>)[<span class="hljs-number">0</span>].innerHTML = hello;<br><span class="hljs-built_in">console</span>.log(hello);<br></code></pre></td></tr></tbody></table></figure>
+<ul>
+<li>在浏览器查看;</li>
+</ul>
+<p><a href="/2019/11/26/ZQQEDSYRzB/5.png" data-caption data-fancybox="images"><img src="/2019/11/26/ZQQEDSYRzB/5.png" alt></a></p>
+</body></html>
+
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/11/27/GK8jzgcyF0/">TypeScript学习笔记 枚举类型</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/11/25/tnJSg4etzv/">TypeScript学习笔记 入门知识</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://ihuzb.github.io">Ihuzb</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://ihuzb.github.io/2019/11/26/ZQQEDSYRzB/">https://ihuzb.github.io/2019/11/26/ZQQEDSYRzB/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://ihuzb.github.io">Ihuzb</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2021
+            <a href="https://ihuzb.github.io">Ihuzb</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\"],\"valine\":{\"API_ID\":\"6pO8V6ukbSWsxKuznsFbuHjr-gzGzoHsz\",\"API_KEY\":\"CuGM6KzUrCdShp23y42i5QHn\"},\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

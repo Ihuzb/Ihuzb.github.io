@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="生命不息，折腾不止！" />
+    
+    <title>
+      W4J音乐热评一Puppeteer爬虫初体验 - Ihuzb的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/logo.jpeg" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Ihuzb的博客" type="application/atom+xml">
+</head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Puppeteer介绍"><span class="toc-text">Puppeteer介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puppeteer用处"><span class="toc-text">Puppeteer用处</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Puppeteer初体验"><span class="toc-text">Puppeteer初体验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Puppeteer"><span class="toc-text">安装Puppeteer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Puppeteer"><span class="toc-text">使用Puppeteer</span></a></li></ol></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/friends" class="">
+          友链
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">Ihuzb</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Ihuzb</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/friends" class="">
+            友链
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/Ihuzb" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="https://s1.ax1x.com/2020/06/24/NacJfK.jpg" target="_block">
+              <span class="iconfont icon-weixin"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">W4J音乐热评一Puppeteer爬虫初体验</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/12/01</span>
+        </span>
+
+        
+          <span class="item leancloud-visitors" id="/2019/12/01/kS4LfLOW08/" data-flag-title="W4J音乐热评一Puppeteer爬虫初体验">
+            <span class="iconfont icon-eye1"></span>
+            <span class="leancloud-visitors-count"></span>
+          </span>
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/JavaScript">JavaScript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/Node.js">Node.js</a>
+                  
+                
+                  
+                    <a href="/tags/W4J">W4J</a>
+                  
+                
+                  
+                    <a href="/tags/爬虫">爬虫</a>
+                  
+                
+                  
+                    <a href="/tags/Puppeteer">Puppeteer</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h2 id="Puppeteer介绍">Puppeteer介绍<a class="post-anchor" href="#Puppeteer介绍"></a></h2><ul>
+<li>通俗理解<code>Puppeteer</code>就是一个<code>Nodejs</code>库，我们可以创建一个可被我们控制的<code>Chmod</code>浏览器，调用<code>API</code>可以操作<code>WEB</code>，,它最大的特点就是它的操作Dom可以完全在内存中进行模拟既在V8引擎中处理而不打开浏览器(也是可打开浏览器，配置即可)。</li>
+<li>简直就是<code>JS</code>开发爬虫的一大福音。</li>
+<li>更多详细信息请点击这里<a href="https://zhaoqize.github.io/puppeteer-api-zh_CN/#/" target="_blank" rel="noopener">Puppeteer</a></li>
+</ul>
+<h2 id="Puppeteer用处">Puppeteer用处<a class="post-anchor" href="#Puppeteer用处"></a></h2><ul>
+<li>利用网页生成PDF、图片</li>
+<li>可以从网站抓取内容</li>
+<li>自动化表单提交、UI测试、键盘输入等</li>
+<li>捕获站点的时间线，以便追踪你的网站，帮助分析网站性能问题</li>
+</ul>
+<h2 id="Puppeteer初体验">Puppeteer初体验<a class="post-anchor" href="#Puppeteer初体验"></a></h2><ul>
+<li>我们以爬取音乐《囍》评论为例练练手。</li>
+</ul>
+<h3 id="安装Puppeteer">安装Puppeteer<a class="post-anchor" href="#安装Puppeteer"></a></h3><figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"># 安装命令<br>npm i puppeteer --save<br><br># 会有一个比较长的下载过程稍等片刻<br>Downloading Chromium r756035 - <span class="hljs-number">144.6</span> Mb [=                   ] <span class="hljs-number">6</span>% <span class="hljs-number">126.6</span>s<br><br># 安装完成<br>+ puppeteer@<span class="hljs-number">3.3</span><span class="hljs-number">.0</span><br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="使用Puppeteer">使用Puppeteer<a class="post-anchor" href="#使用Puppeteer"></a></h3><figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> puppeteer = <span class="hljs-built_in">require</span>(<span class="hljs-string">'puppeteer'</span>);<br><span class="hljs-comment">//puppeteer涉及很多await异步操作，所以我们需要再async自执行函数下执行</span><br>(<span class="hljs-keyword">async</span> () => {<br>    <span class="hljs-comment">//创建浏览器示例</span><br>    <span class="hljs-keyword">const</span> browser = <span class="hljs-keyword">await</span> puppeteer.launch({<br>        <span class="hljs-comment">//设置超时时间</span><br>        timeout: <span class="hljs-number">15000</span>,<br>        <span class="hljs-comment">//如果是访问https页面 此属性会忽略https错误</span><br>        ignoreHTTPSErrors: <span class="hljs-literal">true</span>,<br>        <span class="hljs-comment">// 打开开发者工具, 当此值为true时, headless总为false</span><br>        devtools: <span class="hljs-literal">true</span>,<br>        <span class="hljs-comment">//false 无头模式 打开浏览器 ， true 不打开浏览器</span><br>        headless: <span class="hljs-literal">false</span>,<br>        <span class="hljs-comment">//优化Chromium启动项 查看：https://peter.sh/experiments/chromium-command-line-switches/</span><br>        args: [<br>            <span class="hljs-string">'-–disable-dev-shm-usage'</span>,<br>            <span class="hljs-string">'-–disable-setuid-sandbox'</span>,<br>            <span class="hljs-string">'-–no-first-run'</span>,<br>            <span class="hljs-string">'--no-sandbox'</span>,<br>            <span class="hljs-string">'-–no-zygote'</span>,<br>            <span class="hljs-string">'-–single-process'</span><br>        ]<br>    });<br>    <span class="hljs-comment">//打开一个新的标签页</span><br>    <span class="hljs-keyword">const</span> page = <span class="hljs-keyword">await</span> browser.newPage();<br><br>    <span class="hljs-comment">//跳转到指定地址</span><br>    <span class="hljs-keyword">await</span> page.goto(<span class="hljs-string">'https://music.163.com/#/song?id=1303289043'</span>);<br><br>    <span class="hljs-comment">//至此我们就创建了一个浏览器，并打开指定页面。</span><br>    <span class="hljs-comment">//我们分析页面得知，整个页面是被放在一个`name`为`contentFrame`的`iframe`里。</span><br><br>    <span class="hljs-comment">//获取存放页面内容的iframe</span><br>    <span class="hljs-keyword">const</span> iframe = <span class="hljs-keyword">await</span> page.frames().find(<span class="hljs-function"><span class="hljs-params">f</span> =></span> f.name() === <span class="hljs-string">'contentFrame'</span>);<br><br>    <span class="hljs-comment">//获取到评论所在的父div</span><br>    <span class="hljs-keyword">const</span> musicComment = <span class="hljs-keyword">await</span> iframe.$(<span class="hljs-string">'.cmmts.j-flag'</span>);<br><br>    <span class="hljs-comment">//在浏览器中执行函数，相当于在控制台中执行函数</span><br>    <span class="hljs-comment">//在evaluate中写的console.log都将会在开发者工具中显示</span><br>    <span class="hljs-keyword">let</span> commentList = <span class="hljs-keyword">await</span> iframe.evaluate(<span class="hljs-function">(<span class="hljs-params">e</span>) =></span> {<br>        <span class="hljs-comment">//这次不罗里吧嗦直接使用评论内容所在的元素类名获取评论内容，使用Array.from便于接下来map操作</span><br>        <span class="hljs-keyword">let</span> comment = <span class="hljs-built_in">Array</span>.from(e.getElementsByClassName(<span class="hljs-string">'cnt f-brk'</span>));<br><br>        <span class="hljs-comment">//可以打印一下，在开发者工具中查看</span><br>        <span class="hljs-built_in">console</span>.log(comment);<br><br>        <span class="hljs-comment">//数组内是一个个元素对象，直接获取innerText即可</span><br>        <span class="hljs-keyword">return</span> comment.map(<span class="hljs-function"><span class="hljs-params">item</span> =></span> item.innerText);<br>    }, musicComment);<br>    <span class="hljs-comment">//commentList变量中就是爬取的内容</span><br>    <span class="hljs-built_in">console</span>.log(commentList)<br><br>    <span class="hljs-comment">//爬取完成关闭浏览器</span><br>    <span class="hljs-keyword">await</span> browser.close();<br>})()<br></code></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight js"><table><tbody><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//爬取的评论内容</span><br>[<br>  <span class="hljs-string">'Liam_BZ：唢呐倒是个神奇的东西\n中国人的红白喜事，从生到死\n一根铜管全能吹出来'</span>,<br>  <span class="hljs-string">'今天仙女味儿：新郎爱我\n王二狗也爱我\n可是新郎再爱我也没有让我和王二狗走\n王二狗再爱我 也没有来劫婚\n这就是，他们说的爱'</span>,<br>  <span class="hljs-string">'也想不羁尽自由：双喜才是囍 怕我只是喜'</span>,<br>  <span class="hljs-string">'别听别人乱讲你长得很可爱：门上贴囍 身着红衣 心里有你'</span>,......]<br></code></pre></td></tr></tbody></table></figure>
+</body></html>
+
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/12/01/QVI855IGBf/">TypeScript学习笔记 函数</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/11/29/ZfiPod5T48/">TypeScript学习笔记 对象类型接口&函数类型接口</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://ihuzb.github.io">Ihuzb</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://ihuzb.github.io/2019/12/01/kS4LfLOW08/">https://ihuzb.github.io/2019/12/01/kS4LfLOW08/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://ihuzb.github.io">Ihuzb</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2021
+            <a href="https://ihuzb.github.io">Ihuzb</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\"],\"valine\":{\"API_ID\":\"6pO8V6ukbSWsxKuznsFbuHjr-gzGzoHsz\",\"API_KEY\":\"CuGM6KzUrCdShp23y42i5QHn\"},\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 

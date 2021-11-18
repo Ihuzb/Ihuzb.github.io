@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <script>
+  var _hmt = _hmt || []
+  ;(function() {
+    var hm = document.createElement('script')
+    hm.src = 'https://hm.baidu.com/hm.js?5a0acc897fd96474a2c8f4deac84611a'
+    var s = document.getElementsByTagName('script')[0]
+    s.parentNode.insertBefore(hm, s)
+  })()
+</script> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="生命不息，折腾不止！" />
+    
+    <title>
+      TypeScript学习笔记 抽象类与多态 - Ihuzb的博客
+    </title>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/images/logo.jpeg" type="image/x-icon" />
+    
+<link rel="stylesheet" href="/style/style.css">
+
+  <meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Ihuzb的博客" type="application/atom+xml">
+</head>
+  <body>
+    <canvas id='pagemap'></canvas>
+    
+    <div id="post-toc" class="animated hiddenToc hide">
+      <span class="title">Toc</span>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TypeScript抽象类"><span class="toc-text">TypeScript抽象类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TypeScript抽象类的多态"><span class="toc-text">TypeScript抽象类的多态</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TypeScript类型this类型"><span class="toc-text">TypeScript类型this类型</span></a></li></ol>
+    </div>
+    
+    <div id="fixed-menu-wrap">
+      <span class="iconfont icon-sousuo search-box menu-reset"></span>
+      <span class="icon-toc menu-reset">Toc</span>
+      <span class="iconfont icon-arrowup menu-reset"></span>
+    </div>
+    <div id="fixed-menu">
+      <span class="iconfont icon-menu-"></span>
+    </div>
+    <div id="progress">
+      <div class="line"></div>
+    </div>
+    <div id="search-shade" class="animated hiddenSearch hide">
+      <div class="input-wrap">
+        <span class="iconfont icon-sousuo search-box"></span>
+        <input type="text" placeholder="Search" />
+        <span class="iconfont icon-close"></span>
+      </div>
+      <div class="search-result">
+        <div class="meta">
+          <span><b id="result-count">0</b> results found</span>
+          <img src="/images/logo.jpeg" />
+        </div>
+        <ul id="result-box"></ul>
+      </div>
+    </div>
+    <div id="menu-mask" class="animated hideMenuMask hide">
+      <span class="iconfont icon-close"></span>
+      <div class="nav">
+        
+        <a href="/" class="">
+          首页
+        </a>
+        
+        <a href="/archives" class="">
+          归档
+        </a>
+        
+        <a href="/categories" class="">
+          分类
+        </a>
+        
+        <a href="/tags" class="">
+          标签
+        </a>
+        
+        <a href="/friends" class="">
+          友链
+        </a>
+        
+        <a href="/about" class="">
+          关于
+        </a>
+        
+      </div>
+    </div>
+    <div id="header">
+      <div class="intro">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <div class="author">Ihuzb</div>
+      </div>
+      <div class="nav">
+        <span class="iconfont icon-menu menu-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+    </div>
+    <div id="side" class="animated bounceInLeft">
+      <div class="shrink">
+        <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        <span class="iconfont icon-menu toggle-icon"></span>
+        <a href="#" class="search-box">
+          <span class="iconfont icon-sousuo"></span>
+        </a>
+      </div>
+      <div class="magnify">
+        <div class="about">
+          <div class="author">Ihuzb</div>
+          <a href="/" class="logo" style="background-image: url('/images/logo.jpeg')"></a>
+        </div>
+
+        <div class="nav">
+          
+          <a href="/" class="">
+            首页
+          </a>
+          
+          <a href="/archives" class="">
+            归档
+          </a>
+          
+          <a href="/categories" class="">
+            分类
+          </a>
+          
+          <a href="/tags" class="">
+            标签
+          </a>
+          
+          <a href="/friends" class="">
+            友链
+          </a>
+          
+          <a href="/about" class="">
+            关于
+          </a>
+          
+          <a href="#" class="search-box">
+            <span class="iconfont icon-sousuo"></span>
+          </a>
+        </div>
+        <div class="bottom">
+          <div class="follow">
+            
+            <a href="https://github.com/Ihuzb" target="_block">
+              <span class="iconfont icon-github"></span>
+            </a>
+            
+            <a href="https://s1.ax1x.com/2020/06/24/NacJfK.jpg" target="_block">
+              <span class="iconfont icon-weixin"></span>
+            </a>
+             
+            <a href="/atom.xml" target="_block">
+              <span class="iconfont icon-rss"></span>
+            </a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="container">
+      <div class="main animated bounceInRight delay-0.7s">
+        <article class="post-entry">
+    <div class="header">
+      
+      <div class="title">TypeScript学习笔记 抽象类与多态</div>
+      <div class="meta">
+        <span class="item">
+          <span class="iconfont icon-time-circle"></span>
+          <span>2019/12/09</span>
+        </span>
+
+        
+          <span class="item leancloud-visitors" id="/2019/12/09/6WJMcN5tvl/" data-flag-title="TypeScript学习笔记 抽象类与多态">
+            <span class="iconfont icon-eye1"></span>
+            <span class="leancloud-visitors-count"></span>
+          </span>
+        
+
+         
+        <span class="item">
+          <span class="iconfont icon-folder"></span>
+          <span>
+              
+                
+                  <a href="/categories/TypeScript">TypeScript</a>
+                
+              
+          </span>
+        </span>
+        
+        
+         
+          <span class="item">
+            <span class="iconfont icon-tag1"></span>
+            <span>
+                
+                  
+                    <a href="/tags/JavaScript">JavaScript</a>
+                  
+                
+                  
+                    <a href="/tags/TypeScript">TypeScript</a>
+                  
+                
+                  
+                    <a href="/tags/学习笔记">学习笔记</a>
+                  
+                
+            </span>
+          </span>
+         
+      </div>
+      <div>
+      </div>
+    </div>
+    <html><head></head><body><h1 id="TypeScript抽象类">TypeScript抽象类<a class="post-anchor" href="#TypeScript抽象类"></a></h1><ul>
+<li>抽象类，只能被继承，不能被抽象化的类。</li>
+<li><code>abstract</code>定义抽象类，抽象类中定义方法，子类中可以直接调用。</li>
+<li>在抽象类内可以抽象方法，不指定具体的实现。好处就是抽离出方法的共性，有利于代码的服用，知道此方法有其他的实现方式。<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> Animal {<br>    <span class="hljs-comment">// 抽象类中定义方法</span><br>    eat() {<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'eat'</span>)<br>    }<br>    <span class="hljs-comment">// 在抽象类中定义抽象方法，在子类中具体实现</span><br>    <span class="hljs-keyword">abstract</span> sleep(): <span class="hljs-built_in">void</span><br>}<br><br><span class="hljs-keyword">class</span> Dog <span class="hljs-keyword">extends</span> Animal {<br>    <span class="hljs-keyword">constructor</span>(<span class="hljs-params"></span>) {<br>        <span class="hljs-keyword">super</span>();<br>    }<br>    <span class="hljs-comment">// 在子类中实现这个抽象方法</span><br>    sleep() {<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'dog sleep'</span>)<br>    }<br>}<br><br><span class="hljs-keyword">let</span> dog = <span class="hljs-keyword">new</span> Dog();<br><span class="hljs-comment">// eat</span><br>dog.eat();<br><span class="hljs-comment">// 使用抽象方法</span><br><span class="hljs-comment">// dog sleep</span><br>dog.sleep();<br></code></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+<h1 id="TypeScript抽象类的多态">TypeScript抽象类的多态<a class="post-anchor" href="#TypeScript抽象类的多态"></a></h1><ul>
+<li>同一个抽象方法，在多个子类中对这个方法有多个实现，在程序运行的时候会根据不同的对象，执行不同的操作。</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-comment">// 定义抽象类</span><br><span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> Animal {<br>    <span class="hljs-comment">// 定义抽象方法</span><br>    <span class="hljs-keyword">abstract</span> sleep(): <span class="hljs-built_in">void</span><br>}<br><span class="hljs-comment">// 创建Dog类继承Animal</span><br><span class="hljs-keyword">class</span> Dog <span class="hljs-keyword">extends</span> Animal {<br>    <span class="hljs-comment">// 实现sleep方法</span><br>    sleep() {<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'dog sleep'</span>)<br>    }<br>}<br><span class="hljs-comment">// 创建dog实例</span><br><span class="hljs-keyword">let</span> dog = <span class="hljs-keyword">new</span> Dog();<br><br><span class="hljs-comment">// 创建Cat类继承Animal</span><br><span class="hljs-keyword">class</span> Cat <span class="hljs-keyword">extends</span> Animal {<br>    <span class="hljs-comment">// 实现sleep方法</span><br>    sleep() {<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'cat sleep'</span>)<br>    }<br>}<br><span class="hljs-comment">// 创建cat实例</span><br><span class="hljs-keyword">let</span> cat = <span class="hljs-keyword">new</span> Cat();<br><span class="hljs-comment">// 定义animals数组，类型是Animal[]</span><br><span class="hljs-keyword">let</span> animals: Animal[] = [dog, cat];<br>animals.forEach(<span class="hljs-function"><span class="hljs-params">i</span> =></span> {<br>    <span class="hljs-comment">// 循环依次执行sleep方法，判断具体的实例，依次打印</span><br>    <span class="hljs-comment">// dog sleep</span><br>    <span class="hljs-comment">// cat sleep</span><br>    i.sleep();<br>});<br></code></pre></td></tr></tbody></table></figure>
+
+<h1 id="TypeScript类型this类型">TypeScript类型this类型<a class="post-anchor" href="#TypeScript类型this类型"></a></h1><ul>
+<li>类的成员方法返回this，可以实现链式调用。</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">class</span> WorkFlow {<br>    step1() {<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>    }<br><br>    step2() {<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>    }<br>}<br><span class="hljs-comment">// 依次打印</span><br><span class="hljs-comment">// 1</span><br><span class="hljs-comment">// 2</span><br><span class="hljs-keyword">new</span> WorkFlow().step1().step2();<br></code></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>继承的时候，this类型也可以表现出多态，this既可以是夫类型也可以是子类型。</li>
+</ul>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">class</span> WorkFlow {<br>    step1() {<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>    }<br><br>    step2() {<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>    }<br>}<br><br><span class="hljs-keyword">new</span> WorkFlow().step1().step2();<br><span class="hljs-comment">// d</span><br><span class="hljs-keyword">class</span> Myflow <span class="hljs-keyword">extends</span> WorkFlow {<br>    next() {<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;<br>    }<br>}<br><span class="hljs-comment">// 依次打印</span><br><span class="hljs-comment">// 3</span><br><span class="hljs-comment">// 1</span><br><span class="hljs-comment">// 2</span><br><span class="hljs-keyword">new</span> Myflow().next().step1().step2();<br></code></pre></td></tr></tbody></table></figure></body></html>
+
+  
+  <div class="post-guide">
+    <div class="item left">
+        
+          <a href="/2019/12/11/98gxEa87zw/">TypeScript学习笔记 类与接口的关系</a>
+        
+    </div>
+    <div class="item right">
+        
+          <a href="/2019/12/04/MdQbv7MmeD/">TypeScript学习笔记 类继承和成员修饰符</a>
+        
+    </div>
+  </div>
+
+  
+
+  <div class="post-copyright">
+    <div class="auth">
+      本文作者：<a href="https://ihuzb.github.io">Ihuzb</a>
+    </div>
+    <div class="link">
+      永久链接：<a href="https://ihuzb.github.io/2019/12/09/6WJMcN5tvl/">https://ihuzb.github.io/2019/12/09/6WJMcN5tvl/</a>
+    </div>
+    <div class="declare">
+      版权声明：本文首发于<a href="https://ihuzb.github.io">Ihuzb</a>的博客，转载请注明出处！
+    </div>
+  </div>
+
+  <div id="comment"></div>
+
+  
+  
+</article>
+        <footer>
+          <div class="copyright">
+            ©2021
+            <a href="https://ihuzb.github.io">Ihuzb</a> Powered by <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> |
+            <a href="https://github.com/shixiaohu2206/hexo-theme-huhu" target="_blank" rel="noopener">hexo-theme-huhu</a>
+          </div>
+          
+        </footer>
+      </div>
+    </div>
+  </body>
+  
+</html>
+<script type="text/javascript">
+                  window.HUHU_CONFIG = JSON.parse("{\"share\":[\"weibo\",\"weixin\"],\"valine\":{\"API_ID\":\"6pO8V6ukbSWsxKuznsFbuHjr-gzGzoHsz\",\"API_KEY\":\"CuGM6KzUrCdShp23y42i5QHn\"},\"service_worker\":{\"open\":false}}")
+                </script> <script type="text/javascript">window.addEventListener('load', function() {
+    
+    window.loadJs = function(d, m, a) {
+      var c = document.getElementsByTagName('head')[0] || document.head || document.documentElement
+      var b = document.createElement('script')
+      b.defer = true
+      b.setAttribute('type', 'text/javascript')
+      b.setAttribute('charset', 'UTF-8')
+      b.setAttribute('async', 'true')
+      b.setAttribute('src', d)
+      m && b.setAttribute('data-main', '/scripts/app-built')
+      if (typeof a === 'function') {
+        if (window.attachEvent) {
+          b.onreadystatechange = function() {
+            var e = b.readyState
+            if (e === 'loaded' || e === 'complete') {
+              b.onreadystatechange = null
+              a()
+            }
+          }
+        } else {
+          b.onload = a
+        }
+      }
+      c.appendChild(b)
+    }
+    window.loadJs && window.loadJs('https://cdn.bootcss.com/require.js/2.3.6/require.min.js', true, function() {require.config({"paths":{"util":"util","share":"share","search":"search","pagemap":"pagemap.min","registerSW":"registerSW","valine":"cdn/Valine.min","av":["https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min"],"pjax":["https://cdn.bootcss.com/jquery.pjax/2.0.1/jquery.pjax.min"],"jquery":["https://cdn.bootcss.com/jquery/3.4.1/jquery.min"],"confirm":["https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min"],"fancybox":["https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min"],"chart":["https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.bundle.min"]},"map":{"*":{"css":"https://cdn.bootcss.com/require-css/0.1.10/css.min.js"}},"shim":{"fancybox":{"deps":["css!https://cdn.bootcss.com/fancybox/3.5.7/jquery.fancybox.min.css"]},"confirm":{"deps":["css!https://cdn.bootcss.com/jquery-confirm/3.3.4/jquery-confirm.min.css"]},"chart":{"deps":["css!https://cdn.bootcss.com/Chart.js/2.8.0-rc.1/Chart.min.css"]}},"waitSeconds":3})})
+  })</script> <script type="text/javascript">
+                  ;(function() {
+                    var bp = document.createElement('script')
+                    var curProtocol = window.location.protocol.split(':')[0]
+                    if (curProtocol === 'https') {
+                      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+                    } else {
+                      bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+                    }
+                    var s = document.getElementsByTagName('script')[0]
+                    s.parentNode.insertBefore(bp, s)
+                  })()
+                </script> 
