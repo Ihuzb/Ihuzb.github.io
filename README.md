@@ -37,11 +37,11 @@
 
 1. 克隆仓库
 ```bash
-git clone https://github.com/your-username/cool-typing.git
+git clone git@github.com:Ihuzb/text-typing.git
 ```
 2. 进入项目目录
 ```bash
-cd cool-typing
+cd text-typing
 ```
 3. 打开 index.html 文件
 
