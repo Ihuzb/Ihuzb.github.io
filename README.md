@@ -24,7 +24,7 @@
 
 ## 🚀 在线体验
 
-[点击这里开始练习](https://ihuzb.github.io/text-typing/)
+[点击这里开始练习](https://ihuzb.github.io)
 
 ## 🛠️ 技术栈
 
