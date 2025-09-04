@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太阳系行星运行模拟器 | 3D天体运动可视化 | 免费在线天文教育工具</title>
+    <meta name="description" content="探索宇宙奥秘！免费在线太阳系行星运行模拟器，3D可视化展示八大行星运动轨迹。支持时间控制、速度调节和视图缩放，是理想的天文科普教育工具，适合学生、教师和天文爱好者使用。">
+    <meta name="keywords" content="太阳系模拟器,行星运行轨迹,天体运动模拟,在线天文教育,科普学习工具,八大行星,太阳系模型,3D可视化,交互式学习,天文教学软件,行星轨道演示,免费天文工具,天文科普,宇宙探索,水星金星地球火星,木星土星天王星海王星">
+    <meta name="author" content="iFlow">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="google" content="notranslate">
+    <link rel="canonical" href="https://iflow.ai/solar-system-simulator/">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="太阳系模拟器">
+    <meta name="theme-color" content="#000000">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
+        }
+        #canvas-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        #controls {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 10, 30, 0.85);
+            color: #00ffff;
+            padding: 15px 25px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 100;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            min-width: 800px;
+            justify-content: center;
+        }
+        #time-display {
+            min-width: 150px;
+            text-align: center;
+            font-size: 16px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+        }
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #1a1a40, #2a2a60);
+            color: #00ffff;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            white-space: nowrap;
+        }
+        button:hover {
+            background: linear-gradient(45deg, #2a2a60, #3a3a80);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        #speed-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        label {
+            font-size: 14px;
+            color: #00ffff;
+        }
+        input[type="number"] {
+            width: 70px;
+            padding: 8px;
+            background: rgba(10, 10, 30, 0.8);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 8px;
+            color: #00ffff;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        #zoom-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+        
+        #zoom-controls button {
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #1a1a40, #2a2a60);
+            color: #00ffff;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+        
+        #zoom-controls button:hover {
+            background: linear-gradient(45deg, #2a2a60, #3a3a80);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        input[type="number"]:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container">
+        <canvas id="orbitCanvas"></canvas>
+    </div>
+    
+    <div id="controls">
+        <button id="rewind">后退</button>
+        <button id="playPause">▶</button>
+        <button id="fastForward">前进</button>
+        
+        <div id="speed-control">
+            <label for="speed">倍数:</label>
+            <input type="number" id="speed" min="-10" max="10" step="0.1" value="1">
+        </div>
+        
+        <button id="resetTime">回到当前时间</button>
+        
+        <div id="time-display">时间: 0 年</div>
+    </div>
+    
+    <div id="zoom-controls">
+        <button id="zoomIn">+</button>
+        <button id="zoomOut">-</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
